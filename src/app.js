@@ -35,10 +35,15 @@ app.init().then(async () => {
     }
 
     function hide(elem, label) {
+        console.log(elem)
+        console.log(elem.parentElement)
+        elem.parentElement.style.backgroundColor='red';
+
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
             return false;
 
+        
         if (app.options.hideMethod === "collapse") {
             if (target.closest(".fbtrCollapsible"))
                 return false;
@@ -269,6 +274,7 @@ app.init().then(async () => {
 
     function removeArticles(node, rules) {
         for (const [sel, texts] of Object.entries(rules)) {
+            console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
                 const elementText = visibleText(e);
 
@@ -341,7 +347,7 @@ app.init().then(async () => {
 
         (async () => {
             removeArticles(body, _userRules);
-
+            console.log(body)
             if (app.options.delSuggest)
                 removeArticles(body, app.hide_rules.suggestions_smart);
             if (app.options.delPixeled)
