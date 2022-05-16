@@ -44,22 +44,22 @@ app.init().then(async () => {
             return false;
 
         
-        if (app.options.hideMethod === "collapse") {
-            if (target.closest(".fbtrCollapsible"))
-                return false;
+        // if (app.options.hideMethod === "collapse") {
+        //     if (target.closest(".fbtrCollapsible"))
+        //         return false;
 
-            const wrapper = buildCollapsible(label);
-            applyStyle(wrapper);
-            for (const c of target.classList)
-                wrapper.classList.add(c);
+        //     const wrapper = buildCollapsible(label);
+        //     applyStyle(wrapper);
+        //     for (const c of target.classList)
+        //         wrapper.classList.add(c);
 
-            target.parentNode.appendChild(wrapper);
-            wrapper.appendChild(target);
-            app.log("Collapsed " + label);
-        } else {
-            target.remove();
-            app.log("Removed " + label);
-        }
+        //     target.parentNode.appendChild(wrapper);
+        //     wrapper.appendChild(target);
+        //     app.log("Collapsed " + label);
+        // } else {
+        //     target.remove();
+        //     app.log("Removed " + label);
+        // }
         return true;
     }
 
