@@ -37,9 +37,10 @@ app.init().then(async () => {
     function hide(elem, label) {
         /* temporary code */
         console.log(elem)
-        console.log(elem.parentElement)
-        elem.parentElement.style.backgroundColor='red';
-        /* temporary code */
+        // console.log(elem.parentElement)
+        elem.parentElement.style.backgroundColor='yellow';
+        augmentButton(elem)
+            
 
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
@@ -47,6 +48,28 @@ app.init().then(async () => {
 
         return true;
     }
+
+    function augmentButton(elem) {
+        var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
+        console.log(header)
+        var adBtn = header.querySelector('[aria-label="Actions for this post"]')
+        
+        if (adBtn){
+            var three_dot_svg = adBtn.querySelector('svg')
+            three_dot_svg.remove()
+
+            var settingsBtn = document.createElement('span');
+            settingsBtn.innerHTML = "ad settings"
+            settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #e2e2e9; text-decoration: none; display: inline-block; font-size: 1em; margin-right:10px; cursor: pointer; color:blue; font-family: sans-serif;'
+            
+            adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+        }
+    }
+
+    function changeMenu(elem) {
+
+    }
+
 
     const supportedProtos = ["http:", "https:", "ftp:"];
     function cleanLink(a, href) {
@@ -261,11 +284,11 @@ app.init().then(async () => {
         for (const [sel, texts] of Object.entries(rules)) {
             console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
-                console.log('visibility')
-                console.log(e);
+                // console.log('visibility')
+                // console.log(e);
                 
                 const elementText = visibleText(e);
-                console.log(elementText);
+                // console.log(elementText);
 
                 if ((texts.length === 0 || texts.includes(normalizeString(elementText))) && hide(e, elementText)) {
                     app.log(() => {
