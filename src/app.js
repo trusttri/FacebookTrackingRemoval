@@ -35,15 +35,17 @@ app.init().then(async () => {
     }
 
     function hide(elem, label) {
+        /* temporary code */
         console.log(elem)
         console.log(elem.parentElement)
         elem.parentElement.style.backgroundColor='red';
+        /* temporary code */
 
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
             return false;
 
-        
+
         // if (app.options.hideMethod === "collapse") {
         //     if (target.closest(".fbtrCollapsible"))
         //         return false;
@@ -276,7 +278,11 @@ app.init().then(async () => {
         for (const [sel, texts] of Object.entries(rules)) {
             console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
+                console.log('visibility')
+                console.log(e);
+                
                 const elementText = visibleText(e);
+                console.log(elementText);
 
                 if ((texts.length === 0 || texts.includes(normalizeString(elementText))) && hide(e, elementText)) {
                     app.log(() => {
@@ -313,8 +319,8 @@ app.init().then(async () => {
 
                     removeArticles(target, _userRules);
 
-                    if (app.options.delSuggest)
-                        removeArticles(target, app.hide_rules.suggestions_smart);
+                    // if (app.options.delSuggest)
+                    //     removeArticles(target, app.hide_rules.suggestions_smart);
                     if (app.options.delPixeled)
                         removeArticles(target, app.hide_rules.content);
                     if (app.options.pendingRules)
@@ -348,8 +354,8 @@ app.init().then(async () => {
         (async () => {
             removeArticles(body, _userRules);
             console.log(body)
-            if (app.options.delSuggest)
-                removeArticles(body, app.hide_rules.suggestions_smart);
+            // if (app.options.delSuggest)
+            //     removeArticles(body, app.hide_rules.suggestions_smart);
             if (app.options.delPixeled)
                 removeArticles(body, app.hide_rules.content);
             if (app.options.pendingRules)
