@@ -66,7 +66,6 @@ const app = {};
                 fixVideos: false,
                 delPixeled: true,
                 delSuggest: true,
-                hideMethod: "collapse",
                 useStyle: false,
                 logging: false,
                 modStyle: "outline: 1px dashed rgba(0, 128, 0, 0.5) !important;",

@@ -79,18 +79,6 @@ function cleanAttrs(elem) {
     }
 }
 
-function buildCollapsible(label) {
-    const content = document.createElement("summary");
-    content.textContent = label;
-    content.classList.add("fbtrLabel");
-
-    const collapsible = document.createElement("details");
-    collapsible.classList.add(PROCESSED_CLASS);
-    collapsible.classList.add("fbtrCollapsible");
-    collapsible.appendChild(content);
-
-    return collapsible;
-}
 
 function cleanLinkParams(link, base = (location.origin + location.pathname)) {
     try {
