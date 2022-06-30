@@ -60,9 +60,12 @@ app.init().then(async () => {
 
             var settingsBtn = document.createElement('span');
             settingsBtn.innerHTML = "ad settings"
-            settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #e2e2e9; text-decoration: none; display: inline-block; font-size: 1em; margin-right:10px; cursor: pointer; color:blue; font-family: sans-serif;'
+            settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #F2F3F5; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color:#1877F2; font-family: sans-serif;'
             
             adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+            // adBtn.style.paddingRight = "15px";
+
+            adBtn.parentElement.parentElement.style.width = "85px";
         }
     }
 
