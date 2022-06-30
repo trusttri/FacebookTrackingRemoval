@@ -56,21 +56,72 @@ app.init().then(async () => {
         
         if (adBtn){
             var three_dot_svg = adBtn.querySelector('svg')
-            three_dot_svg.remove()
+            if(three_dot_svg){
+                three_dot_svg.remove()
 
-            var settingsBtn = document.createElement('span');
-            settingsBtn.innerHTML = "ad settings"
-            settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #F2F3F5; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color:#1877F2; font-family: sans-serif;'
-            
-            adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-            // adBtn.style.paddingRight = "15px";
+                var settingsBtn = document.createElement('span');
+                settingsBtn.innerHTML = "ad settings"
+                settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #F2F3F5; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color:#1877F2; font-family: sans-serif;'
+                
+                adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+                // adBtn.style.paddingRight = "15px";
 
-            adBtn.parentElement.parentElement.style.width = "85px";
+                adBtn.parentElement.parentElement.style.width = "85px";
+
+                adBtn.addEventListener("click", e => changeMenu());
+            }
         }
     }
 
-    function changeMenu(elem) {
+    function changeMenu() {
+        console.log("CLICKED");
+        if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
+            console.log('exist')
+            var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
+            var nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
+            console.log(nodes);
+  
+            if(nodes[0]){
+                var nodes_parent = nodes[0].parentElement
+                var cy = nodes[2].cloneNode(true)
+                // var title = cy.querySelector(".d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.iv3no6db.jq4qci2q.a3bd9o3v.ekzkrbhg.oo9gr5id.hzawbc8m")
+                // title.textContent = "See more ad settings"
+                // var explain = cy.querySelector(".d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.mdeji52x.e9vueds3.j5wam9gi.b1v8xokw.m9osqain.hzawbc8m")
+                // explain.textContent = "Check out your ad and privacy settings."
+                var cy_childs = cy.querySelectorAll("span")
+                cy_childs[0].textContent = "See more ad settings"
+                cy_childs[1].textContent = "Check out your ad and privacy settings."
+                var hr = document.createElement('div');
+                hr.innerHTML = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
+                nodes_parent.appendChild(hr)
+                nodes_parent.appendChild(cy)
+                cy.addEventListener("click", e => location.href = "https://www.facebook.com/adpreferences/ad_settings");
+            }else{
+                console.log("error")
+            }
+        }else{
+            console.log('not yet CLICKED')
+        }
+    }
 
+    function waitForElm(selector) {
+        return new Promise(resolve => {
+            if (document.querySelector(selector)) {
+                return resolve(document.querySelector(selector));
+            }
+
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    resolve(document.querySelector(selector));
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
     }
 
 
