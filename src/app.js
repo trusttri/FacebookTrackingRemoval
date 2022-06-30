@@ -78,10 +78,14 @@ app.init().then(async () => {
         if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
             console.log('exist')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
-            var nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
-            console.log(nodes);
-  
-            if(nodes[0]){
+            // var nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
+            // console.log(nodes);
+
+            var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
+            waitForElm(menu_item_selector).then((elm) => {
+                console.log('Element is ready');
+                console.log(elm.textContent);
+                var nodes = elm
                 var nodes_parent = nodes[0].parentElement
                 var cy = nodes[2].cloneNode(true)
                 // var title = cy.querySelector(".d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.iv3no6db.jq4qci2q.a3bd9o3v.ekzkrbhg.oo9gr5id.hzawbc8m")
@@ -96,9 +100,8 @@ app.init().then(async () => {
                 nodes_parent.appendChild(hr)
                 nodes_parent.appendChild(cy)
                 cy.addEventListener("click", e => location.href = "https://www.facebook.com/adpreferences/ad_settings");
-            }else{
-                console.log("error")
-            }
+            });
+
         }else{
             console.log('not yet CLICKED')
         }
@@ -106,13 +109,13 @@ app.init().then(async () => {
 
     function waitForElm(selector) {
         return new Promise(resolve => {
-            if (document.querySelector(selector)) {
-                return resolve(document.querySelector(selector));
+            if (document.querySelectorAll(selector)[0]) {
+                return resolve(document.querySelectorAll(selector));
             }
 
             const observer = new MutationObserver(mutations => {
-                if (document.querySelector(selector)) {
-                    resolve(document.querySelector(selector));
+                if (document.querySelectorAll(selector)[0]) {
+                    resolve(document.querySelectorAll(selector));
                     observer.disconnect();
                 }
             });
