@@ -38,7 +38,7 @@ app.init().then(async () => {
         /* temporary code */
         console.log(elem)
         // console.log(elem.parentElement)
-        elem.parentElement.style.backgroundColor='yellow';
+        // elem.parentElement.style.backgroundColor='yellow';
         augmentButton(elem)
             
 
@@ -61,50 +61,110 @@ app.init().then(async () => {
 
                 var settingsBtn = document.createElement('span');
                 settingsBtn.innerHTML = "ad settings"
-                settingsBtn.style = 'padding: 2px 3px; text-align: center; border-radius: 8px; background-color: #F2F3F5; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color:#1877F2; font-family: sans-serif;'
+                settingsBtn.style = 'padding: 3px 4px; text-align: center; border-radius: 8px; background-color: #1877F2; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: white; font-family: sans-serif;'
                 
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                // adBtn.style.paddingRight = "15px";
+                adBtn.addEventListener("click", e => changeMenu());
 
                 adBtn.parentElement.parentElement.style.width = "85px";
 
-                adBtn.addEventListener("click", e => changeMenu());
             }
         }
     }
 
     function changeMenu() {
-        console.log("CLICKED");
         if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-            console.log('exist')
+            console.log('menu element exists')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
-            // var nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
-            // console.log(nodes);
+            // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
+            // console.log(menu_nodes);
 
             var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
             waitForElm(menu_item_selector).then((elm) => {
-                console.log('Element is ready');
-                console.log(elm.textContent);
+
+                //widen the menu
+                var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
+                innerDiv.style.width = '544px';
+
+
                 var nodes = elm
-                var nodes_parent = nodes[0].parentElement
-                var cy = nodes[2].cloneNode(true)
-                // var title = cy.querySelector(".d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.iv3no6db.jq4qci2q.a3bd9o3v.ekzkrbhg.oo9gr5id.hzawbc8m")
-                // title.textContent = "See more ad settings"
-                // var explain = cy.querySelector(".d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.mdeji52x.e9vueds3.j5wam9gi.b1v8xokw.m9osqain.hzawbc8m")
-                // explain.textContent = "Check out your ad and privacy settings."
-                var cy_childs = cy.querySelectorAll("span")
-                cy_childs[0].textContent = "See more ad settings"
-                cy_childs[1].textContent = "Check out your ad and privacy settings."
+                var copy_node = nodes[2]
+                var parent_node = nodes[0].parentElement
+
+                // add headers
+                var header_style = 'padding: 3px 3px; text-align: center; font-size: 1.28rem; color:#1877F2; font-family: sans-serif;'
+                var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
+                
+                var this_ad_header = copy_node.cloneNode()
+                this_ad_header.textContent = "This ad"
+                this_ad_header.style = header_style;
+                parent_node.insertBefore(this_ad_header, nodes[0])
+
                 var hr = document.createElement('div');
-                hr.innerHTML = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
-                nodes_parent.appendChild(hr)
-                nodes_parent.appendChild(cy)
-                cy.addEventListener("click", e => location.href = "https://www.facebook.com/adpreferences/ad_settings");
+                hr.innerHTML = hr_string
+                parent_node.appendChild(hr)
+                
+                var general_header = copy_node.cloneNode()
+                general_header.textContent = "Ads in general"
+                general_header.style = header_style;
+                parent_node.appendChild(general_header)
+
+
+                // add links to privacy controls
+                var titles = [
+                                "Stop using data from partners to personalize ads", 
+                                "Review/clear off-Facebook activity",
+                                "Disconnect off-Facebook activity from account",
+                                "Manage ad topics",
+                                "View recent ad activity",
+                                "See more ad settings"
+                            ]
+                var descriptions = [
+                                    "Decide whether you want ads based on activity on other websites, apps or offline.",
+                                    "See which information businesses send to Facebook.",
+                                    "Disconnect information businesses send to Facebook.",
+                                    "Choose which ad topics you want to see less.",
+                                    "See recent ads you interacted with.",
+                                    "Check out your ad and privacy settings."
+                                    ]
+                var urls = [
+                            "",
+                            "https://www.facebook.com/off_facebook_activity",
+                            "",
+                            "https://www.facebook.com/adpreferences/ad_topics",
+                            "https://www.facebook.com/ads/activity",
+                            "https://www.facebook.com/adpreferences/ad_settings"
+                            ]
+
+                for (let i = 0; i < titles.length; i++) {
+                    appendAdSettingOption(copy_node, parent_node, titles[i], descriptions[i], urls[i])
+                    if(i==2 || i==4){
+                        var hr = document.createElement('div');
+                        hr.innerHTML = hr_string
+                        parent_node.appendChild(hr)
+                    }
+                }
+                
+               
             });
 
-        }else{
-            console.log('not yet CLICKED')
         }
+    }
+
+    function appendAdSettingOption(node, parent, title, description, url) {
+        var choice = node.cloneNode(true)
+        removeImage(choice, 'i')
+        var choiceTexts = choice.querySelectorAll("span")
+        choiceTexts[0].textContent = title
+        choiceTexts[1].textContent = description
+        parent.appendChild(choice)
+        choice.addEventListener("click", e => location.href = url);
+    }
+
+    //temporary code; need to add icons
+    function removeImage(elm, selector) {
+        var image = elm.querySelector(selector)
+        image.style.backgroundImage = "url()"
     }
 
     function waitForElm(selector) {
