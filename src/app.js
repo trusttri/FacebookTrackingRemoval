@@ -112,37 +112,17 @@ app.init().then(async () => {
 
                 // add links to privacy controls
                 var titles = [
-                                "Stop using data from partners to personalize ads", 
-                                "Review/clear off-Facebook activity",
-                                "Disconnect off-Facebook activity from account",
-                                "Manage ad topics",
-                                "View recent ad activity",
                                 "See more ad settings"
                             ]
                 var descriptions = [
-                                    "Decide whether you want ads based on activity on other websites, apps or offline.",
-                                    "See which information businesses send to Facebook.",
-                                    "Disconnect information businesses send to Facebook.",
-                                    "Choose which ad topics you want to see less.",
-                                    "See recent ads you interacted with.",
                                     "Check out your ad and privacy settings."
                                     ]
                 var urls = [
-                            "",
-                            "https://www.facebook.com/off_facebook_activity",
-                            "",
-                            "https://www.facebook.com/adpreferences/ad_topics",
-                            "https://www.facebook.com/ads/activity",
                             "https://www.facebook.com/adpreferences/ad_settings"
                             ]
 
                 for (let i = 0; i < titles.length; i++) {
                     appendAdSettingOption(copy_node, parent_node, titles[i], descriptions[i], urls[i])
-                    if(i==2 || i==4){
-                        var hr = document.createElement('div');
-                        hr.innerHTML = hr_string
-                        parent_node.appendChild(hr)
-                    }
                 }
                 
                
