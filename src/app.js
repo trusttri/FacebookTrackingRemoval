@@ -122,7 +122,7 @@ app.init().then(async () => {
                                 "Review/clear off-Facebook activity",
                                 "Disconnect off-Facebook activity from account",
                                 "Manage ad topics",
-                                "View recent ad activity",
+                                "Review advertisers",
                                 "See more ad settings"
                             ]
                 var descriptions = [
@@ -130,7 +130,7 @@ app.init().then(async () => {
                                     "See which information businesses send to Facebook.",
                                     "Disconnect information businesses send to Facebook.",
                                     "Choose which ad topics you want to see less.",
-                                    "See recent ads you interacted with.",
+                                    "See advertisers you've seen or interacted with.",
                                     "Check out your ad and privacy settings."
                                     ]
                 var urls = [
@@ -138,7 +138,7 @@ app.init().then(async () => {
                             "https://www.facebook.com/off_facebook_activity",
                             "",
                             "https://www.facebook.com/adpreferences/ad_topics",
-                            "https://www.facebook.com/ads/activity",
+                            "https://www.facebook.com/adpreferences/advertisers",
                             "https://www.facebook.com/adpreferences/ad_settings"
                             ]
 
