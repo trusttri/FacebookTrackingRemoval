@@ -96,7 +96,7 @@ app.init().then(async () => {
                 var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
                 
                 var this_ad_header = copy_node.cloneNode()
-                this_ad_header.textContent = "This ad"
+                this_ad_header.textContent = "For this ad"
                 this_ad_header.style = header_style;
                 parent_node.insertBefore(this_ad_header, nodes[0])
 
@@ -105,19 +105,22 @@ app.init().then(async () => {
                 parent_node.appendChild(hr)
                 
                 var general_header = copy_node.cloneNode()
-                general_header.textContent = "Ads in general"
+                general_header.textContent = "For all ads"
                 general_header.style = header_style;
                 parent_node.appendChild(general_header)
 
 
                 // add links to privacy controls
                 var titles = [
+                                "Your information",
                                 "See more ad settings"
                             ]
                 var descriptions = [
-                                    "Check out your ad and privacy settings."
+                                    "View your information used for your Facebook experience.",
+                                     "Check out your ad and privacy settings."
                                     ]
                 var urls = [
+                            "https://www.facebook.com/settings?tab=your_facebook_information",
                             "https://www.facebook.com/adpreferences/ad_settings"
                             ]
 
