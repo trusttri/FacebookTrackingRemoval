@@ -64,9 +64,15 @@ app.init().then(async () => {
                 settingsBtn.style = 'padding: 3px 4px; text-align: center; border-radius: 8px; background-color: #1877F2; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: white; font-family: sans-serif;'
                 
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                adBtn.addEventListener("click", e => changeMenu());
+                adBtn.parentElement.parentElement.style.width = "210px";
 
-                adBtn.parentElement.parentElement.style.width = "85px";
+                //copy and add another buttn
+                // var whyBtn = settingsBtn.cloneNode()
+                // whyBtn.innerHTML = "why this ad"
+                // whyBtn.style = 'margin-right: 8px; padding: 3px 4px; text-align: center; border-radius: 8px; background-color: #1877F2; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: white; font-family: sans-serif;'
+
+                // adBtn.insertBefore(whyBtn, settingsBtn);
+                adBtn.addEventListener("click", e => changeMenu());
 
             }
         }
@@ -96,7 +102,7 @@ app.init().then(async () => {
                 var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
                 
                 var this_ad_header = copy_node.cloneNode()
-                this_ad_header.textContent = "This ad"
+                this_ad_header.textContent = "For this ad"
                 this_ad_header.style = header_style;
                 parent_node.insertBefore(this_ad_header, nodes[0])
 
@@ -105,7 +111,7 @@ app.init().then(async () => {
                 parent_node.appendChild(hr)
                 
                 var general_header = copy_node.cloneNode()
-                general_header.textContent = "Ads in general"
+                general_header.textContent = "For all ads"
                 general_header.style = header_style;
                 parent_node.appendChild(general_header)
 
