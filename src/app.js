@@ -121,7 +121,7 @@ app.init().then(async () => {
                                 "See more about your Facebook information"
                             ]
                 var descriptions = [
-                                    "View your information used for your Facebook experience.",
+                                    "Check out your ad and privacy settings.",
                                     "Check your information used for Facebook user experience, including ads."
                                     ]
                 var urls = [
@@ -131,13 +131,6 @@ app.init().then(async () => {
 
                 for (let i = 0; i < titles.length; i++) {
                     appendAdSettingOption(copy_node, parent_node, titles[i], descriptions[i], urls[i])
-                    var hr = document.createElement('div');
-                    var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e">'
-                    hr.innerHTML = hr_string
-                    hr.style.backgroundColor="";
-                    hr.style.color = "";
-                    hr.style.background = "";
-                    parent_node.appendChild(hr)
                 }
                 
                
@@ -149,6 +142,7 @@ app.init().then(async () => {
     function appendAdSettingOption(node, parent, title, description, url) {
         var choice = node.cloneNode(true)
         removeImage(choice, 'i')
+        choice.style.marginBottom = "8px"
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
         choiceTexts[1].textContent = description
