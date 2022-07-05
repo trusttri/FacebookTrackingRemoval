@@ -56,24 +56,19 @@ app.init().then(async () => {
         
         if (adBtn){
             var three_dot_svg = adBtn.querySelector('svg')
-            if(three_dot_svg){
+            if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
+            
                 three_dot_svg.remove()
 
-                var settingsBtn = document.createElement('span');
-                settingsBtn.innerHTML = "ad settings"
-                settingsBtn.style = 'padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-                
+                var settingsBtn = document.createElement('div');
+                var innerHTML_string = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+                innerHTML_string += "<span>ad settings</span>"
+                settingsBtn.innerHTML = innerHTML_string
+                settingsBtn.style = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+        
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                adBtn.parentElement.parentElement.style.width = "100px";
-
-                //copy and add another buttn
-                // var whyBtn = settingsBtn.cloneNode()
-                // whyBtn.innerHTML = "why this ad"
-                // whyBtn.style = 'margin-right: 8px; padding: 3px 4px; text-align: center; border-radius: 8px; background-color: #1877F2; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: white; font-family: sans-serif;'
-
-                // adBtn.insertBefore(whyBtn, settingsBtn);
                 adBtn.addEventListener("click", e => changeMenu());
-
+                adBtn.parentElement.parentElement.style.width = "120px";
             }
         }
     }
@@ -173,7 +168,9 @@ app.init().then(async () => {
     //temporary code; need to add icons
     function removeImage(elm, selector) {
         var image = elm.querySelector(selector)
-        image.style.backgroundImage = "url()"
+        if(image){
+            image.style.backgroundImage = "url()"
+        }
     }
 
     function waitForElm(selector) {
