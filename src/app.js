@@ -36,7 +36,7 @@ app.init().then(async () => {
 
     function hide(elem, label) {
         /* temporary code */
-        console.log(elem)
+        // console.log(elem)
         // console.log(elem.parentElement)
         // elem.parentElement.style.backgroundColor='yellow';
         augmentButton(elem)
@@ -51,33 +51,35 @@ app.init().then(async () => {
 
     function augmentButton(elem) {
         var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
-        console.log(header)
-        var adBtn = header.querySelector('[aria-label="Actions for this post"]')
+        // console.log(header)
+        if (header){
+            var adBtn = header.querySelector('[aria-label="Actions for this post"]')
         
-        if (adBtn){
-            var three_dot_svg = adBtn.querySelector('svg')
-            if(three_dot_svg){
-                three_dot_svg.remove()
-
-                var settingsBtn = document.createElement('div');
-                // var innerHTML_string = '<svg fill="#216fdb" viewBox="0 0 16 16" width="1em" height="1em" class="a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>' 
-                // innerHTML_string += "ad settings"
-                var innerHTML_string = "ad settings"
-                settingsBtn.innerHTML = innerHTML_string
-                settingsBtn.style = 'padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+            if (adBtn){
+                var three_dot_svg = adBtn.querySelector('svg')
+                if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
                 
-                adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                adBtn.addEventListener("click", e => changeMenu());
+                    three_dot_svg.remove()
 
-                adBtn.parentElement.parentElement.style.width = "125px";
+                    var settingsBtn = document.createElement('div');
+                    var innerHTML_string = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+                    innerHTML_string += "<span>ad settings</span>"
+                    settingsBtn.innerHTML = innerHTML_string
+                    settingsBtn.style = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+            
+                    adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+                    adBtn.addEventListener("click", e => changeMenu());
+                    adBtn.parentElement.parentElement.style.width = "120px";
 
+                }
             }
         }
+        
     }
 
     function changeMenu() {
         if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-            console.log('menu element exists')
+            // console.log('menu element exists')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
             // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
             // console.log(menu_nodes);
@@ -394,7 +396,7 @@ app.init().then(async () => {
 
     function removeArticles(node, rules) {
         for (const [sel, texts] of Object.entries(rules)) {
-            console.log(sel)
+            // console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
                 // console.log('visibility')
                 // console.log(e);
@@ -471,7 +473,7 @@ app.init().then(async () => {
 
         (async () => {
             removeArticles(body, _userRules);
-            console.log(body)
+            // console.log(body)
             // if (app.options.delSuggest)
             //     removeArticles(body, app.hide_rules.suggestions_smart);
             if (app.options.delPixeled)
