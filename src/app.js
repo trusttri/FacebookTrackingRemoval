@@ -159,6 +159,8 @@ app.init().then(async () => {
     function appendAdSettingOption(node, parent, title, description, url) {
         var choice = node.cloneNode(true)
         removeImage(choice, 'i')
+        choice.style.marginBottom = "7px";
+
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
         choiceTexts[1].textContent = description
