@@ -59,14 +59,17 @@ app.init().then(async () => {
             if(three_dot_svg){
                 three_dot_svg.remove()
 
-                var settingsBtn = document.createElement('span');
-                settingsBtn.innerHTML = "ad settings"
+                var settingsBtn = document.createElement('div');
+                // var innerHTML_string = '<svg fill="#216fdb" viewBox="0 0 16 16" width="1em" height="1em" class="a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>' 
+                // innerHTML_string += "ad settings"
+                var innerHTML_string = "ad settings"
+                settingsBtn.innerHTML = innerHTML_string
                 settingsBtn.style = 'padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
                 
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                 adBtn.addEventListener("click", e => changeMenu());
 
-                adBtn.parentElement.parentElement.style.width = "100px";
+                adBtn.parentElement.parentElement.style.width = "125px";
 
             }
         }
@@ -126,6 +129,13 @@ app.init().then(async () => {
 
                 for (let i = 0; i < titles.length; i++) {
                     appendAdSettingOption(copy_node, parent_node, titles[i], descriptions[i], urls[i])
+                    var hr = document.createElement('div');
+                    var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e">'
+                    hr.innerHTML = hr_string
+                    hr.style.backgroundColor="";
+                    hr.style.color = "";
+                    hr.style.background = "";
+                    parent_node.appendChild(hr)
                 }
                 
                
@@ -147,7 +157,9 @@ app.init().then(async () => {
     //temporary code; need to add icons
     function removeImage(elm, selector) {
         var image = elm.querySelector(selector)
-        image.style.backgroundImage = "url()"
+        if(image){
+            image.style.backgroundImage = "url()"
+        }
     }
 
     function waitForElm(selector) {
