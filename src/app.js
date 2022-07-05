@@ -61,12 +61,12 @@ app.init().then(async () => {
 
                 var settingsBtn = document.createElement('span');
                 settingsBtn.innerHTML = "ad settings"
-                settingsBtn.style = 'padding: 3px 4px; text-align: center; border-radius: 8px; background-color: #1877F2; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: white; font-family: sans-serif;'
+                settingsBtn.style = 'padding: 4px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
                 
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                 adBtn.addEventListener("click", e => changeMenu());
 
-                adBtn.parentElement.parentElement.style.width = "85px";
+                adBtn.parentElement.parentElement.style.width = "100px";
 
             }
         }
@@ -112,16 +112,16 @@ app.init().then(async () => {
 
                 // add links to privacy controls
                 var titles = [
-                                "Your information",
-                                "See more ad settings"
+                                "See more ad settings",
+                                "See more about your Facebook information"
                             ]
                 var descriptions = [
                                     "View your information used for your Facebook experience.",
-                                     "Check out your ad and privacy settings."
+                                    "Check your information used for Facebook user experience, including ads."
                                     ]
                 var urls = [
-                            "https://www.facebook.com/settings?tab=your_facebook_information",
-                            "https://www.facebook.com/adpreferences/ad_settings"
+                            "https://www.facebook.com/adpreferences/ad_settings",
+                            "https://www.facebook.com/settings?tab=your_facebook_information"
                             ]
 
                 for (let i = 0; i < titles.length; i++) {
