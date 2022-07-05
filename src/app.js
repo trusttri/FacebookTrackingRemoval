@@ -61,7 +61,7 @@ app.init().then(async () => {
 
                 var settingsBtn = document.createElement('span');
                 settingsBtn.innerHTML = "ad settings"
-                settingsBtn.style = 'padding: 4px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+                settingsBtn.style = 'padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
                 
                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                 adBtn.parentElement.parentElement.style.width = "100px";
