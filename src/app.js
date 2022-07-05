@@ -51,24 +51,25 @@ app.init().then(async () => {
 
     function augmentButton(elem) {
         var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
-        console.log(header)
-        var adBtn = header.querySelector('[aria-label="Actions for this post"]')
-        
-        if (adBtn){
-            var three_dot_svg = adBtn.querySelector('svg')
-            if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
+        if (header){
+            var adBtn = header.querySelector('[aria-label="Actions for this post"]')
             
-                three_dot_svg.remove()
+            if (adBtn){
+                var three_dot_svg = adBtn.querySelector('svg')
+                if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
+                
+                    three_dot_svg.remove()
 
-                var settingsBtn = document.createElement('div');
-                var innerHTML_string = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
-                innerHTML_string += "<span>ad settings</span>"
-                settingsBtn.innerHTML = innerHTML_string
-                settingsBtn.style = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-        
-                adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                adBtn.addEventListener("click", e => changeMenu());
-                adBtn.parentElement.parentElement.style.width = "120px";
+                    var settingsBtn = document.createElement('div');
+                    var innerHTML_string = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+                    innerHTML_string += "<span>ad settings</span>"
+                    settingsBtn.innerHTML = innerHTML_string
+                    settingsBtn.style = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+            
+                    adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+                    adBtn.addEventListener("click", e => changeMenu());
+                    adBtn.parentElement.parentElement.style.width = "120px";
+                }
             }
         }
     }
