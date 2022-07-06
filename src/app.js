@@ -33,13 +33,13 @@ const AD_ICON = '<img class="hu5pjgll bixrwtb6" src="https://static.xx.fbcdn.net
 const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 
 const titles = [
-                                "Stop using data from partners to personalize ads", 
-                                "Review/clear off-Facebook activity",
-                                "Disconnect off-Facebook activity from account",
-                                "Manage ad topics",
-                                "Review advertisers",
-                                "See more ad settings",
-                                "See more about your Facebook information"
+                    "Stop using data from partners to personalize ads", 
+                    "Review/clear off-Facebook activity",
+                    "Disconnect off-Facebook activity from account",
+                    "Manage ad topics",
+                    "Review advertisers",
+                    "See more ad settings",
+                    "See more about your Facebook information"
                 ]
 const descriptions = [
                     "Decide whether you want ads based on activity on other websites, apps or offline.",
@@ -71,6 +71,7 @@ const icons = [
             ]
 
 
+
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
@@ -89,7 +90,6 @@ app.init().then(async () => {
 
     function hide(elem, label) {
         /* temporary code */
-        console.log(elem)
         augmentButton(elem)
             
 
@@ -102,9 +102,10 @@ app.init().then(async () => {
 
     function augmentButton(elem) {
         var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
+
         if (header){
             var adBtn = header.querySelector('[aria-label="Actions for this post"]')
-            
+
             if (adBtn){
                 var three_dot_svg = adBtn.querySelector('svg')
                 if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
@@ -112,20 +113,23 @@ app.init().then(async () => {
                     three_dot_svg.remove()
 
                     var settingsBtn = document.createElement('div');
+
                     settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
                     settingsBtn.style = AD_BUTTON_STYLE
 
                     adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                     adBtn.addEventListener("click", e => changeMenu());
                     adBtn.parentElement.parentElement.style.width = "120px";
+
                 }
             }
         }
+        
     }
 
     function changeMenu() {
         if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-            console.log('menu element exists')
+            // console.log('menu element exists')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
             // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
 
@@ -140,6 +144,7 @@ app.init().then(async () => {
                 var nodes = elm
                 var parent_node = nodes[0].parentElement
                 
+
                 var this_ad_header = document.createElement('div')
                 this_ad_header.innerHTML = MENU_OPTION_NODE
                 this_ad_header.textContent = "For this ad"
@@ -154,10 +159,13 @@ app.init().then(async () => {
                 general_header.innerHTML = MENU_OPTION_NODE
                 general_header.textContent = "For all ads"
                 general_header.style = HEADER_STYLE;
+
                 parent_node.appendChild(general_header)
 
 
                 // add links to privacy controls
+
+
                 for (let i = 0; i < titles.length; i++) {
                     appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
                     if(i==2 || i==4){
@@ -173,10 +181,11 @@ app.init().then(async () => {
         }
     }
 
+
     function appendAdSettingOption(parent, title, description, url, icon_string) {
         var choice = document.createElement('div')
         choice.innerHTML = MENU_OPTION_NODE
-        choice.style.marginBottom = "7.2px";
+        choice.style.marginBottom = "8px"
 
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
@@ -193,7 +202,6 @@ app.init().then(async () => {
         choice.addEventListener("click", e => location.href = url);
     }
 
-    
     function waitForElm(selector) {
         return new Promise(resolve => {
             if (document.querySelectorAll(selector)[0]) {
@@ -426,7 +434,7 @@ app.init().then(async () => {
 
     function removeArticles(node, rules) {
         for (const [sel, texts] of Object.entries(rules)) {
-            console.log(sel)
+            // console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
                 // console.log('visibility')
                 // console.log(e);
@@ -503,7 +511,7 @@ app.init().then(async () => {
 
         (async () => {
             removeArticles(body, _userRules);
-            console.log(body)
+            // console.log(body)
             // if (app.options.delSuggest)
             //     removeArticles(body, app.hide_rules.suggestions_smart);
             if (app.options.delPixeled)
