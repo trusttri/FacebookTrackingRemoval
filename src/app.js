@@ -101,6 +101,7 @@ app.init().then(async () => {
         return true;
     }
 
+/////////////////////////// BEGIN OUR CODE ///////////////////////////
     function augmentButton(elem) {
         var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
 
@@ -130,7 +131,6 @@ app.init().then(async () => {
 
     function changeMenu() {
         if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-            // console.log('menu element exists')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
             // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
 
@@ -165,8 +165,6 @@ app.init().then(async () => {
 
 
                 // add links to privacy controls
-
-
                 for (let i = 0; i < titles.length; i++) {
                     appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
                     if(i==2 || i==4){
@@ -200,12 +198,11 @@ app.init().then(async () => {
 
         parent.appendChild(choice)
         
-        
 
         if (i == 2) { // "Disconnect off-Facebook activity from account"
             choice.addEventListener("click", e =>  redirectOffAct());
             
-        } else if (i == 0) { // "Turn on/off personalized ads based on data from partners"
+        } else if (i == 0) { // "Stop using data from partners to personalize ads", 
             choice.addEventListener("click", e =>  redirectAdSet());
 
         } else {
@@ -243,6 +240,7 @@ app.init().then(async () => {
         });
     }
 
+/////////////////////////// END OUR CODE ///////////////////////////
 
     const supportedProtos = ["http:", "https:", "ftp:"];
     function cleanLink(a, href) {
