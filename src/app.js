@@ -25,17 +25,17 @@ const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf
 const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
 const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'                            
 const titles = [
-                                "See more ad settings",
-                                "See more about your Facebook information"
-                            ]
-                const descriptions = [
-                                    "Check out your ad and privacy settings.",
-                                    "Check your information used for Facebook user experience, including ads."
-                                    ]
-                const urls = [
-                            "https://www.facebook.com/adpreferences/ad_settings",
-                            "https://www.facebook.com/settings?tab=your_facebook_information"
-                            ]
+                    "See more ad settings",
+                    "See more about your information settings"
+                ]
+const descriptions = [
+                    "Settings for ads",
+                    "Settings for your information used for Facebook experience, including ads"
+                    ]
+const urls = [
+            "https://www.facebook.com/adpreferences/ad_settings",
+            "https://www.facebook.com/settings?tab=your_facebook_information"
+            ]
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
