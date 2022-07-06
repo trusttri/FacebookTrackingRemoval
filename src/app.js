@@ -22,7 +22,16 @@ const MENU_OPTION_NODE = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989u
 const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'                            
+const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'      
+
+// ICONS
+// const DISCONNECT_ICON = '<img class="hu5pjgll lzf7d6o1" src="https://static.xx.fbcdn.net/rsrc.php/v3/yI/r/bnvx9uLOEsq.png" alt="" height="20" width="20">'
+const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/5yNj8IGYD_V.png&quot;); background-position: 0px -298px; background-size: 25px 400px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const ADVERTISERS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yh/r/WFNA6bx75b9.png&quot;); background-position: 0px -247px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const AD_ICON = '<img class="hu5pjgll bixrwtb6" src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/7Ea3snATiso.png" style="height:20px;width:20px" alt="">'
+const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+
 const titles = [
                                 "Stop using data from partners to personalize ads", 
                                 "Review/clear off-Facebook activity",
@@ -31,25 +40,36 @@ const titles = [
                                 "Review advertisers",
                                 "See more ad settings",
                                 "See more about your Facebook information"
-                            ]
-                const descriptions = [
-                                    "Decide whether you want ads based on activity on other websites, apps or offline.",
-                                    "See which information businesses send to Facebook.",
-                                    "Disconnect information businesses send to Facebook.",
-                                    "Choose which ad topics you want to see less.",
-                                    "See advertisers you've seen or interacted with.",
-                                    "Check out your ad and privacy settings.",
-                                    "Check your information used for Facebook user experience, including ads."
-                                    ]
-                const urls = [
-                            "",
-                            "https://www.facebook.com/off_facebook_activity",
-                            "",
-                            "https://www.facebook.com/adpreferences/ad_topics",
-                            "https://www.facebook.com/adpreferences/advertisers",
-                            "https://www.facebook.com/adpreferences/ad_settings",
-                            "https://www.facebook.com/settings?tab=your_facebook_information"
-                            ]
+                ]
+const descriptions = [
+                    "Decide whether you want ads based on activity on other websites, apps or offline.",
+                    "See which information businesses send to Facebook.",
+                    "Disconnect information businesses send to Facebook.",
+                    "Choose which ad topics you want to see less.",
+                    "See advertisers you've seen or interacted with.",
+                    "Check out your ad and privacy settings.",
+                    "Check your information used for Facebook user experience, including ads."
+                    ]
+const urls = [
+            "",
+            "https://www.facebook.com/off_facebook_activity",
+            "",
+            "https://www.facebook.com/adpreferences/ad_topics",
+            "https://www.facebook.com/adpreferences/advertisers",
+            "https://www.facebook.com/adpreferences/ad_settings",
+            "https://www.facebook.com/settings?tab=your_facebook_information"
+            ]
+
+const icons = [
+                DISCONNECT_ICON, 
+                INFORMATION_ICON,
+                DISCONNECT_ICON,
+                AD_ICON,
+                ADVERTISERS_ICON,
+                SETTINGS_ICON,
+                SETTINGS_ICON
+            ]
+
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
@@ -139,7 +159,7 @@ app.init().then(async () => {
 
                 // add links to privacy controls
                 for (let i = 0; i < titles.length; i++) {
-                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i])
+                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
                     if(i==2 || i==4){
                         var hr = document.createElement('div');
                         hr.innerHTML = HR_BREAK
@@ -153,7 +173,7 @@ app.init().then(async () => {
         }
     }
 
-    function appendAdSettingOption(parent, title, description, url) {
+    function appendAdSettingOption(parent, title, description, url, icon_string) {
         var choice = document.createElement('div')
         choice.innerHTML = MENU_OPTION_NODE
         choice.style.marginBottom = "7.2px";
@@ -161,6 +181,12 @@ app.init().then(async () => {
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
         choiceTexts[1].textContent = description
+
+        var icon = document.createElement('div')
+        icon.innerHTML = icon_string
+        console.log(icon)
+        choice.querySelector('i').parentElement.appendChild(icon)
+        choice.querySelector('i').remove()
 
         parent.appendChild(choice)
         
