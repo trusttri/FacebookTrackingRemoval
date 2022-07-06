@@ -60,17 +60,17 @@ const app = {};
         defaults: {
             value: Object.freeze({
                 enabled: true,
-                fixLinks: true,
-                internalRefs: false,
+                fixLinks: false, //Remove tracking from external links
+                internalRefs: false, //Remove tracking values from internal links
                 inlineVids: false,
                 fixVideos: false,
-                delPixeled: true,
-                delSuggest: true,
+                delPixeled: true, //Hide Sponsored articles
+                delSuggest: false, //Hide inline suggestions
                 useStyle: false,
                 logging: false,
                 modStyle: "outline: 1px dashed rgba(0, 128, 0, 0.5) !important;",
                 userRules: "",
-                pendingRules: false,
+                pendingRules: false, //Enable pending/uncomfirmed hiding rules
             }),
             enumerable: true
         },
