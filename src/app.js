@@ -23,7 +23,9 @@ const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'                            
+const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'      
+const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+                 
 const titles = [
                     "See more ad settings",
                     "See more about your information settings"
@@ -35,6 +37,11 @@ const descriptions = [
 const urls = [
             "https://www.facebook.com/adpreferences/ad_settings",
             "https://www.facebook.com/settings?tab=your_facebook_information"
+            ]
+
+const icons = [
+                SETTINGS_ICON,
+                SETTINGS_ICON
             ]
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
@@ -132,7 +139,7 @@ app.init().then(async () => {
 
 
                 for (let i = 0; i < titles.length; i++) {
-                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i])
+                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
                 }
                 
                
@@ -142,17 +149,16 @@ app.init().then(async () => {
     }
 
 
-    function appendAdSettingOption(parent, title, description, url) {
+    function appendAdSettingOption(parent, title, description, url, icon_string) {
         var choice = document.createElement('div')
         choice.innerHTML = MENU_OPTION_NODE
         choice.style.marginBottom = "8px"
 
        
         var icon = document.createElement('i')
-        icon.innerHTML = INFORMATION_ICON
+        icon.innerHTML = icon_string
         choice.querySelector('img').parentElement.appendChild(icon)
         choice.querySelector('img').remove()
-
 
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
