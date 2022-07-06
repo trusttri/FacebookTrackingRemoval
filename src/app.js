@@ -18,6 +18,24 @@
 
 'use strict';
 
+const MENU_OPTION_NODE = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(); background-position: 0px -404px; background-size: 33px 1388px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">[Title]</span></div><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 tia6h79c mdeji52x sq6gx45u a3bd9o3v b1v8xokw m9osqain hzawbc8m" dir="auto">[Description]</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
+const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
+const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'                            
+const titles = [
+                                "See more ad settings",
+                                "See more about your Facebook information"
+                            ]
+                const descriptions = [
+                                    "Check out your ad and privacy settings.",
+                                    "Check your information used for Facebook user experience, including ads."
+                                    ]
+                const urls = [
+                            "https://www.facebook.com/adpreferences/ad_settings",
+                            "https://www.facebook.com/settings?tab=your_facebook_information"
+                            ]
+
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
@@ -36,9 +54,6 @@ app.init().then(async () => {
 
     function hide(elem, label) {
         /* temporary code */
-        // console.log(elem)
-        // console.log(elem.parentElement)
-        // elem.parentElement.style.backgroundColor='yellow';
         augmentButton(elem)
             
 
@@ -51,10 +66,10 @@ app.init().then(async () => {
 
     function augmentButton(elem) {
         var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
-        // console.log(header)
+
         if (header){
             var adBtn = header.querySelector('[aria-label="Actions for this post"]')
-        
+
             if (adBtn){
                 var three_dot_svg = adBtn.querySelector('svg')
                 if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
@@ -62,11 +77,10 @@ app.init().then(async () => {
                     three_dot_svg.remove()
 
                     var settingsBtn = document.createElement('div');
-                    var innerHTML_string = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
-                    innerHTML_string += "<span>ad settings</span>"
-                    settingsBtn.innerHTML = innerHTML_string
-                    settingsBtn.style = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-            
+
+                    settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
+                    settingsBtn.style = AD_BUTTON_STYLE
+
                     adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                     adBtn.addEventListener("click", e => changeMenu());
                     adBtn.parentElement.parentElement.style.width = "120px";
@@ -82,7 +96,6 @@ app.init().then(async () => {
             // console.log('menu element exists')
             var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
             // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
-            // console.log(menu_nodes);
 
             var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
             waitForElm(menu_item_selector).then((elm) => {
@@ -93,44 +106,32 @@ app.init().then(async () => {
 
 
                 var nodes = elm
-                var copy_node = nodes[2]
                 var parent_node = nodes[0].parentElement
-
-                // add headers
-                var header_style = 'padding: 3px 3px; text-align: center; font-size: 1.28rem; color:#1877F2; font-family: sans-serif;'
-                var hr_string = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
                 
-                var this_ad_header = copy_node.cloneNode()
+
+                var this_ad_header = document.createElement('div')
+                this_ad_header.innerHTML = MENU_OPTION_NODE
                 this_ad_header.textContent = "For this ad"
-                this_ad_header.style = header_style;
+                this_ad_header.style = HEADER_STYLE;
                 parent_node.insertBefore(this_ad_header, nodes[0])
 
                 var hr = document.createElement('div');
-                hr.innerHTML = hr_string
+                hr.innerHTML = HR_BREAK
                 parent_node.appendChild(hr)
                 
-                var general_header = copy_node.cloneNode()
+                var general_header = document.createElement('div')
+                general_header.innerHTML = MENU_OPTION_NODE
                 general_header.textContent = "For all ads"
-                general_header.style = header_style;
+                general_header.style = HEADER_STYLE;
+
                 parent_node.appendChild(general_header)
 
 
                 // add links to privacy controls
-                const titles = [
-                                "See more ad settings",
-                                "See more about your Facebook information"
-                            ]
-                const descriptions = [
-                                    "Check out your ad and privacy settings.",
-                                    "Check your information used for Facebook user experience, including ads."
-                                    ]
-                const urls = [
-                            "https://www.facebook.com/adpreferences/ad_settings",
-                            "https://www.facebook.com/settings?tab=your_facebook_information"
-                            ]
+
 
                 for (let i = 0; i < titles.length; i++) {
-                    appendAdSettingOption(copy_node, parent_node, titles[i], descriptions[i], urls[i])
+                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i])
                 }
                 
                
@@ -139,9 +140,10 @@ app.init().then(async () => {
         }
     }
 
-    function appendAdSettingOption(node, parent, title, description, url) {
+
+    function appendAdSettingOption(parent, title, description, url) {
         var choice = document.createElement('div')
-        choice.innerHTML = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(); background-position: 0px -404px; background-size: 33px 1388px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">[Title]</span></div><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 tia6h79c mdeji52x sq6gx45u a3bd9o3v b1v8xokw m9osqain hzawbc8m" dir="auto">[Description]</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+        choice.innerHTML = MENU_OPTION_NODE
         choice.style.marginBottom = "8px"
 
         var choiceTexts = choice.querySelectorAll("span")
@@ -149,7 +151,7 @@ app.init().then(async () => {
         choiceTexts[1].textContent = description
 
         parent.appendChild(choice)
-
+        
         choice.addEventListener("click", e => location.href = url);
     }
 
