@@ -108,37 +108,38 @@ app.init().then(async () => {
             waitForElm(menu_item_selector).then((elm) => {
 
                 //widen the menu
-                var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
-                innerDiv.style.width = '544px';
+                //var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
+                var innerdiv_string = '.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u'
+                waitForElm(innerdiv_string).then((inner_elm) => { 
+                    inner_elm[0].style.width = '544px';
+
+                    var nodes = elm
+                    var parent_node = nodes[0].parentElement
+                    
+
+                    var this_ad_header = document.createElement('div')
+                    this_ad_header.innerHTML = MENU_OPTION_NODE
+                    this_ad_header.textContent = "For this ad"
+                    this_ad_header.style = HEADER_STYLE;
+                    parent_node.insertBefore(this_ad_header, nodes[0])
+
+                    var hr = document.createElement('div');
+                    hr.innerHTML = HR_BREAK
+                    parent_node.appendChild(hr)
+                    
+                    var general_header = document.createElement('div')
+                    general_header.innerHTML = MENU_OPTION_NODE
+                    general_header.textContent = "For all ads"
+                    general_header.style = HEADER_STYLE;
+
+                    parent_node.appendChild(general_header)
 
 
-                var nodes = elm
-                var parent_node = nodes[0].parentElement
-                
-
-                var this_ad_header = document.createElement('div')
-                this_ad_header.innerHTML = MENU_OPTION_NODE
-                this_ad_header.textContent = "For this ad"
-                this_ad_header.style = HEADER_STYLE;
-                parent_node.insertBefore(this_ad_header, nodes[0])
-
-                var hr = document.createElement('div');
-                hr.innerHTML = HR_BREAK
-                parent_node.appendChild(hr)
-                
-                var general_header = document.createElement('div')
-                general_header.innerHTML = MENU_OPTION_NODE
-                general_header.textContent = "For all ads"
-                general_header.style = HEADER_STYLE;
-
-                parent_node.appendChild(general_header)
-
-
-                // add links to privacy controls
-                for (let i = 0; i < titles.length; i++) {
-                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
-                }
-                
+                    // add links to privacy controls
+                    for (let i = 0; i < titles.length; i++) {
+                        appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
+                    }
+                });
                
             });
 
