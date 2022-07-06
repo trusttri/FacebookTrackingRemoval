@@ -116,15 +116,15 @@ app.init().then(async () => {
 
 
                 // add links to privacy controls
-                var titles = [
+                const titles = [
                                 "See more ad settings",
                                 "See more about your Facebook information"
                             ]
-                var descriptions = [
+                const descriptions = [
                                     "Check out your ad and privacy settings.",
                                     "Check your information used for Facebook user experience, including ads."
                                     ]
-                var urls = [
+                const urls = [
                             "https://www.facebook.com/adpreferences/ad_settings",
                             "https://www.facebook.com/settings?tab=your_facebook_information"
                             ]
