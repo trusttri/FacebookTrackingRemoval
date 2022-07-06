@@ -23,7 +23,11 @@ const MENU_OPTION_NODE = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989u
 const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'      
+const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'   
+
+const BUTTON_NODE = '<div aria-label="Close" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"></div>';
+const BUTTON_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/8VnyvQJM2fQ.png&quot;); background-position: 0px -444px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>';
+const BUTTON_SUB_NODE = '<div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="bottom:-8px;left:-8px;right:-8px;top:-8px"></div>';
 
 // ICONS
 // const DISCONNECT_ICON = '<img class="hu5pjgll lzf7d6o1" src="https://static.xx.fbcdn.net/rsrc.php/v3/yI/r/bnvx9uLOEsq.png" alt="" height="20" width="20">'
@@ -92,7 +96,7 @@ app.init().then(async () => {
     // function that detects and changes ads
     function hide(elem, label) {
         /* temporary code */
-        augmentButton(elem) // our code for augmenting button on ads
+        // augmentButton(elem) // our code for augmenting button on ads
             
 
         let target;
@@ -103,83 +107,83 @@ app.init().then(async () => {
     }
 
 /////////////////////////// BEGIN OUR CODE ///////////////////////////
-    function augmentButton(elem) {
-        var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
+    // function augmentButton(elem) {
+    //     var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
 
-        if (header){
-            var adBtn = header.querySelector('[aria-label="Actions for this post"]')
+    //     if (header){
+    //         var adBtn = header.querySelector('[aria-label="Actions for this post"]')
 
-            if (adBtn){
-                var three_dot_svg = adBtn.querySelector('svg')
-                if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
+    //         if (adBtn){
+    //             var three_dot_svg = adBtn.querySelector('svg')
+    //             if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
                 
-                    three_dot_svg.remove()
+    //                 three_dot_svg.remove()
 
-                    var settingsBtn = document.createElement('div');
+    //                 var settingsBtn = document.createElement('div');
 
-                    settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
-                    settingsBtn.style = AD_BUTTON_STYLE
+    //                 settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
+    //                 settingsBtn.style = AD_BUTTON_STYLE
 
-                    adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                    adBtn.addEventListener("click", e => changeMenu());
-                    adBtn.parentElement.parentElement.style.width = "120px";
+    //                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+    //                 adBtn.addEventListener("click", e => changeMenu());
+    //                 adBtn.parentElement.parentElement.style.width = "120px";
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
         
-    }
+    // }
 
-    function changeMenu() {
-        if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-            var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
-            // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
+    // function changeMenu() {
+    //     if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
+    //         var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
+    //         // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
 
-            var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
-            waitForElm(menu_item_selector).then((elm) => {
+    //         var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
+    //         waitForElm(menu_item_selector).then((elm) => {
 
-                //widen the menu
-                var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
-                innerDiv.style.width = '544px';
+    //             //widen the menu
+    //             var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
+    //             innerDiv.style.width = '544px';
 
 
-                var nodes = elm
-                var parent_node = nodes[0].parentElement
+    //             var nodes = elm
+    //             var parent_node = nodes[0].parentElement
                 
 
-                var this_ad_header = document.createElement('div')
-                this_ad_header.innerHTML = MENU_OPTION_NODE
-                this_ad_header.textContent = "For this ad"
-                this_ad_header.style = HEADER_STYLE;
-                parent_node.insertBefore(this_ad_header, nodes[0])
+    //             var this_ad_header = document.createElement('div')
+    //             this_ad_header.innerHTML = MENU_OPTION_NODE
+    //             this_ad_header.textContent = "For this ad"
+    //             this_ad_header.style = HEADER_STYLE;
+    //             parent_node.insertBefore(this_ad_header, nodes[0])
 
-                var hr = document.createElement('div');
-                hr.innerHTML = HR_BREAK
-                parent_node.appendChild(hr)
+    //             var hr = document.createElement('div');
+    //             hr.innerHTML = HR_BREAK
+    //             parent_node.appendChild(hr)
                 
-                var general_header = document.createElement('div')
-                general_header.innerHTML = MENU_OPTION_NODE
-                general_header.textContent = "For all ads"
-                general_header.style = HEADER_STYLE;
+    //             var general_header = document.createElement('div')
+    //             general_header.innerHTML = MENU_OPTION_NODE
+    //             general_header.textContent = "For all ads"
+    //             general_header.style = HEADER_STYLE;
 
-                parent_node.appendChild(general_header)
+    //             parent_node.appendChild(general_header)
 
 
-                // add links to privacy controls
-                for (let i = 0; i < titles.length; i++) {
-                    appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
-                    if(i==2 || i==4){
-                        var hr = document.createElement('div');
-                        hr.innerHTML = HR_BREAK
-                        parent_node.appendChild(hr)
-                    }
-                }
+    //             // add links to privacy controls
+    //             for (let i = 0; i < titles.length; i++) {
+    //                 appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
+    //                 if(i==2 || i==4){
+    //                     var hr = document.createElement('div');
+    //                     hr.innerHTML = HR_BREAK
+    //                     parent_node.appendChild(hr)
+    //                 }
+    //             }
                 
                
-            });
+    //         });
 
-        }
-    }
+    //     }
+    // }
 
 
     function appendAdSettingOption(parent, title, description, url, icon_string, i) {
@@ -211,6 +215,100 @@ app.init().then(async () => {
         }
     }
 
+    function createDashboard() {
+        var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
+        if (menu_node_list && menu_node_list.length <= 1) {
+
+            // create static dashboard header
+            var menu_node = menu_node_list[0];
+            var dashboard_node = document.createElement("div");
+            dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
+            var menu_frame = document.createElement("div");
+            menu_frame.classList.add("j83agx80", "l9j0dhe7", "k4urcfbm");
+            var menu_style = document.createElement("div");
+            menu_style.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "hybvsw6c", "io0zqebd", "m5lcvass", "fbipl8qg", "nwvqtn77", "k4urcfbm", "ni8dbmo4", "stjgntxs", "sbcfpzgs");
+            menu_style.style.borderRadius = "border-radius:max(0px, min(8px, calc((100vw - 4px - 100%) * 9999))) / 8px";
+            var menu_bar_1 = document.createElement("div");
+            menu_bar_1.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "rj1gh0hx", "buofh1pr", "g5gj957u", "hpfvmrgz", "i1fnvgqd", "gs1a9yip", "owycx6da", "btwxx1t3", "b5q2rw42", "lq239pai", "hddg9phg", "linmgsc8", "n851cfcs", "jb3vyjys", "rz4wbd8a", "qt6c0cv9", "a8nywdso");
+            menu_bar_1.setAttribute("role", "tablist");
+            var menu_bar_2 = document.createElement("div");
+            menu_bar_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "cbu4d94t", "d2edcug0", "hpfvmrgz", "rj1gh0hx", "buofh1pr", "g5gj957u", "p8fzw8mz", "pcp91wgn", "ipjc6fyt", "qt6c0cv9");
+            var menu_bar_3 = document.createElement("div");
+            menu_bar_3.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "pfnyh3mw", "jifvfom9", "gs1a9yip", "owycx6da", "btwxx1t3", "hv4rvrfc", "dati1w0a", "mysgfdmx", "hddg9phg");
+            var menu_bar_4 = document.createElement("div");
+            menu_bar_4.classList.add("oajrlxb2", "qu0x051f", "esr5mh6w", "e9989ue4", "r7d6kgcz", "p7hjln8o", "f1sip0of", "n00je7tq", "arfg74bv", "qs9ysxi8", "k77z8yql", "abiwlrkh", "p8dawk7l", "lzcic4wl", "dwo3fsh8", "g5ia77u1", "mf7ej076", "goun2846", "ccm00jje", "s44p3ltw", "mk2mc5f4", "rt8b4zig", "n8ej3o3l", "agehan2d", "sk4xxmp2", "rq0escxv", "gmql0nx0", "nhd2j8a9", "j83agx80", "kvgmc6g5", "cxmmr5t8", "oygrvhab", "hcukyx3x", "jb3vyjys", "rz4wbd8a", "qt6c0cv9", "a8nywdso", "l9j0dhe7", "i1ao9s8h", "esuyzwwr", "tkr6xdv7");
+            menu_bar_4.setAttribute("aria-hidden", "false");
+            menu_bar_4.setAttribute("aria-selected", "true");
+            menu_bar_4.setAttribute("role", "tab");
+            menu_bar_4.setAttribute("tabindex", "0");
+            var menu_bar_5 = document.createElement("div");
+            menu_bar_5.classList.add("bp9cbjyn", "rq0escxv", "j83agx80", "pfnyh3mw", "frgo5egb", "l9j0dhe7", "buofh1pr", "cb02d2ww", "taijpn5t", "aj9r9hf7");
+            // var menu_title = document.createElement("span");
+            // menu_title.classList.add("d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
+            // const headline_text = "Advertising Controls";
+            // menu_title.insertAdjacentText("afterbegin", headline_text);
+            var menu_title = document.createElement("div");
+            menu_title.innerHTML = MENU_OPTION_NODE;
+            menu_title.textContent = "Advertising Controls";
+            menu_title.style = HEADER_STYLE;
+
+            // create close button
+            var button_container = document.createElement("div");
+            button_container.classList.add("nqmvxvec", "j83agx80", "jnigpg78", "cxgpxx05", "dflh9lhu", "sj5x9vvc", "scb9dxdr", "odw8uiq3");
+            var button_frame = document.createElement("div");
+            button_frame.innerHTML = BUTTON_NODE;
+            var button_icon = document.createElement("div");
+            button_icon.innerHTML = BUTTON_ICON;
+    
+            button_icon.firstChild.addEventListener("click", e => removeDashboard());
+            // var button_sub_frame = document.createElement("div");
+            // button_sub_frame.innerHTML = BUTTON_SUB_NODE;
+            button_frame.firstChild.appendChild(button_icon);
+            button_container.appendChild(button_frame);
+            // button_icon.parentNode.insertBefore(button_sub_frame, button_icon.parentNode.firstChild);
+
+            menu_bar_5.appendChild(menu_title);
+            menu_bar_4.appendChild(menu_bar_5);
+            menu_bar_3.appendChild(menu_bar_4);
+            menu_bar_2.appendChild(menu_bar_3);
+            menu_bar_1.appendChild(menu_bar_2);
+            menu_style.appendChild(menu_bar_1);
+            menu_frame.appendChild(menu_style);
+            dashboard_node.appendChild(menu_frame);
+            
+            // menu_node.parentNode.insertBefore(dashboard_node, menu_node.nextSibling);
+            menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
+            menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
+
+            // create static dashboard content
+            var content_frame_1 = document.createElement("div");
+            content_frame_1.classList.add("oh7imozk", "abvwweq7", "ejjq64ki", "d2edcug0");
+            var content_frame_2 = document.createElement("div");
+            content_frame_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb");
+
+            for (let i = 0; i < titles.length; i++) {
+                appendAdSettingOption(content_frame_2, titles[i], descriptions[i], urls[i], icons[i], i);
+                if(i==2 || i==4){
+                    var hr = document.createElement('div');
+                    hr.innerHTML = HR_BREAK
+                    content_frame_2.appendChild(hr)
+                }
+            }
+            content_frame_1.appendChild(content_frame_2);
+
+            menu_bar_1.parentNode.insertBefore(content_frame_1, menu_bar_1.nextSibling);
+            
+
+        }
+
+    }
+
+    function removeDashboard() {
+        console.log("remove");
+        // var dashboard = document.getElementByIdClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05")[0];
+        // dashboard.remove();
+    }
+
     function redirectOffAct() {
         chrome.storage.local.set({"clickDiscnt": "true"}, function(){});
         window.location.assign("https://www.facebook.com/off_facebook_activity");
@@ -221,25 +319,25 @@ app.init().then(async () => {
         window.location.assign("https://www.facebook.com/adpreferences/ad_settings");
     }
 
-    function waitForElm(selector) {
-        return new Promise(resolve => {
-            if (document.querySelectorAll(selector)[0]) {
-                return resolve(document.querySelectorAll(selector));
-            }
+    // function waitForElm(selector) {
+    //     return new Promise(resolve => {
+    //         if (document.querySelectorAll(selector)[0]) {
+    //             return resolve(document.querySelectorAll(selector));
+    //         }
 
-            const observer = new MutationObserver(mutations => {
-                if (document.querySelectorAll(selector)[0]) {
-                    resolve(document.querySelectorAll(selector));
-                    observer.disconnect();
-                }
-            });
+    //         const observer = new MutationObserver(mutations => {
+    //             if (document.querySelectorAll(selector)[0]) {
+    //                 resolve(document.querySelectorAll(selector));
+    //                 observer.disconnect();
+    //             }
+    //         });
 
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
+    //         observer.observe(document.body, {
+    //             childList: true,
+    //             subtree: true
+    //         });
+    //     });
+    // }
 
 /////////////////////////// END OUR CODE ///////////////////////////
 
@@ -495,6 +593,10 @@ app.init().then(async () => {
             if (location.href !== previousUrl) {
                 previousUrl = location.href;
 
+                if (location.href == "https://www.facebook.com/") {
+                    createDashboard();
+                }
+                
                 if (location.href == "https://www.facebook.com/off_facebook_activity") {
                      chrome.storage.local.get(["clickDiscnt"], function(result){
                             // console.log(result.clickDiscnt)
