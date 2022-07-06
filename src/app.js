@@ -91,6 +91,8 @@ app.init().then(async () => {
 
                 var nodes = elm
                 var copy_node = nodes[2]
+                console.log("node to freeze")
+                console.log(copy_node)
                 var parent_node = nodes[0].parentElement
 
                 // add headers
@@ -113,7 +115,7 @@ app.init().then(async () => {
 
 
                 // add links to privacy controls
-                var titles = [
+                const titles = [
                                 "Stop using data from partners to personalize ads", 
                                 "Review/clear off-Facebook activity",
                                 "Disconnect off-Facebook activity from account",
@@ -122,7 +124,7 @@ app.init().then(async () => {
                                 "See more ad settings",
                                 "See more about your Facebook information"
                             ]
-                var descriptions = [
+                const descriptions = [
                                     "Decide whether you want ads based on activity on other websites, apps or offline.",
                                     "See which information businesses send to Facebook.",
                                     "Disconnect information businesses send to Facebook.",
@@ -131,7 +133,7 @@ app.init().then(async () => {
                                     "Check out your ad and privacy settings.",
                                     "Check your information used for Facebook user experience, including ads."
                                     ]
-                var urls = [
+                const urls = [
                             "",
                             "https://www.facebook.com/off_facebook_activity",
                             "",
@@ -159,7 +161,7 @@ app.init().then(async () => {
     function appendAdSettingOption(node, parent, title, description, url) {
         var choice = node.cloneNode(true)
         removeImage(choice, 'i')
-        choice.style.marginBottom = "7px";
+        choice.style.marginBottom = "7.2px";
 
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
