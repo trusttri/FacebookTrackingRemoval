@@ -28,7 +28,7 @@ const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6
                  
 const titles = [
                     "See more ad settings",
-                    "See more about your information settings"
+                    "See more settings about your information on/off Facebook"
                 ]
 const descriptions = [
                     "Settings for ads",
