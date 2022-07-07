@@ -304,9 +304,6 @@ app.init().then(async () => {
             // menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
             menu_parent.insertBefore(dashboard_node, menu_parent.firstChild);
             menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
-
-
-            menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
             menu_bar_3.parentNode.insertBefore(intro_frame_node, menu_bar_3.nextSibling);
 
             // create static dashboard content
