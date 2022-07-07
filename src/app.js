@@ -208,18 +208,20 @@ app.init().then(async () => {
             choice.addEventListener("click", e =>  redirectAdSet());
 
         } else {
-            choice.addEventListener("click", e => location.href = url);
+            choice.addEventListener("click", e => window.open(url));
         }
     }
 
     function redirectOffAct() {
         chrome.storage.local.set({"clickDiscnt": "true"}, function(){});
-        window.location.assign("https://www.facebook.com/off_facebook_activity");
+        window.open("https://www.facebook.com/off_facebook_activity")
+        // window.location.assign("https://www.facebook.com/off_facebook_activity");
     }
 
     function redirectAdSet() {
         chrome.storage.local.set({"clickPersonal": "true"}, function(){});
-        window.location.assign("https://www.facebook.com/adpreferences/ad_settings");
+        window.open("https://www.facebook.com/adpreferences/ad_settings");
+        // window.location.assign("https://www.facebook.com/adpreferences/ad_settings");
     }
 
     function waitForElm(selector) {
