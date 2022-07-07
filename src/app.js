@@ -220,7 +220,6 @@ app.init().then(async () => {
         if (menu_node_list && menu_node_list.length <= 1) {
 
             // create static dashboard header
-            var menu_node = menu_node_list[0];
             var dashboard_node = document.createElement("div");
             dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
             var menu_frame = document.createElement("div");
@@ -277,7 +276,17 @@ app.init().then(async () => {
             dashboard_node.appendChild(menu_frame);
             
             // menu_node.parentNode.insertBefore(dashboard_node, menu_node.nextSibling);
-            menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
+            var menu_node = menu_node_list[0];
+            if(menu_node){
+                var menu_parent = menu_node.parentNode
+            }else{
+                var menu_parent = document.getElementsByClassName("tr9rh885 k4urcfbm")[0]
+            }
+            // menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
+            menu_parent.insertBefore(dashboard_node, menu_parent.firstChild);
+            menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
+
+
             menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
 
             // create static dashboard content
