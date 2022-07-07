@@ -44,7 +44,7 @@ const titles = [
                     "Manage ad topics",
                     "Review advertisers",
                     "See more ad settings",
-                    "See more settings about your information on/off Facebook"
+                    "See more settings about your information, including ones used for ads"
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
