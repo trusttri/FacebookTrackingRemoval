@@ -296,17 +296,22 @@ app.init().then(async () => {
             menu_frame.appendChild(menu_style);
             dashboard_node.appendChild(menu_frame);
             
-            // menu_node.parentNode.insertBefore(dashboard_node, menu_node.nextSibling);
-            var menu_node = menu_node_list[0];
-            if(menu_node){
-                var menu_parent = menu_node.parentNode
-            }else if(document.querySelector(".tr9rh885.k4urcfbm")){
-                var menu_parent = document.querySelector(".tr9rh885.k4urcfbm")
-            }else{
-                var menu_parent = document.querySelector('[role="main"]').firstChild.firstChild.firstChild
-            }
             
-            // menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
+            var menu_node = menu_node_list[0];
+            var menu_parent;
+            if(menu_node){
+                menu_parent = menu_node.parentNode
+            }else if(document.querySelector(".tr9rh885.k4urcfbm")){
+                menu_parent = document.querySelector(".tr9rh885.k4urcfbm")
+            }else{
+               var main_div = document.querySelector('[role="main"]')
+                if(main_div.firstChild.firstChild.firstChild){ // three depths is aesthetically pleasing
+                    menu_parent = main_div.firstChild.firstChild.firstChild
+                }else{
+                    menu_parent = main_div.firstChild.firstChild // but if doesn't exist, try two
+                }
+            }
+
             menu_parent.insertBefore(dashboard_node, menu_parent.firstChild);
             menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
             menu_bar_3.parentNode.insertBefore(intro_frame_node, menu_bar_3.nextSibling);
