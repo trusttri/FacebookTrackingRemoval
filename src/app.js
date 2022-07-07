@@ -259,6 +259,10 @@ app.init().then(async () => {
             button_frame.innerHTML = BUTTON_NODE;
             var button_icon = document.createElement("div");
             button_icon.innerHTML = BUTTON_ICON;
+            button_icon.firstChild.style.position = 'absolute';
+            button_icon.firstChild.style.right = '10px';
+            
+
     
             button_icon.firstChild.addEventListener("click", e => removeDashboard());
             // var button_sub_frame = document.createElement("div");
@@ -266,6 +270,21 @@ app.init().then(async () => {
             button_frame.firstChild.appendChild(button_icon);
             button_container.appendChild(button_frame);
             // button_icon.parentNode.insertBefore(button_sub_frame, button_icon.parentNode.firstChild);
+
+            // create intro text node
+            var intro_frame_node = document.createElement("div");
+            intro_frame_node.classList.add("ecm0bbzt", "hv4rvrfc", "ihqw7lf3", "dati1w0a");
+            var intro_div_1 = document.createElement("div");
+            intro_div_1.classList.add("j83agx80", "cbu4d94t", "ew0dbk1b", "irj2b8pg");
+            var intro_div_2 = document.createElement("div");
+            intro_div_2.classList.add("qzhwtbm6", "knvmm38d");
+            var intro_span = document.createElement("span");
+            intro_span.classList.add("d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
+            const intro_text = "It's been a while since you visited your ad-related settings on Facebook."
+            intro_span.insertAdjacentText("afterbegin", intro_text);
+            intro_div_2.appendChild(intro_span);
+            intro_div_1.appendChild(intro_div_2);
+            intro_frame_node.appendChild(intro_div_1);
 
             menu_bar_5.appendChild(menu_title);
             menu_bar_4.appendChild(menu_bar_5);
@@ -279,6 +298,7 @@ app.init().then(async () => {
             // menu_node.parentNode.insertBefore(dashboard_node, menu_node.nextSibling);
             menu_node.parentNode.insertBefore(dashboard_node, menu_node.parentNode.firstChild);
             menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
+            menu_bar_3.parentNode.insertBefore(intro_frame_node, menu_bar_3.nextSibling);
 
             // create static dashboard content
             var content_frame_1 = document.createElement("div");
