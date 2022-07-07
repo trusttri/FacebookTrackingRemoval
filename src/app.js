@@ -257,18 +257,20 @@ app.init().then(async () => {
             var button_frame = document.createElement("div");
             button_frame.innerHTML = BUTTON_NODE;
             var button_icon = document.createElement("div");
-            button_icon.innerHTML = BUTTON_ICON;
+            button_icon.innerHTML = DROPDOWN_SVG;
+            // button_icon.innerHTML = BUTTON_ICON;
             button_icon.firstChild.style.position = 'absolute';
             button_icon.firstChild.style.right = '10px';
             
 
     
-            button_icon.firstChild.addEventListener("click", e => removeDashboard());
+            button_icon.firstChild.addEventListener("click", e => collapseDashboard());
             // var button_sub_frame = document.createElement("div");
             // button_sub_frame.innerHTML = BUTTON_SUB_NODE;
             button_frame.firstChild.appendChild(button_icon);
             button_container.appendChild(button_frame);
             // button_icon.parentNode.insertBefore(button_sub_frame, button_icon.parentNode.firstChild);
+
 
             // create intro text node
             var intro_frame_node = document.createElement("div");
@@ -326,6 +328,15 @@ app.init().then(async () => {
             content_frame_1.appendChild(content_frame_2);
 
             menu_bar_1.parentNode.insertBefore(content_frame_1, menu_bar_1.nextSibling);
+
+            // collpase if need be
+            chrome.storage.local.get(["collapsed"], function(result){
+                if (result.collapsed=="true") {
+                    content_frame_1.style.display = "none";
+                } else {
+                    content_frame_1.style.display = "block";
+                }
+            });
             
 
         }
@@ -334,8 +345,23 @@ app.init().then(async () => {
 
     function removeDashboard() {
         console.log("remove");
-        // var dashboard = document.getElementByIdClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05")[0];
-        // dashboard.remove();
+        var dashboard = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05")[0];
+        dashboard.remove();
+    }
+
+    function collapseDashboard() {
+        var panel = document.getElementsByClassName("oh7imozk abvwweq7 ejjq64ki d2edcug0")[0]
+        chrome.storage.local.get(["collapsed"], function(result){
+            console.log(result.collapsed)
+            if (result.collapsed=="false") {
+                chrome.storage.local.set({"collapsed": "true"}, function(){});
+                panel.style.display = "none";
+            }else {
+                chrome.storage.local.set({"collapsed": "false"}, function(){});
+                panel.style.display = "block";
+            }
+        });
+
     }
 
     function redirectOffAct() {
