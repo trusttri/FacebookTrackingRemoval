@@ -40,7 +40,7 @@ const titles = [
                     "Manage ad topics",
                     "Review advertisers",
                     "See more ad settings",
-                    "See more settings about your information on/off Facebook"
+                    "See more settings about your information, including ones used for ads"
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
@@ -142,7 +142,7 @@ app.init().then(async () => {
                 // var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
                 var innerdiv_string = '.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u'
                 waitForElm(innerdiv_string).then((inner_elm) => { 
-                    inner_elm[0].style.width = '544px';
+                    inner_elm[0].style.width = '568px';
                     
                     var nodes = elm
                     var parent_node = nodes[0].parentElement
