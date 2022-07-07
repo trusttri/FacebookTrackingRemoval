@@ -164,7 +164,7 @@ app.init().then(async () => {
 
         parent.appendChild(choice)
         
-        choice.addEventListener("click", e => location.href = url);
+        choice.addEventListener("click", e => window.open(url));
     }
 
     function waitForElm(selector) {
