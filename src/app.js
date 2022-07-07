@@ -40,12 +40,12 @@ const titles = [
                     "Manage ad topics",
                     "Review advertisers",
                     "See more ad settings",
-                    "See more about your information settings"
+                    "See more settings about your information on/off Facebook"
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "See which information businesses send to Facebook.",
-                    "Disconnect information businesses send to Facebook.",
+                    "See/clear information about you businesses send to Facebook.",
+                    "Disconnect information about you businesses send to Facebook from account.",
                     "Choose ad topics you want to see less.",
                     "Advertisers you've interacted with",
                     "Settings for ads",
