@@ -39,8 +39,8 @@ const titles = [
                     "Disconnect off-Facebook activity from account",
                     "Manage ad topics",
                     "Review advertisers",
-                    "See more ad settings",
-                    "See more settings about your information, including ones used for ads"
+                    "Ad settings",
+                    "Settings about your information including ads"
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
@@ -49,7 +49,7 @@ const descriptions = [
                     "Choose ad topics you want to see less.",
                     "Advertisers you've interacted with",
                     "Settings for ads",
-                    "Settings for your information used for Facebook experience, including ads"
+                    "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
                     ]
 const urls = [
             "",
