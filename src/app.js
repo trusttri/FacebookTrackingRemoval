@@ -281,7 +281,7 @@ app.init().then(async () => {
             intro_div_2.classList.add("qzhwtbm6", "knvmm38d");
             var intro_span = document.createElement("span");
             intro_span.classList.add("d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
-            const intro_text = "It's been a while since you visited your ad-related settings on Facebook."
+            const intro_text = "Control how Facebook uses your data and displays ads."
             intro_span.insertAdjacentText("afterbegin", intro_text);
             intro_div_2.appendChild(intro_span);
             intro_div_1.appendChild(intro_div_2);
