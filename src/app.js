@@ -27,12 +27,12 @@ const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font
 const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
                  
 const titles = [
-                    "See ad settings",
-                    "See settings about your information, including ones used for ads"
+                    "Ad settings",
+                    "Settings about your information including ads"
                 ]
 const descriptions = [
                     "Settings for ads",
-                    "Settings for your information used for Facebook experience, including ads"
+                    "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/ad_settings",
