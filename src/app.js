@@ -220,6 +220,9 @@ app.init().then(async () => {
         } else {
             choice.addEventListener("click", e => window.open(url));
         }
+
+        choice.addEventListener("mouseover", e => choice.classList.add('rnr61an3'))
+        choice.addEventListener("mouseout", e => choice.classList.remove('rnr61an3'))
     }
 
     function createDashboard() {
