@@ -501,39 +501,52 @@ app.init().then(async () => {
             }
         };
 
+        function waitForBtn(selector) {
+            return new Promise(resolve => {
+                if (document.getElementsByClassName(selector)[0]) {
+                    return resolve(document.getElementsByClassName(selector));
+                }
+
+                const observer = new MutationObserver(mutations => {
+                    if (document.getElementsByClassName(selector)[0]) {
+                        resolve(document.getElementsByClassName(selector));
+                        observer.disconnect();
+                    }
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        }
+
         let previousUrl = '';
         const observer = new MutationObserver(function(mutations) {
             if (location.href !== previousUrl) {
                 previousUrl = location.href;
 
                 if (location.href == "https://www.facebook.com/off_facebook_activity") {
-                     chrome.storage.local.get(["clickDiscnt"], function(result){
-                            // console.log(result.clickDiscnt)
-                            if (result.clickDiscnt == "true") {
-                                // const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz rz4wbd8a a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l j83agx80 lzcic4wl discj3wi ihqw7lf3 k4urcfbm monazrh9 h905i5nu jinzq4gt mrjvor2e";
-                                // document.getElementsByClassName(button_class)[2].click();
-                                var xpath = "//span[text()='Disconnect future activity']";
-                                var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                                matchingElement.closest("[role='tab']").click();
-                                chrome.storage.local.set({"clickDiscnt": "false"}, function(){});
-                            }
-                        });
+                    chrome.storage.local.get(["clickDiscnt"], function(result){
+                        // alert('Wait until a popup appears')
+                        const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz rz4wbd8a a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l j83agx80 lzcic4wl discj3wi ihqw7lf3 k4urcfbm monazrh9 h905i5nu jinzq4gt mrjvor2e";
+                        waitForBtn(button_class).then((elm) => { 
+                            elm[2].click();
+                            chrome.storage.local.set({"clickDiscnt": "false"}, function(){});
+                        });    
+                    });
                 }
 
                 if (location.href == "https://www.facebook.com/adpreferences/ad_settings") {
                     chrome.storage.local.get(["clickPersonal"], function(result){
-                            // console.log(result.clickPersonal)
-                            if (result.clickPersonal == "true") {
-                                // const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j";
-                                setTimeout(() => {
-                                    // document.getElementsByClassName(button_class)[2].click();
-                                    var xpath = "//span[text()='Data about your activity from partners']";
-                                    var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                                    matchingElement.closest("[role='button']").click();
-                                    chrome.storage.local.set({"clickPersonal": "false"}, function(){});
-                                }, 1000);
-                            }
-                        
+                        if (result.clickPersonal == "true") {
+                            // alert('Wait until a popup appears')
+                            const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j";
+                            waitForBtn(button_class).then((elm) => { 
+                                elm[2].click();
+                                chrome.storage.local.set({"clickPersonal": "false"}, function(){});
+                            });
+                        }
                     });
 
                 }
