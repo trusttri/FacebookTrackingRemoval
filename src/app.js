@@ -51,7 +51,7 @@ const descriptions = [
                     "See/clear information about you businesses send to Facebook.",
                     "Disconnect information about you businesses send to Facebook from account.",
                     "Choose ad topics you want to see less.",
-                    "Advertisers you've interacted with",
+                    "Review and hide ads from advertisers you’ve seen",
                     "Settings for ads",
                     "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
                     ]
