@@ -302,10 +302,6 @@ app.init().then(async () => {
             menu_style.appendChild(menu_bar_1);
             menu_frame.appendChild(menu_style);
             dashboard_node.appendChild(menu_frame);
-
-            // var test = document.createElement('div')
-            // test.innerHTML = DATA_PARTNERS_POPUP
-            // dashboard_node.appendChild(test)
             
             var menu_node = menu_node_list[0];
             var menu_parent;
