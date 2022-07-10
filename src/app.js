@@ -18,7 +18,8 @@
 
 'use strict';
 
-const MENU_OPTION_NODE = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><img class="hu5pjgll lzf7d6o1" src="" alt="" height="20" width="20"></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">[Title]</span></div><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 tia6h79c mdeji52x sq6gx45u a3bd9o3v b1v8xokw m9osqain hzawbc8m" dir="auto">[Description]</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+const MENU_OPTION_NODE_WITH_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(); background-position: 0px -404px; background-size: 33px 1388px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">[Title]</span></div><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 tia6h79c mdeji52x sq6gx45u a3bd9o3v b1v8xokw m9osqain hzawbc8m" dir="auto">[Description]</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ym/r/ad7XYzccM9Z.png&quot;); background-position: 0px -677px; background-size: 33px 1186px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">Copy link</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
 const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
@@ -31,7 +32,7 @@ const titles = [
                     "Settings about your information including ads"
                 ]
 const descriptions = [
-                    "Settings for ads",
+                    "",
                     "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
                     ]
 const urls = [
@@ -118,7 +119,7 @@ app.init().then(async () => {
                     
 
                     var this_ad_header = document.createElement('div')
-                    this_ad_header.innerHTML = MENU_OPTION_NODE
+                    this_ad_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
                     this_ad_header.textContent = "For this ad"
                     this_ad_header.style = HEADER_STYLE;
                     parent_node.insertBefore(this_ad_header, nodes[0])
@@ -128,7 +129,7 @@ app.init().then(async () => {
                     parent_node.appendChild(hr)
                     
                     var general_header = document.createElement('div')
-                    general_header.innerHTML = MENU_OPTION_NODE
+                    general_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
                     general_header.textContent = "For all ads"
                     general_header.style = HEADER_STYLE;
 
@@ -137,7 +138,7 @@ app.init().then(async () => {
 
                     // add links to privacy controls
                     for (let i = 0; i < titles.length; i++) {
-                        appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i])
+                        appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
                     }
                 });
                
@@ -147,20 +148,26 @@ app.init().then(async () => {
     }
 
 
-    function appendAdSettingOption(parent, title, description, url, icon_string) {
+    function appendAdSettingOption(parent, title, description, url, icon_string, i) {
         var choice = document.createElement('div')
-        choice.innerHTML = MENU_OPTION_NODE
+        if(i==0){
+            choice.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
+        }else{
+            choice.innerHTML = MENU_OPTION_NODE_WITH_DESC
+        }
         choice.style.marginBottom = "8px"
 
        
         var icon = document.createElement('i')
         icon.innerHTML = icon_string
-        choice.querySelector('img').parentElement.appendChild(icon)
-        choice.querySelector('img').remove()
+        choice.querySelector('i').parentElement.appendChild(icon)
+        choice.querySelector('i').remove()
 
         var choiceTexts = choice.querySelectorAll("span")
         choiceTexts[0].textContent = title
-        choiceTexts[1].textContent = description
+        if(choiceTexts.length==2){
+            choiceTexts[1].textContent = description
+        }
 
         parent.appendChild(choice)
         
