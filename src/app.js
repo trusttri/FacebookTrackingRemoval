@@ -202,7 +202,6 @@ app.init().then(async () => {
         
         var icon = document.createElement('div')
         icon.innerHTML = icon_string
-        console.log(icon)
         choice.querySelector('i').parentElement.appendChild(icon)
         choice.querySelector('i').remove()
 
