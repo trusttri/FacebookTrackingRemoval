@@ -45,7 +45,7 @@ const titles = [
                     "Manage ad topics",
                     "Review advertisers",
                     "Ad settings",
-                    "Settings about your information including ads"
+                    "All Facebook settings"
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
@@ -54,7 +54,7 @@ const descriptions = [
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
-                    "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
+                    "Facebook settings which includes other features for ads"
                     ]
 const urls = [
             "",
@@ -63,7 +63,7 @@ const urls = [
             "https://www.facebook.com/adpreferences/ad_topics",
             "https://www.facebook.com/adpreferences/advertisers",
             "https://www.facebook.com/adpreferences/ad_settings",
-            "https://www.facebook.com/settings?tab=your_facebook_information"
+            "https://www.facebook.com/settings/?tab=account"
             ]
 
 const icons = [
