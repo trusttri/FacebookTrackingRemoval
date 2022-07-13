@@ -29,15 +29,15 @@ const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6
                  
 const titles = [
                     "Ad settings",
-                    "Settings about your information including ads"
+                    "All Facebook settings"
                 ]
 const descriptions = [
                     "",
-                    "Includes many features related to ads (e.g., Off-Facebook activity, Access your information)"
+                    "Facebook settings page which includes features for ads not included in Ad Settings."
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/ad_settings",
-            "https://www.facebook.com/settings?tab=your_facebook_information"
+            "https://www.facebook.com/settings"
             ]
 
 const icons = [
