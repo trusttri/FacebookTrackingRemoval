@@ -54,7 +54,7 @@ const descriptions = [
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
-                    "Facebook settings which includes other features for ads"
+                    "Facebook settings page which includes features for ads not included in Ad Settings."
                     ]
 const urls = [
             "",
