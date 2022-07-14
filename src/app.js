@@ -44,11 +44,11 @@ const titles = [
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "Control or disconnect the information businesses send to Facebook, such as activity on their websites/apps.",
+                    "Control off-Facebook activity, which is information about your activity on other business’ websites/apps.",
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
-                    "Facebook settings page which includes features for ads not included in Ad Settings."
+                    "Page that includes features for ads not in Ad Settings (e.g., features in Your Facebook Information tab)"
                     ]
 const urls = [
             "",
