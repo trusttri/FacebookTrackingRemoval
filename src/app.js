@@ -56,7 +56,7 @@ const urls = [
             "https://www.facebook.com/adpreferences/ad_topics",
             "https://www.facebook.com/adpreferences/advertisers",
             "https://www.facebook.com/adpreferences/ad_settings",
-            "https://www.facebook.com/settings?tab=your_facebook_information"
+            "https://www.facebook.com/settings"
             ]
 
 const icons = [
