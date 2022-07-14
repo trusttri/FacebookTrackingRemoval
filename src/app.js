@@ -33,7 +33,7 @@ const titles = [
                 ]
 const descriptions = [
                     "",
-                    "Facebook settings page which includes features for ads not included in Ad Settings."
+                    "Page that includes features for ads not in Ad Settings (e.g., features in Your Facebook Information tab)"
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/ad_settings",
