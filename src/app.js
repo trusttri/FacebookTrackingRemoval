@@ -52,7 +52,7 @@ const descriptions = [
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
-                    "Page that includes features for ads not in Ad Settings (e.g., features in Your Facebook Information tab)"
+                    "Shows tabs that include ad-related features not located in Ad Settings (e.g., Your Facebook Information tab)"
                     ]
 const urls = [
             "",
