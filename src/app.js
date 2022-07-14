@@ -44,7 +44,7 @@ const titles = [
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "Control or disconnect the information businesses send to Facebook from your account.",
+                    "Control or disconnect the information businesses send to Facebook, such as activity on their websites/apps.",
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
@@ -182,7 +182,7 @@ app.init().then(async () => {
 
     function appendAdSettingOption(parent, title, description, url, icon_string, i) {
         var choice = document.createElement('div')
-        if(i==5){
+        if(i==4){
             choice.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
         }else{
             choice.innerHTML = MENU_OPTION_NODE_WITH_DESC
