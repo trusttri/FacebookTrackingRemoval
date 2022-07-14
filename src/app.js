@@ -40,8 +40,7 @@ const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6
 
 const titles = [
                     "Stop using data from partners to personalize ads", 
-                    "Review/clear off-Facebook activity",
-                    "Disconnect off-Facebook activity from account",
+                    "Review/clear/disconnect off-Facebook activity",
                     "Manage ad topics",
                     "Review advertisers",
                     "Ad settings",
@@ -49,8 +48,7 @@ const titles = [
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "See/clear information about you businesses send to Facebook.",
-                    "Disconnect information about you businesses send to Facebook from account.",
+                    "Control or disconnect the information businesses send to Facebook, such as activity on their websites/apps.",
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
@@ -59,7 +57,6 @@ const descriptions = [
 const urls = [
             "",
             "https://www.facebook.com/off_facebook_activity",
-            "",
             "https://www.facebook.com/adpreferences/ad_topics",
             "https://www.facebook.com/adpreferences/advertisers",
             "https://www.facebook.com/adpreferences/ad_settings",
@@ -68,7 +65,6 @@ const urls = [
 
 const icons = [
                 DISCONNECT_ICON, 
-                INFORMATION_ICON,
                 DISCONNECT_ICON,
                 AD_ICON,
                 ADVERTISERS_ICON,
@@ -189,7 +185,7 @@ app.init().then(async () => {
 
     function appendAdSettingOption(parent, title, description, url, icon_string, i) {
         var choice = document.createElement('div')
-        if(i==5){
+        if(i==4){
             choice.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
         }else{
             choice.innerHTML = MENU_OPTION_NODE_WITH_DESC
@@ -211,12 +207,8 @@ app.init().then(async () => {
         parent.appendChild(choice)
         
 
-        if (i == 2) { // "Disconnect off-Facebook activity from account"
-            choice.addEventListener("click", e =>  redirectOffAct());
-            
-        } else if (i == 0) { // "Stop using data from partners to personalize ads", 
+        if (i == 0) { // "Stop using data from partners to personalize ads", 
             choice.addEventListener("click", e =>  redirectAdSet());
-
         } else {
             choice.addEventListener("click", e => window.open(url));
         }
@@ -333,7 +325,7 @@ app.init().then(async () => {
 
             for (let i = 0; i < titles.length; i++) {
                 appendAdSettingOption(content_frame_2, titles[i], descriptions[i], urls[i], icons[i], i);
-                if(i==2 || i==4){
+                if(i==1 || i==3){
                     var hr = document.createElement('div');
                     hr.innerHTML = HR_BREAK
                     content_frame_2.appendChild(hr)
@@ -366,7 +358,6 @@ app.init().then(async () => {
     function collapseDashboard() {
         var panel = document.getElementsByClassName("oh7imozk abvwweq7 ejjq64ki d2edcug0")[0]
         chrome.storage.local.get(["collapsed"], function(result){
-            console.log(result.collapsed)
             if (result.collapsed=="false") {
                 chrome.storage.local.set({"collapsed": "true"}, function(){});
                 panel.style.display = "none";
@@ -378,16 +369,9 @@ app.init().then(async () => {
 
     }
 
-    function redirectOffAct() {
-        chrome.storage.local.set({"clickDiscnt": "true"}, function(){});
-        window.open("https://www.facebook.com/off_facebook_activity")
-        // window.location.assign("https://www.facebook.com/off_facebook_activity");
-    }
-
     function redirectAdSet() {
         chrome.storage.local.set({"clickPersonal": "true"}, function(){});
         window.open("https://www.facebook.com/adpreferences/ad_settings");
-        // window.location.assign("https://www.facebook.com/adpreferences/ad_settings");
     }
 
     // function waitForElm(selector) {
@@ -689,20 +673,6 @@ app.init().then(async () => {
                     createDashboard();
                 }
                 
-                if (location.href == "https://www.facebook.com/off_facebook_activity") {
-                     chrome.storage.local.get(["clickDiscnt"], function(result){
-                            if (result.clickDiscnt == "true") {
-                                // alert('Wait until a popup appears')
-                                const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz rz4wbd8a a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l j83agx80 lzcic4wl discj3wi ihqw7lf3 k4urcfbm monazrh9 h905i5nu jinzq4gt mrjvor2e";
-                                waitForBtn(button_class).then((elm) => { 
-                                    elm[2].click();
-                                    chrome.storage.local.set({"clickDiscnt": "false"}, function(){});
-                                });
-                                
-                            }
-                        });
-                }
-
                 if (location.href == "https://www.facebook.com/adpreferences/ad_settings") {
                     chrome.storage.local.get(["clickPersonal"], function(result){
                         if (result.clickPersonal == "true") {
