@@ -44,7 +44,7 @@ const titles = [
                 ]
 const descriptions = [
                     "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "Control off-Facebook activity, which is information about your activity on other business’ websites/apps.",
+                    "Control off-Facebook activity, which is your activity on other business’ websites/apps.",
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen",
                     "",
