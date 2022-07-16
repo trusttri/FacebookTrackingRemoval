@@ -55,7 +55,7 @@ const descriptions = [
                     "Shows tabs that include ad-related features not located in Ad Settings (e.g., Your Facebook Information tab)"
                     ]
 const urls = [
-            "",
+            "https://www.facebook.com/adpreferences/?section=data_from_partners",
             "https://www.facebook.com/off_facebook_activity",
             "https://www.facebook.com/adpreferences/ad_topics",
             "https://www.facebook.com/adpreferences/advertisers",
@@ -207,11 +207,7 @@ app.init().then(async () => {
         parent.appendChild(choice)
         
 
-        if (i == 0) { // "Stop using data from partners to personalize ads", 
-            choice.addEventListener("click", e =>  redirectAdSet());
-        } else {
-            choice.addEventListener("click", e => window.open(url));
-        }
+        choice.addEventListener("click", e => window.open(url));
 
         choice.addEventListener("mouseover", e => choice.classList.add('rnr61an3'))
         choice.addEventListener("mouseout", e => choice.classList.remove('rnr61an3'))
@@ -369,10 +365,6 @@ app.init().then(async () => {
 
     }
 
-    function redirectAdSet() {
-        chrome.storage.local.set({"clickPersonal": "true"}, function(){});
-        window.open("https://www.facebook.com/adpreferences/ad_settings");
-    }
 
     // function waitForElm(selector) {
     //     return new Promise(resolve => {
@@ -673,24 +665,6 @@ app.init().then(async () => {
                     createDashboard();
                 }
                 
-                if (location.href == "https://www.facebook.com/adpreferences/ad_settings") {
-                    console.log('ad settings')
-                    document.onclick = (e) => {
-                                  console.log(e.target)
-                                }
-                    chrome.storage.local.get(["clickPersonal"], function(result){
-                        if (result.clickPersonal == "true") {
-                            // alert('Wait until a popup appears')
-                            // const button_class = "oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j";
-                            const button_class = "d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db a5q79mjw g1cxx5fr ekzkrbhg oo9gr5id hzawbc8m";
-                            waitForBtn(button_class).then((elm) => { 
-                                elm[0].click();
-
-                                chrome.storage.local.set({"clickPersonal": "false"}, function(){});
-                            });
-                        }
-                    });
-                }
             }
         });
         const config = {subtree: true, childList: true};
