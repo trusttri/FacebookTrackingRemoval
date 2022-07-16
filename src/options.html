@@ -8,11 +8,9 @@
 </head>
 <body>
 
-    <fieldset>
-        Facebook ad study
+    <!-- <fieldset> -->
         <!-- <legend id="legend">__MSG_optsLegend__</legend>
         <p><strong>**__MSG_optsReloadNotice__**</strong></p>
-
         <ul>
             <li>
                 <label>
@@ -97,21 +95,35 @@
                                 __MSG_optsLogging__
                             </label>
                         </li>
-                        <li>
-                            <label>
+                        <li>-->
+                            <!-- <label>
                                 <button type="button" id="btnRefresh">__MSG_optsRefresh__</button>
-                            </label>
-                        </li>
+                            </label> -->
+                        <!-- </li>
                     </ul>
                 </details>
             </li>
-        </ul>
-        <button type="button" id="reset" class="addon-control">__MSG_optsDefaults__</button> -->
-    </fieldset>
+        </ul>--> 
+        
+    <!-- </fieldset> -->
 
-    <template id="btnReset">
-        <!-- <img src="reset.svg" alt="Reset" class="reset" title="Default"> -->
-    </template>
+    <!-- <template id="btnReset">
+        <img src="reset.svg" alt="Reset" class="reset" title="Default">
+    </template> -->
+    <div>
+        <h4>Facebook ad study</h4>
+    </div>
+    <div>
+        <form action="/action_page.php">
+          <label for="fname">Prolific ID:</label>
+          <input type="text" id="sessionID" name="sessionID"><br><br>
+          <button type="button" id="submit" class="addon-control">submit and start session</button>
+        </form>
+    </div>
+    <br>
+    <div>
+        <button type="button" id="reset" class="addon-control" disabled>end session</button> 
+    </div>
 
     <script type="text/javascript" src="/browser-polyfill.min.js"></script>
     <script type="text/javascript" src="common.js"></script>
