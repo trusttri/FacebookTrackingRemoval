@@ -481,6 +481,34 @@ app.init().then(async () => {
         if (_running)
             return;
 
+        // add click detect
+        document.onclick = (e) => {
+            // console.log({
+            //     "page" : location.href, "clicked_element": e.target, "timestamp": Date.now(), 
+            //     "pageX": e.pageX, "pageY": e.pageY})
+            var clickEvent = {
+                "page" : location.href, 
+                "clicked_element": e.target,
+                "clicked_element_outer": e.target.outerHTML,
+                "clicked_element_inner": e.target.innerHTML,
+                "timestamp": Date.now(), 
+                "pageX": e.pageX, 
+                "pageY": e.pageY}
+
+            chrome.storage.local.get(["log_history"], function(result){
+                if (result.log_history) {
+                    console.log(result.log_history)
+                    result.log_history.push(clickEvent)
+                    chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                }else{
+                    chrome.storage.local.set({"log_history": []}, function(){console.log("history log start!")});
+                }
+            });
+
+        }
+
+
+
         const SKIP = ["SCRIPT", "STYLE", "LINK"];
         const forEachAdded = (mutation, cb) => {
             for (const node of mutation.addedNodes) {

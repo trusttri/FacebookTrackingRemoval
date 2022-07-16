@@ -27,7 +27,7 @@ app.init().then(() => {
 
     // Set version text
     document.title += ` - v${browser.runtime.getManifest().version}`;
-    document.getElementById("legend").textContent += ` - v${browser.runtime.getManifest().version}`;
+    // document.getElementById("legend").textContent += ` - v${browser.runtime.getManifest().version}`;
 
     function handleCheckbox() { app.options[this.id] = this.checked; }
     for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
@@ -51,9 +51,21 @@ app.init().then(() => {
         text.addEventListener("change", handleText);
     }
 
-    document.getElementById("reset").addEventListener("click", _ => app.options.reset().then(() => document.body.classList.add("resetDone")));
+    // document.getElementById("reset").addEventListener("click", _ => app.options.reset().then(() => document.body.classList.add("resetDone")));
+    document.getElementById("reset").addEventListener("click", function(){
+        chrome.storage.local.get(["log_history"], function(r){
+            if (r.log_history) {
+               console.log("clicked")
+               console.log(JSON.stringify(r.log_history))
+               // chrome.tabs.create({url: chrome.extension.getURL('options.html')});
+               var div = document.createElement('div')
+               div.innerHTML = JSON.stringify(r.log_history)
+               document.getElementById("reset").parentElement.append(div)
+            }
+        });
+    })
 
-    modStyle.addEventListener("change", e => preview.style.cssText = this.value);
+    // modStyle.addEventListener("change", e => preview.style.cssText = this.value);
 
     function handleToggle() { document.getElementById(this.dataset.toggle).classList.toggle("hidden", !this.checked); }
 
