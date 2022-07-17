@@ -24,7 +24,7 @@ const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f es
 const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=#3578E5 style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="0.5em" height="0.5em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 100px; padding: 1px 4px 4px 0px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.89rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.24rem; color:#1877F2; font-family: sans-serif;'      
+const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.1rem; font-weight: 550; color:#1877F2; font-family: sans-serif;'      
 
 // ICONS
 // const DISCONNECT_ICON = '<img class="hu5pjgll lzf7d6o1" src="https://static.xx.fbcdn.net/rsrc.php/v3/yI/r/bnvx9uLOEsq.png" alt="" height="20" width="20">'
