@@ -215,8 +215,9 @@ app.init().then(async () => {
 
     function createDashboard() {
         var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
-        if (menu_node_list && menu_node_list.length <= 1) {
-
+        console.log(menu_node_list.length)
+        if (menu_node_list && menu_node_list.length < 1) {
+            console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
             dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
@@ -662,7 +663,7 @@ app.init().then(async () => {
                 previousUrl = location.href;
 
                 if (location.href == "https://www.facebook.com/") {
-                    createDashboard();
+                    createDashboard();   
                 }
                 
             }
