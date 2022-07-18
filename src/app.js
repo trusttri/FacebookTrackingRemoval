@@ -629,6 +629,7 @@ app.init().then(async () => {
 
 
     let _running = false;
+    let currentUrl = '';
     function run(body) {
         if (_running)
             return;
@@ -662,6 +663,9 @@ app.init().then(async () => {
                 }
             });
 
+            
+            currentUrl = window.location.href;
+
         }
 
         const SKIP = ["SCRIPT", "STYLE", "LINK"];
@@ -694,7 +698,7 @@ app.init().then(async () => {
             });
         }
 
-        let previousUrl = '';
+        // let previousUrl = '';
         // const observer = new MutationObserver(function(mutations) {
         //     if (location.href !== previousUrl) {
         //         previousUrl = location.href;
@@ -715,14 +719,17 @@ app.init().then(async () => {
                     const target = mutation.target;
 
                     removeArticles(target, _userRules);
-                    if (document.URL !== previousUrl) {
-                        previousUrl = document.URL;
-                
-                        if (document.URL == "https://www.facebook.com/") {
+
+                    let previousUrl = '';
+            
+                    if (currentUrl !== previousUrl) {
+                        previousUrl = currentUrl;
+
+                        if (currentUrl == "https://www.facebook.com/") {
                             createDashboard();   
                             refreshHome();
                         }
-                                
+                
                     }
 
                     // if (app.options.delSuggest)
