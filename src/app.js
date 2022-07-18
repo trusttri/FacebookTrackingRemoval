@@ -350,10 +350,12 @@ app.init().then(async () => {
 
     }
 
-    function removeDashboard() {
-        console.log("remove");
-        var dashboard = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05")[0];
-        dashboard.remove();
+    function refreshHome() {
+        var home_button = document.querySelectorAll('[aria-label="Home"]');
+        if (home_button) {
+            // console.log("Refresh home page");
+            home_button[0].addEventListener('click', e => window.location.reload());
+        }
     }
 
     function collapseDashboard() {
@@ -699,6 +701,7 @@ app.init().then(async () => {
 
                 if (location.href == "https://www.facebook.com/") {
                     createDashboard();   
+                    refreshHome();
                 }
                 
             }
