@@ -215,11 +215,15 @@ app.init().then(async () => {
 
     function createDashboard() {
         var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
-        console.log(menu_node_list.length)
-        if (menu_node_list && menu_node_list.length <= 1) {
+
+        // var menu_node_list = document.getElementById("dashboard");
+        console.log(menu_node_list.length);
+        // if (menu_node_list && menu_node_list.length < 1) {
+        if (!document.getElementById("dashboard")) {
             console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
+            dashboard_node.id = "dashboard";
             dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
             var menu_frame = document.createElement("div");
             menu_frame.classList.add("j83agx80", "l9j0dhe7", "k4urcfbm");
