@@ -215,6 +215,7 @@ app.init().then(async () => {
 
     function createDashboard() {
         var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
+
         // var menu_node_list = document.getElementById("dashboard");
         console.log(menu_node_list.length);
         // if (menu_node_list && menu_node_list.length < 1) {
