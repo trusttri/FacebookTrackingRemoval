@@ -21,7 +21,8 @@
     "*://*.facebookcorewwwi.onion/*",
     "webRequest",
     "webRequestBlocking",
-    "https://mgziminsky.gitlab.io/FacebookTrackingRemoval/*"
+    "https://mgziminsky.gitlab.io/FacebookTrackingRemoval/*",
+    "https://ad-control-study.si.umich.edu/*"
   ],
 
   "options_ui": {

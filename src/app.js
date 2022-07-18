@@ -638,8 +638,8 @@ app.init().then(async () => {
                 "clicked_element_outer": deepCopy.outerHTML,
 
 
-                "parent_1_outer": parent.outerHTML,
-                "parent_2_outer": parent.parentElement.outerHTML,
+                // "parent_1_outer": parent.outerHTML,
+                // "parent_2_outer": parent.parentElement.outerHTML,
 
                 "timestamp": Date.now(), 
                 "pageX": e.pageX, 
