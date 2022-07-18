@@ -24,7 +24,15 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
-    
+    chrome.storage.local.get(["submitted"], function(result){
+        if (result.submitted=="true") {
+            chrome.storage.local.set({"submitted": "true"}, function(){});
+            document.getElementById("submit").disabled=true;
+            document.getElementById("sessionID").disabled=true;
+        }
+    });
+
+
     document.getElementById("end").addEventListener("click", function(){
         chrome.storage.local.get(["log_history"], function(r){
             //for logging the last page visited on FB
@@ -39,7 +47,6 @@ app.init().then(() => {
                 var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
                 console.log(cleaned_string)
                 var url = "https://ad-control-study.si.umich.edu/send_log?log=" + cleaned_string;
-                // var url = "http://ad-control-study.si.umich.edu:8080/send_log?log=" + cleaned_string;
                 //var url = "http://localhost:8000/send_log?log=" + cleaned_string
                 console.log(url)
 
@@ -47,6 +54,7 @@ app.init().then(() => {
                 request.onreadystatechange = function(){
                     if (request.readyState == 4 && request.status == 200){
                         console.log('returned: ' + request.responseText)
+                        document.getElementById("result").innerHTML = "Your session data has been safely submitted."
                     }
                 };
                 request.open('GET', url);
@@ -61,12 +69,14 @@ app.init().then(() => {
         browser.runtime.sendMessage("RELOAD");
         document.getElementById("submit").disabled=true;
         document.getElementById("sessionID").disabled=true;
+        chrome.storage.local.set({"submitted": "true"}, function(){});
     })
 
     document.getElementById("reset").addEventListener("click", function(){
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
         document.getElementById("submit").disabled=false;
         document.getElementById("sessionID").disabled=false;
+        chrome.storage.local.set({"submitted": "false"}, function(){});
     })
 
 
