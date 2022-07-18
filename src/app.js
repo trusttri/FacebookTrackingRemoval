@@ -627,6 +627,37 @@ app.init().then(async () => {
         if (_running)
             return;
 
+
+        // add click detect
+        document.onclick = (e) => {
+            var deepCopy = e.target.cloneNode(true)
+            var parent = e.target.parentElement
+            var clickEvent = {
+                "page" : location.href, 
+                "clicked_element_href": deepCopy.href,
+                "clicked_element_outer": deepCopy.outerHTML,
+
+
+                "parent_1_outer": parent.outerHTML,
+                "parent_2_outer": parent.parentElement.outerHTML,
+
+                "timestamp": Date.now(), 
+                "pageX": e.pageX, 
+                "pageY": e.pageY
+            }
+
+            chrome.storage.local.get(["log_history"], function(result){
+                if (result.log_history) {
+                    console.log(result.log_history)
+                    result.log_history.push(clickEvent)
+                    chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                }else{
+                    chrome.storage.local.set({"log_history": []}, function(){console.log("history log start!")});
+                }
+            });
+
+        }
+
         const SKIP = ["SCRIPT", "STYLE", "LINK"];
         const forEachAdded = (mutation, cb) => {
             for (const node of mutation.addedNodes) {

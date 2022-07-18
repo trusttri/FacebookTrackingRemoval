@@ -110,6 +110,8 @@ app.init().then(() => {
             .then(opts => handleChanged(app.options, opts))
             .then(app.init)
             .catch(app.warn);
+
+        chrome.storage.sync.clear();
     }
 
     browser.runtime.onMessage.addListener((msg, sender) => {

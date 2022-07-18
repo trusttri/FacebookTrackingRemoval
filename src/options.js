@@ -25,28 +25,49 @@ app.init().then(() => {
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
     
-    // document.getElementById("reset").addEventListener("click", _ => app.options.reset().then(() => document.body.classList.add("resetDone")));
-    document.getElementById("reset").addEventListener("click", function(){
+    document.getElementById("end").addEventListener("click", function(){
         chrome.storage.local.get(["log_history"], function(r){
+            //for logging the last page visited on FB
             if (r.log_history) {
-               console.log("clicked")
-               console.log(JSON.stringify(r.log_history))
-               // chrome.tabs.create({url: chrome.extension.getURL('options.html')});
-               var div = document.createElement('div')
-               div.innerHTML = JSON.stringify(r.log_history)
-               document.getElementById("reset").parentElement.append(div)
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                    var activeTab = tabs[0];
+                    r.log_history.push({'last_page:': activeTab.url}) 
+                    chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
+                });
+
+                var url = "http://localhost:8000/send_log?log=" + JSON.stringify(r.log_history);
+                // var url = "http://localhost:8000/send_log?prolific_id=1&log='[1, 2]'";
+                console.log(url)
+
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function(){
+                    if (request.readyState == 4 && request.status == 200){
+                        console.log('returned: ' + request.responseText)
+                    }
+                };
+                request.open('GET', url);
+                request.send();
             }
+
         });
     })
 
     document.getElementById("submit").addEventListener("click", function(){
         browser.runtime.sendMessage("RELOAD");
         browser.runtime.sendMessage("RELOAD");
-        document.getElementById("reset").disabled = false;
-        document.getElementById("submit").disabled = true;
-        document.getElementById("sessionID").disabled = true;
-
+        document.getElementById("submit").disabled=true;
+        document.getElementById("sessionID").disabled=true;
     })
+
+    document.getElementById("reset").addEventListener("click", function(){
+        chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
+        document.getElementById("submit").disabled=false;
+        document.getElementById("sessionID").disabled=false;
+    })
+
+
+     
+
 
 
     // document.getElementById("legend").textContent += ` - v${browser.runtime.getManifest().version}`;
