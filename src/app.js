@@ -629,7 +629,7 @@ app.init().then(async () => {
 
 
     let _running = false;
-    let currentUrl = '';
+    let currentUrl = 'https://www.facebook.com/';
     let previousUrl = 'https://www.facebook.com/';
     function run(body) {
         if (_running)
@@ -720,15 +720,12 @@ app.init().then(async () => {
 
                     removeArticles(target, _userRules);
             
-                    if (currentUrl !== previousUrl) {
-                        previousUrl = currentUrl;
+                    
 
-                        if (currentUrl == "https://www.facebook.com/") {
-                            createDashboard();   
-                            // refreshHome();
-                        }
-                
-                    }
+                    if (currentUrl == "https://www.facebook.com/") {    
+                        createDashboard();   
+                        refreshHome();
+                    }   
 
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
