@@ -473,17 +473,21 @@ app.init().then(async () => {
 
         // add click detect
         document.onclick = (e) => {
-            // console.log({
-            //     "page" : location.href, "clicked_element": e.target, "timestamp": Date.now(), 
-            //     "pageX": e.pageX, "pageY": e.pageY})
+            var deepCopy = e.target.cloneNode(true)
+            var parent = e.target.parentElement
             var clickEvent = {
                 "page" : location.href, 
-                "clicked_element": e.target,
-                "clicked_element_outer": e.target.outerHTML,
-                "clicked_element_inner": e.target.innerHTML,
+                "clicked_element_href": deepCopy.href,
+                "clicked_element_outer": deepCopy.outerHTML,
+
+
+                "parent_1_outer": parent.outerHTML,
+                "parent_2_outer": parent.parentElement.outerHTML,
+
                 "timestamp": Date.now(), 
                 "pageX": e.pageX, 
-                "pageY": e.pageY}
+                "pageY": e.pageY
+            }
 
             chrome.storage.local.get(["log_history"], function(result){
                 if (result.log_history) {
