@@ -695,19 +695,19 @@ app.init().then(async () => {
         }
 
         let previousUrl = '';
-        const observer = new MutationObserver(function(mutations) {
-            if (location.href !== previousUrl) {
-                previousUrl = location.href;
+        // const observer = new MutationObserver(function(mutations) {
+        //     if (location.href !== previousUrl) {
+        //         previousUrl = location.href;
 
-                if (location.href == "https://www.facebook.com/") {
-                    createDashboard();   
-                    refreshHome();
-                }
+        //         if (location.href == "https://www.facebook.com/") {
+        //             createDashboard();   
+        //             refreshHome();
+        //         }
                 
-            }
-        });
-        const config = {subtree: true, childList: true};
-        observer.observe(document, config);
+        //     }
+        // });
+        // const config = {subtree: true, childList: true};
+        // observer.observe(document, config);
 
         new MutationObserver(async mutations => {
             for (const mutation of mutations) {
@@ -715,6 +715,15 @@ app.init().then(async () => {
                     const target = mutation.target;
 
                     removeArticles(target, _userRules);
+                    if (location.href !== previousUrl) {
+                                previousUrl = location.href;
+                
+                                if (location.href == "https://www.facebook.com/") {
+                                    createDashboard();   
+                                    refreshHome();
+                                }
+                                
+                    }
 
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
@@ -751,6 +760,7 @@ app.init().then(async () => {
         _running = true;
 
         (async () => {
+            createDashboard();  
             removeArticles(body, _userRules);
             // console.log(body)
             // if (app.options.delSuggest)
