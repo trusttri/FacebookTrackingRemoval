@@ -39,8 +39,8 @@ app.init().then(() => {
                     chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
                 });
 
-                var url = "http://localhost:8000/send_log?log=" + JSON.stringify(r.log_history);
-                // var url = "http://localhost:8000/send_log?prolific_id=1&log='[1, 2]'";
+                var url = "https://ad-control-study.si.umich.edu/send_log?log=" + JSON.stringify(r.log_history);
+                // var url = "http://localhost:8000/send_log?log=" + JSON.stringify(r.log_history);
                 console.log(url)
 
                 var request = new XMLHttpRequest();
