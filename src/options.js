@@ -39,9 +39,13 @@ app.init().then(() => {
                     chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
                 });
 
-                var url = "https://ad-control-study.si.umich.edu/send_log?log=" + JSON.stringify(r.log_history);
-                // var url = "http://localhost:8000/send_log?log=" + JSON.stringify(r.log_history);
+                var stringfied = JSON.stringify(r.log_history);
+                var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+                console.log(cleaned_string)
+                var url = "https://ad-control-study.si.umich.edu/send_log?log=" + cleaned_string;
                 console.log(url)
+                // var url = "http://ad-control-study.si.umich.edu:8080/send_log?log=" + cleaned_string;
+                //var url = "http://localhost:8000/send_log?log=" + cleaned_string
 
                 var request = new XMLHttpRequest();
                 request.onreadystatechange = function(){
