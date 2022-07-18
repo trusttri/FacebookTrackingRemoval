@@ -30,9 +30,13 @@ app.init().then(() => {
 
     chrome.storage.local.get(["submitted"], function(result){
         if (result.submitted=="true") {
-            chrome.storage.local.set({"submitted": "true"}, function(){});
             document.getElementById("submit").disabled=true;
             document.getElementById("sessionID").disabled=true;
+             chrome.storage.local.get(["prolific_ID"], function(result){
+                if (result.prolific_ID) {
+                    document.getElementById("sessionID").value = result.prolific_ID
+                }
+            });
         }
     });
     
@@ -73,6 +77,7 @@ app.init().then(() => {
         document.getElementById("submit").disabled=true;
         document.getElementById("sessionID").disabled=true;
         chrome.storage.local.set({"submitted": "true"}, function(){});
+        chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
     })
 
     document.getElementById("reset").addEventListener("click", function(){
@@ -80,6 +85,8 @@ app.init().then(() => {
         document.getElementById("submit").disabled=false;
         document.getElementById("sessionID").disabled=false;
         chrome.storage.local.set({"submitted": "false"}, function(){});
+        chrome.storage.local.set({"prolific_ID": ""}, function(){});
+        document.getElementById("sessionID").value = "";
     })
 
 
