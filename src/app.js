@@ -350,13 +350,13 @@ app.init().then(async () => {
 
     }
 
-    function refreshHome() {
-        var home_button = document.querySelectorAll('[aria-label="Home"]');
-        if (home_button) {
-            // console.log("Refresh home page");
-            home_button[0].addEventListener('click', e => window.location.reload());
-        }
-    }
+    // function refreshHome() {
+    //     var home_button = document.querySelectorAll('[aria-label="Home"]');
+    //     if (home_button) {
+    //         // console.log("Refresh home page");
+    //         home_button[0].addEventListener('click', e => window.location.reload());
+    //     }
+    // }
 
     function collapseDashboard() {
         var panel = document.getElementsByClassName("oh7imozk abvwweq7 ejjq64ki d2edcug0")[0]
@@ -725,7 +725,7 @@ app.init().then(async () => {
 
                         if (currentUrl == "https://www.facebook.com/") {
                             createDashboard();   
-                            refreshHome();
+                            // refreshHome();
                         }
                 
                     }
