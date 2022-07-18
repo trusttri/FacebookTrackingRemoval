@@ -630,6 +630,7 @@ app.init().then(async () => {
 
     let _running = false;
     let currentUrl = '';
+    let previousUrl = 'https://www.facebook.com/';
     function run(body) {
         if (_running)
             return;
@@ -639,8 +640,10 @@ app.init().then(async () => {
         document.onclick = (e) => {
             var deepCopy = e.target.cloneNode(true)
             var parent = e.target.parentElement
+            currentUrl = location.href;
+
             var clickEvent = {
-                "page" : location.href, 
+                "page" : currentUrl, 
                 "clicked_element_href": deepCopy.href,
                 "clicked_element_outer": deepCopy.outerHTML,
 
@@ -662,9 +665,6 @@ app.init().then(async () => {
                     chrome.storage.local.set({"log_history": []}, function(){console.log("history log start!")});
                 }
             });
-
-            
-            currentUrl = window.location.href;
 
         }
 
@@ -719,8 +719,6 @@ app.init().then(async () => {
                     const target = mutation.target;
 
                     removeArticles(target, _userRules);
-
-                    let previousUrl = '';
             
                     if (currentUrl !== previousUrl) {
                         previousUrl = currentUrl;
