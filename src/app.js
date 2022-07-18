@@ -715,15 +715,16 @@ app.init().then(async () => {
                     const target = mutation.target;
 
                     removeArticles(target, _userRules);
-                    if (location.href !== previousUrl) {
-                                previousUrl = location.href;
+                    createDashboard(); 
+                    // if (location.href !== previousUrl) {
+                    //     previousUrl = location.href;
                 
-                                if (location.href == "https://www.facebook.com/") {
-                                    createDashboard();   
-                                    refreshHome();
-                                }
+                    //     if (location.href == "https://www.facebook.com/") {
+                    //         createDashboard();   
+                    //         refreshHome();
+                    //     }
                                 
-                    }
+                    // }
 
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
