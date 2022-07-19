@@ -137,9 +137,10 @@ app.init().then(async () => {
         var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
 
         // var menu_node_list = document.getElementById("dashboard");
-        console.log(menu_node_list.length);
-        // if (menu_node_list && menu_node_list.length < 1) {
-        if (!document.getElementById("dashboard")) {
+
+        // We check to see if "createPost" doesn't return null to ensure the user is in the feed
+        var createPostExists = document.querySelector('.m9osqain.a5q79mjw.gy2v8mqq.jm1wdb64.k4urcfbm.qv66sw1b')
+        if (!document.getElementById("dashboard") && createPostExists) {
             console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
