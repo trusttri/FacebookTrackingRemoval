@@ -623,11 +623,19 @@ app.init().then(async () => {
             
                     
 
-                    if (currentUrl == "https://www.facebook.com/") {    
-                        createDashboard();   
-                        refreshHome();
-                    }   
-
+                    
+                    browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
+                  
+                    });
+         
+                    chrome.storage.local.get(["URL"], function(result){
+                        console.log(result.URL)
+                        if(result.URL=="https://www.facebook.com/"){
+                            createDashboard();
+                            refreshHome();
+                        }
+                    });
+                       
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
                     if (app.options.delPixeled)
@@ -715,5 +723,6 @@ app.init().then(async () => {
     });
 
     browser.runtime.sendMessage(app.options);
+
 
 }).catch(console.warn);

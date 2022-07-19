@@ -18,6 +18,8 @@
 
 'use strict';
 
+
+
 // Do some cleanup after updating to 1.6.4+ for the first time
 // to get rid of old storage data that is no longer used
 browser.runtime.onInstalled.addListener(details => {
@@ -51,6 +53,8 @@ setInterval(refreshRules, 1000 * 60 * 60 * 12); // refresh every 12 hours
 app.init().then(() => {
     const optionsWindows = new Set();
     const fbTabs = new Map();
+
+    console.log('test')
 
     function updateCSS(id, opts) {
         const prev = fbTabs.get(id);
@@ -114,7 +118,8 @@ app.init().then(() => {
         chrome.storage.sync.clear();
     }
 
-    browser.runtime.onMessage.addListener((msg, sender) => {
+    browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+        console.log(msg)
         if (msg === "OPTIONS") {
             browser.extension.getViews()
                 .filter(w => !optionsWindows.has(w) && (w.location.pathname === "/src/options.html"))
@@ -130,6 +135,22 @@ app.init().then(() => {
             if (app.isChrome)
                 browser.pageAction.show(sender.tab.id);
         }
+    });
+
+     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.message === "URL") {
+            chrome.tabs.query({
+                'active': true,
+                'lastFocusedWindow': true
+            }, function(tabs) {
+                var url = tabs[0].url
+                console.log(url)
+                sendResponse({url}); //it seems this is not working
+                chrome.storage.local.set({"URL": url}, function(){console.log('url udated')});
+                return true;
+            });
+            return true;            
+        } 
     });
 
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
