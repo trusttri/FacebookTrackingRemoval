@@ -118,25 +118,25 @@ async function refreshRules({ force = false, check = false } = {}) {
     if (timeout > 0)
         return Promise.reject(timeout);
 
-    const fetchRule = async (path, current) => {
-        const resp = await fetch(`https://${devMode ? "localhost" : "mgziminsky.gitlab.io"}/FacebookTrackingRemoval/${path}`, { mode: 'cors' })
-            .then(resp => resp.ok ? resp : Promise.reject())
-            .catch(_ => current
-                ? new Response(current, { status: 418 }) // keep saved value if present
-                : fetch(browser.runtime.getURL(`src/${path}`)) // Fallback to bundled copy as last resort, should never fail if file is present
-            )
-            .catch(err => new Response(err, { status: 500 })); // Final fallback in case of any other error
+    // const fetchRule = async (path, current) => {
+    //     const resp = await fetch(`https://${devMode ? "localhost" : "mgziminsky.gitlab.io"}/FacebookTrackingRemoval/${path}`, { mode: 'cors' })
+    //         .then(resp => resp.ok ? resp : Promise.reject())
+    //         .catch(_ => current
+    //             ? new Response(current, { status: 418 }) // keep saved value if present
+    //             : fetch(browser.runtime.getURL(`src/${path}`)) // Fallback to bundled copy as last resort, should never fail if file is present
+    //         )
+    //         .catch(err => new Response(err, { status: 500 })); // Final fallback in case of any other error
 
-        if (!resp.ok)// || !force && shouldSkip(resp.headers.get(DATE_HEADER), (current || {})[DATE_HEADER]))
-            return null; // No updates, or no file
+    //     if (!resp.ok)// || !force && shouldSkip(resp.headers.get(DATE_HEADER), (current || {})[DATE_HEADER]))
+    //         return null; // No updates, or no file
 
-        return resp;
-    };
+    //     return resp;
+    // };
 
-    browser.storage.local.set({
-        hide_rules: await loadHideRules(fetchRule),
-        param_cleaning: await loadArrayData(fetchRule, "param_cleaning", PARAM_CLEANING_FILES),
-        click_whitelist: await loadArrayData(fetchRule, "click_whitelist", CLICK_WHITELIST_FILES),
-        lastRuleRefresh: new Date().toUTCString(),
-    }).then(() => RATE_LIMIT);
+    // browser.storage.local.set({
+    //     hide_rules: await loadHideRules(fetchRule),
+    //     param_cleaning: await loadArrayData(fetchRule, "param_cleaning", PARAM_CLEANING_FILES),
+    //     click_whitelist: await loadArrayData(fetchRule, "click_whitelist", CLICK_WHITELIST_FILES),
+    //     lastRuleRefresh: new Date().toUTCString(),
+    // }).then(() => RATE_LIMIT);
 }
