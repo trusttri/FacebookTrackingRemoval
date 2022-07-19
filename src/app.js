@@ -762,7 +762,6 @@ app.init().then(async () => {
         _running = true;
 
         (async () => {
-            createDashboard();  
             removeArticles(body, _userRules);
             // console.log(body)
             // if (app.options.delSuggest)
