@@ -622,7 +622,7 @@ app.init().then(async () => {
                     removeArticles(target, _userRules);
             
                     
-
+                    
                     
                     browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
                   
@@ -633,6 +633,8 @@ app.init().then(async () => {
                         if(result.URL=="https://www.facebook.com/"){
                             createDashboard();
                             refreshHome();
+                        }else{
+                
                         }
                     });
                        
