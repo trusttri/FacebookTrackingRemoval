@@ -139,7 +139,7 @@ app.init().then(async () => {
         // var menu_node_list = document.getElementById("dashboard");
 
         // We check to see if "createPost" doesn't return null to ensure the user is in the feed
-        var createPostExists = document.querySelector('.m9osqain.a5q79mjw.gy2v8mqq.jm1wdb64.k4urcfbm.qv66sw1b')
+        var createPostExists = document.querySelector('.pybr56ya.dati1w0a.hv4rvrfc.osnr6wyh.lhclo0ds.j83agx80.bp9cbjyn')
         if (!document.getElementById("dashboard") && createPostExists) {
             console.log("dashboard append")
             // create static dashboard header
@@ -600,20 +600,7 @@ app.init().then(async () => {
             });
         }
 
-        // let previousUrl = '';
-        // const observer = new MutationObserver(function(mutations) {
-        //     if (location.href !== previousUrl) {
-        //         previousUrl = location.href;
-
-        //         if (location.href == "https://www.facebook.com/") {
-        //             createDashboard();   
-        //             refreshHome();
-        //         }
-                
-        //     }
-        // });
-        // const config = {subtree: true, childList: true};
-        // observer.observe(document, config);
+      
 
         new MutationObserver(async mutations => {
             for (const mutation of mutations) {
@@ -622,22 +609,23 @@ app.init().then(async () => {
 
                     removeArticles(target, _userRules);
             
+                    createDashboard();
+                    refreshHome();
                     
                     
-                    
-                    browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
+                    // browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
                   
-                    });
+                    // });
          
-                    chrome.storage.local.get(["URL"], function(result){
-                        console.log(result.URL)
-                        if(result.URL=="https://www.facebook.com/"){
-                            createDashboard();
-                            refreshHome();
-                        }else{
+                    // chrome.storage.local.get(["URL"], function(result){
+                    //     console.log(result.URL)
+                    //     if(result.URL=="https://www.facebook.com/"){
+                    //         createDashboard();
+                    //         refreshHome();
+                    //     }else{
                 
-                        }
-                    });
+                    //     }
+                    // });
                        
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);

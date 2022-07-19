@@ -137,21 +137,21 @@ app.init().then(() => {
         }
     });
 
-     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        if (request.message === "URL") {
-            chrome.tabs.query({
-                'active': true,
-                'lastFocusedWindow': true
-            }, function(tabs) {
-                var url = tabs[0].url
-                console.log(url)
-                sendResponse({url}); //it seems this is not working
-                chrome.storage.local.set({"URL": url}, function(){console.log('url udated')});
-                return true;
-            });
-            return true;            
-        } 
-    });
+    //  browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    //     if (request.message === "URL") {
+    //         chrome.tabs.query({
+    //             'active': true,
+    //             'lastFocusedWindow': true
+    //         }, function(tabs) {
+    //             var url = tabs[0].url
+    //             console.log(url)
+    //             sendResponse({url}); //it seems this is not working
+    //             chrome.storage.local.set({"URL": url}, function(){console.log('url udated')});
+    //             return true;
+    //         });
+    //         return true;            
+    //     } 
+    // });
 
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
     browser.tabs.onReplaced.addListener(fbTabs.delete.bind(fbTabs));
