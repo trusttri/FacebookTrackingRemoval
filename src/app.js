@@ -274,7 +274,7 @@ app.init().then(async () => {
         var home_button = document.querySelectorAll('[aria-label="Home"]');
         if (home_button) {
             // console.log("Refresh home page");
-            home_button[0].addEventListener('click', e => window.location.reload());
+            home_button[0].addEventListener('click', e => location.href="https://www.facebook.com/");
         }
     }
 
