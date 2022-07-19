@@ -93,9 +93,7 @@ app.init().then(async () => {
     // function that detects and changes ads
     function hide(elem, label) {
         /* temporary code */
-        // augmentButton(elem) // our code for augmenting button on ads
             
-
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
             return false;
