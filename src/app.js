@@ -102,7 +102,10 @@ app.init().then(async () => {
     }
 
 /////////////////////////// BEGIN OUR CODE ///////////////////////////
+    function isUserInFeed() {
+        var checkLayout1 = document.querySelector('[aria-label="Home"]').querySelector('.a8c37x1j.ms05siws.l3qrxjdp.b7h9ocf4.g28tu32o')
 
+    }
     function appendAdSettingOption(parent, title, description, url, icon_string, i) {
         var choice = document.createElement('div')
         if(i==4){
@@ -134,13 +137,14 @@ app.init().then(async () => {
     }
 
     function createDashboard() {
+
         var menu_node_list = document.getElementsByClassName("j83agx80 btwxx1t3 taijpn5t sjgh65i0 cxgpxx05");
 
         // var menu_node_list = document.getElementById("dashboard");
 
         // We check to see if "createPost" doesn't return null to ensure the user is in the feed
         var createPostExists = document.querySelector('.pybr56ya.dati1w0a.hv4rvrfc.osnr6wyh.lhclo0ds.j83agx80.bp9cbjyn')
-        if (!document.getElementById("dashboard") && createPostExists) {
+        if (!document.getElementById("dashboard") && createPostExists && location.href=="https://www.facebook.com/") {
             console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
