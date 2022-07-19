@@ -102,84 +102,6 @@ app.init().then(async () => {
     }
 
 /////////////////////////// BEGIN OUR CODE ///////////////////////////
-    // function augmentButton(elem) {
-    //     var header = elem.parentElement.closest('.ll8tlv6m.j83agx80.btwxx1t3.n851cfcs.hv4rvrfc.dati1w0a.pybr56ya')
-
-    //     if (header){
-    //         var adBtn = header.querySelector('[aria-label="Actions for this post"]')
-
-    //         if (adBtn){
-    //             var three_dot_svg = adBtn.querySelector('svg')
-    //             if(three_dot_svg && !three_dot_svg.classList.contains("dropdown")){
-                
-    //                 three_dot_svg.remove()
-
-    //                 var settingsBtn = document.createElement('div');
-
-    //                 settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
-    //                 settingsBtn.style = AD_BUTTON_STYLE
-
-    //                 adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-    //                 adBtn.addEventListener("click", e => changeMenu());
-    //                 adBtn.parentElement.parentElement.style.width = "120px";
-
-    //             }
-    //         }
-    //     }
-        
-    // }
-
-    // function changeMenu() {
-    //     if(document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")){
-    //         var menu = document.querySelector(".j34wkznp.qp9yad78.pmk7jnqg.kr520xx4")
-    //         // var menu_nodes = menu.querySelectorAll('.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr')
-
-    //         var menu_item_selector = '.oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.p7hjln8o.esuyzwwr.f1sip0of.n00je7tq.arfg74bv.qs9ysxi8.k77z8yql.abiwlrkh.p8dawk7l.lzcic4wl.dwo3fsh8.rq0escxv.nhd2j8a9.j83agx80.btwxx1t3.pfnyh3mw.opuu4ng7.kj2yoqh6.kvgmc6g5.oygrvhab.l9j0dhe7.i1ao9s8h.du4w35lb.bp9cbjyn.cxgpxx05.dflh9lhu.sj5x9vvc.scb9dxdr'
-    //         waitForElm(menu_item_selector).then((elm) => {
-
-    //             //widen the menu
-    //             var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
-    //             innerDiv.style.width = '544px';
-
-
-    //             var nodes = elm
-    //             var parent_node = nodes[0].parentElement
-                
-
-    //             var this_ad_header = document.createElement('div')
-    //             this_ad_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
-    //             this_ad_header.textContent = "For this ad"
-    //             this_ad_header.style = HEADER_STYLE;
-    //             parent_node.insertBefore(this_ad_header, nodes[0])
-
-    //             var hr = document.createElement('div');
-    //             hr.innerHTML = HR_BREAK
-    //             parent_node.appendChild(hr)
-                
-    //             var general_header = document.createElement('div')
-    //             general_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
-    //             general_header.textContent = "For all ads"
-    //             general_header.style = HEADER_STYLE;
-
-    //             parent_node.appendChild(general_header)
-
-
-    //             // add links to privacy controls
-    //             for (let i = 0; i < titles.length; i++) {
-    //                 appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
-    //                 if(i==2 || i==4){
-    //                     var hr = document.createElement('div');
-    //                     hr.innerHTML = HR_BREAK
-    //                     parent_node.appendChild(hr)
-    //                 }
-    //             }
-                
-               
-    //         });
-
-    //     }
-    // }
-
 
     function appendAdSettingOption(parent, title, description, url, icon_string, i) {
         var choice = document.createElement('div')
@@ -371,25 +293,6 @@ app.init().then(async () => {
     }
 
 
-    // function waitForElm(selector) {
-    //     return new Promise(resolve => {
-    //         if (document.querySelectorAll(selector)[0]) {
-    //             return resolve(document.querySelectorAll(selector));
-    //         }
-
-    //         const observer = new MutationObserver(mutations => {
-    //             if (document.querySelectorAll(selector)[0]) {
-    //                 resolve(document.querySelectorAll(selector));
-    //                 observer.disconnect();
-    //             }
-    //         });
-
-    //         observer.observe(document.body, {
-    //             childList: true,
-    //             subtree: true
-    //         });
-    //     });
-    // }
 
 /////////////////////////// END OUR CODE ///////////////////////////
 
