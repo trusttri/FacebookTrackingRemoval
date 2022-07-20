@@ -64,8 +64,8 @@ app.init().then(() => {
             console.log(result.started);
 
             if (result.started != "true") {
-                document.getElementById("result").innerHTML = "Warning: Invalid click on end session because the session is not yet started.";
-                document.getElementById("result").style.backgroundColor = "coral";
+                document.getElementById("result").innerHTML = "Warning: Please start the session first.";
+                document.getElementById("result").style.color = "red";
             } else {
                 
                 var prolific_ID = document.getElementById("sessionID").value;
