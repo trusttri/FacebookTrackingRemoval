@@ -54,9 +54,7 @@ app.init().then(() => {
                 var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
                 var id = document.getElementById("sessionID").value
                 var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
-                console.log(url)
-                // var url = "http://localhost:8000/send_log?prolific_id=" +id + "&log=" + cleaned_string;
-                
+                console.log(url) 
 
                 var request = new XMLHttpRequest();
                 request.onreadystatechange = function(){
