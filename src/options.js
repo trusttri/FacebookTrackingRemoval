@@ -52,8 +52,7 @@ app.init().then(() => {
                 var stringfied = JSON.stringify(r.log_history);
                 var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
                 var id = document.getElementById("sessionID").value
-                //var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
-                var url = "http://localhost:8000/send_log?prolific_id=" +id + "&log=" + cleaned_string;
+                var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
                 console.log(url)
 
                 var request = new XMLHttpRequest();
