@@ -51,9 +51,9 @@ app.init().then(() => {
 
                 var stringfied = JSON.stringify(r.log_history);
                 var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
-                console.log(cleaned_string)
-                var url = "https://ad-control-study.si.umich.edu/send_log?log=" + cleaned_string;
-                //var url = "http://localhost:8000/send_log?log=" + cleaned_string
+                var id = document.getElementById("sessionID").value
+                //var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
+                var url = "http://localhost:8000/send_log?prolific_id=" +id + "&log=" + cleaned_string;
                 console.log(url)
 
                 var request = new XMLHttpRequest();
@@ -86,7 +86,6 @@ app.init().then(() => {
         document.getElementById("sessionID").disabled=false;
         chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
-        document.getElementById("sessionID").value = "";
     })
 
 
