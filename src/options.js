@@ -40,42 +40,60 @@ app.init().then(() => {
     
 
     document.getElementById("end").addEventListener("click", function(){
-        chrome.storage.local.get(["log_history"], function(r){
-            //for logging the last page visited on FB
-            if (r.log_history) {
-                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                    var activeTab = tabs[0];
-                    r.log_history.push({'last_page:': activeTab.url}) 
-                    chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
-                });
+        // save prolific id
+        var prolific_ID = document.getElementById("sessionID").value;
+        if (prolific_ID.length == 0) {
+            document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end session";
+            document.getElementById("result").style.backgroundColor = "";
+        } else {
+            chrome.storage.local.set({"submitted": "true"}, function(){});
+            chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
 
-                var stringfied = JSON.stringify(r.log_history);
-                var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
-                var id = document.getElementById("sessionID").value
-                var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
-                console.log(url)
-
-                var request = new XMLHttpRequest();
-                request.onreadystatechange = function(){
-                    if (request.readyState == 4 && request.status == 200){
-                        console.log('returned: ' + request.responseText)
-                        document.getElementById("result").innerHTML = "Your session data has been safely submitted."
-                    }
-                };
-                request.open('GET', url);
-                request.send();
-            }
-
-        });
+            chrome.storage.local.get(["log_history"], function(r){
+                //for logging the last page visited on FB
+                if (r.log_history) {
+                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                        var activeTab = tabs[0];
+                        r.log_history.push({'last_page:': activeTab.url}) 
+                        chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
+                    });
+    
+                    var stringfied = JSON.stringify(r.log_history);
+                    var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+                    var id = document.getElementById("sessionID").value
+                    var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
+                    console.log(url)
+    
+                    var request = new XMLHttpRequest();
+                    request.onreadystatechange = function(){
+                        if (request.readyState == 4 && request.status == 200){
+                            console.log('returned: ' + request.responseText)
+                            var id = JSON.parse(request.responseText);
+                            console.log(id);
+                            document.getElementById("result").innerHTML = "Your session data has been safely submitted." + "<br>"
+                            document.getElementById("result").innerHTML += "Your session ID is: " + id["session_path_id"] + "<br>" + "Please copy the session ID and enter it in the following survey."
+                            document.getElementById("result").style.backgroundColor = "yellow";
+                            document.getElementById("end").disabled=true;
+                        }
+                    };
+                    request.open('GET', url);
+                    request.send();
+                }
+    
+            });
+        }
+        
     })
 
     document.getElementById("submit").addEventListener("click", function(){
         browser.runtime.sendMessage("RELOAD");
         browser.runtime.sendMessage("RELOAD");
         document.getElementById("submit").disabled=true;
-        document.getElementById("sessionID").disabled=true;
-        chrome.storage.local.set({"submitted": "true"}, function(){});
-        chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
+        // document.getElementById("sessionID").disabled=true;
+        // chrome.storage.local.set({"submitted": "true"}, function(){});
+        // chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
+        document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
+        document.getElementById("result").style.backgroundColor = "";
         
     })
 
@@ -83,12 +101,12 @@ app.init().then(() => {
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
         document.getElementById("submit").disabled=false;
         document.getElementById("sessionID").disabled=false;
+        document.getElementById("end").disabled=false;
+        document.getElementById("result").innerHTML = "You started a new session. Please enter your Prolific ID before getting started.";
+        document.getElementById("result").style.backgroundColor = "";
         chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
     })
-
-
-     
 
 
 
