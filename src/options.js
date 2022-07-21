@@ -47,6 +47,7 @@ app.init().then(() => {
         if (result.started == "true") {
             document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
             document.getElementById("result").style.backgroundColor = "";
+            document.getElementById("result").style.color = "black";
             document.getElementById("submit").disabled=true;
             chrome.storage.local.get(["prolific_ID"], function(result){
                 if (result.prolific_ID) {
@@ -65,6 +66,7 @@ app.init().then(() => {
 
             if (result.started != "true") {
                 document.getElementById("result").innerHTML = "Warning: Please start the session first.";
+                document.getElementById("result").style.backgroundColor = "";
                 document.getElementById("result").style.color = "red";
             } else {
                 
@@ -73,6 +75,7 @@ app.init().then(() => {
                 if (prolific_ID.length == 0) {
                     document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end the session.";
                     document.getElementById("result").style.backgroundColor = "";
+                    document.getElementById("result").style.color = "black";
                 } else {
 
                     chrome.storage.local.set({"submitted": "true"}, function(){});
@@ -100,8 +103,9 @@ app.init().then(() => {
                                     var id = JSON.parse(request.responseText);
                                     console.log(id);
                                     document.getElementById("result").innerHTML = "Your session data has been safely submitted." + "<br>"
-                                    document.getElementById("result").innerHTML += "Your session ID is: " + id["session_path_id"] + "<br>" + "Please copy the session ID and enter it in the following survey."
+                                    document.getElementById("result").innerHTML += "Your session ID is: " + id["session_path_id"] + "<br>" + "Please copy the session ID and enter it in the Qualtrics survey."
                                     document.getElementById("result").style.backgroundColor = "yellow";
+                                    document.getElementById("result").style.color = "black";
                                     document.getElementById("end").disabled=true;
                                 }
                             };
@@ -117,15 +121,25 @@ app.init().then(() => {
     })
 
     document.getElementById("submit").addEventListener("click", function(){
-        browser.runtime.sendMessage("RELOAD");
-        browser.runtime.sendMessage("RELOAD");
-        document.getElementById("submit").disabled=true;
-        // document.getElementById("sessionID").disabled=true;
-        // chrome.storage.local.set({"submitted": "true"}, function(){});
-        // chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
-        document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
-        document.getElementById("result").style.backgroundColor = "";
-        chrome.storage.local.set({"started" : "true"}, function(){});
+
+        var prolific_ID = document.getElementById("sessionID").value;
+
+        if (prolific_ID.length == 0) {
+            document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
+            document.getElementById("result").style.backgroundColor = "";
+            document.getElementById("result").style.color = "red";
+        } else {
+            browser.runtime.sendMessage("RELOAD");
+            browser.runtime.sendMessage("RELOAD");
+            document.getElementById("submit").disabled=true;
+            // document.getElementById("sessionID").disabled=true;
+            // chrome.storage.local.set({"submitted": "true"}, function(){});
+            // chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
+            document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("result").style.backgroundColor = "";
+            document.getElementById("result").style.color = "black";
+            chrome.storage.local.set({"started" : "true"}, function(){});
+        }
         
     })
 
@@ -135,8 +149,9 @@ app.init().then(() => {
         document.getElementById("sessionID").disabled=false;
         // document.getElementById("sessionID").value = "";
         document.getElementById("end").disabled=false;
-        document.getElementById("result").innerHTML = "You started a new session. Please enter your Prolific ID before getting started.";
+        document.getElementById("result").innerHTML = "You cleared the previous session. <br> Please enter your Prolific ID and click <b>start session</b> to start a new one.";
         document.getElementById("result").style.backgroundColor = "";
+        document.getElementById("result").style.color = "black";
         chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
