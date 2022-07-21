@@ -11,7 +11,6 @@
     <!-- <fieldset> -->
         <!-- <legend id="legend">__MSG_optsLegend__</legend>
         <p><strong>**__MSG_optsReloadNotice__**</strong></p>
-
         <ul>
             <li>
                 <label>
@@ -112,24 +111,25 @@
         <img src="reset.svg" alt="Reset" class="reset" title="Default">
     </template> -->
     <div>
-        <h4>Facebook ad study</h4>
+        <h4 style="font-size : 17px">Facebook ad study</h4>
     </div>
-    <div id="result">Please enter your Prolific ID before getting started.</div>
+    <div id="result" style="font-size : 16px">Please enter your Prolific ID before getting started.</div>
     <br>
     <div>
         <form action="/action_page.php">
-          <label for="fname">Prolific ID:</label>
-          <input type="text" id="sessionID" name="sessionID"><br><br>
-          <button type="button" id="submit" class="addon-control">submit ID and start session</button>
+          <label for="fname" style="font-size : 16px">Prolific ID:</label>
+          <input type="text" id="sessionID" name="sessionID" style="font-size : 16px"><br><br>
+          <!-- <button type="button" id="submit" class="addon-control">submit ID and start session</button> -->
+          <button type="button" id="submit" class="addon-control" style="font-size : 17px">start session</button>
         </form>
     </div>
     <br>
     <div>
-        <button type="button" id="end" class="addon-control">end session</button> 
+        <button type="button" id="end" class="addon-control" style="font-size : 17px">submit and end session</button> 
     </div>
     <br>
     <div>
-        <button type="button" id="reset" class="addon-control">restart session</button> 
+        <button type="button" id="reset" class="addon-control" style="font-size : 17px">reset session</button> 
     </div>
 
     <script type="text/javascript" src="/browser-polyfill.min.js"></script>
