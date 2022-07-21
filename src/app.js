@@ -142,7 +142,7 @@ app.init().then(async () => {
         // We check to see if "createPost" doesn't return null to ensure the user is in the feed
         // var createPostExists = document.querySelector('.pybr56ya.dati1w0a.hv4rvrfc.osnr6wyh.lhclo0ds.j83agx80.bp9cbjyn')
         // if (!document.getElementById("dashboard") && createPostExists) {
-         if (!document.getElementById("dashboard") && location.href=="https://www.facebook.com/") {
+         if (document.getElementsByClassName("_9vtf").length == 0 && !document.getElementById("dashboard") && location.href=="https://www.facebook.com/") {
             console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
