@@ -8,13 +8,6 @@
   "author": "Michael Ziminsky, Jane Im, Weikun Lyu, Ruiyi Wang",
   "homepage_url": "https://github.com/trusttri/FacebookTrackingRemoval",
 
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{bb1b80be-e6b3-40a1-9b6e-9d4073343f0b}",
-      "strict_min_version": "59.0"
-    }
-  },
-
   "permissions": [
     "storage",
     "*://*.facebook.com/*",
