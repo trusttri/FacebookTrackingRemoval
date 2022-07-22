@@ -34,8 +34,8 @@ const BUTTON_SUB_NODE = '<div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnq
 // const DISCONNECT_ICON = '<img class="hu5pjgll lzf7d6o1" src="https://static.xx.fbcdn.net/rsrc.php/v3/yI/r/bnvx9uLOEsq.png" alt="" height="20" width="20">'
 const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/5yNj8IGYD_V.png&quot;); background-position: 0px -298px; background-size: 25px 400px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
-const ADVERTISERS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yh/r/WFNA6bx75b9.png&quot;); background-position: 0px -247px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
-const AD_ICON = '<img class="hu5pjgll bixrwtb6" src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/7Ea3snATiso.png" style="height:20px;width:20px" alt="">'
+const ADVERTISERS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/LXdzc74h5Pi.png&quot;); background-position: 0px -914px; background-size: 33px 1658px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const AD_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yr/r/GsbYDvdGUgU.png&quot;); background-position: 0px -268px; background-size: 25px 476px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 
 const titles = [
@@ -275,7 +275,7 @@ app.init().then(async () => {
 
     function refreshHome() {
         var home_button = document.querySelectorAll('[aria-label="Home"]');
-        if (home_button) {
+        if (home_button.length > 0) {
             // console.log("Refresh home page");
             home_button[0].addEventListener('click', e => location.href="https://www.facebook.com/");
         }
