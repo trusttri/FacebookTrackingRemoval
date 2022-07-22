@@ -139,6 +139,7 @@ app.init().then(async () => {
                 // var innerDiv = menu.querySelector('.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u');
                 var innerdiv_string = '.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u'
                 waitForElm(innerdiv_string).then((inner_elm) => { 
+                    if(document.getElementsByClassName('FBTR-Menu').length == 0) {
                     inner_elm[0].style.width = '568px';
                     
                     var nodes = elm
@@ -146,6 +147,7 @@ app.init().then(async () => {
                     
 
                     var this_ad_header = document.createElement('div')
+                    this_ad_header.className += 'FBTR-Menu';
                     this_ad_header.innerHTML = MENU_OPTION_NODE_WITH_DESC
                     this_ad_header.textContent = "For this ad"
                     this_ad_header.style = HEADER_STYLE;
@@ -172,6 +174,7 @@ app.init().then(async () => {
                             parent_node.appendChild(hr)
                         }
                     }
+                }
                 });   
                
             });
