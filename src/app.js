@@ -47,12 +47,12 @@ const titles = [
                     "All Facebook settings"
                 ]
 const descriptions = [
-                    "Decide if you want ads based on activity on other websites/apps or offline.",
-                    "Control off-Facebook activity, which is your activity on other business’ websites/apps.",
+                    "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
+                    "Control your off-Facebook activity, which is your activity on other businesses’ websites/apps.",
                     "Choose ad topics you want to see less.",
-                    "Review and hide ads from advertisers you’ve seen",
+                    "Review and hide ads from advertisers you’ve seen.",
                     "",
-                    "Shows tabs that include ad-related features not located in Ad Settings (e.g., Your Facebook Information tab)"
+                    "You can check more ad-related features not included in Ad Settings (e.g., Your Facebook Information tab)."
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/?section=data_from_partners",
