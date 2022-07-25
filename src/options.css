@@ -28,6 +28,31 @@ input {
 
 body {
     width: max-content;
+    background-color: #91a6ffff;
+}
+.infoSection{
+    text-align: center;
+}
+.infoSection div p {
+    font-size: 1rem;
+}
+.title {
+    font-size: 2em;
+}
+.callout {
+    /* font-size: 1em; */
+    background-color: #ff5e5bff;
+    border-radius: 15px;
+    height: 2.5rem;
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 1rem;
+    /* outline:auto; */
+    /* margin: 10px */
+}
+.callout p {
+    margin: 10px
 }
 
 ul {
