@@ -185,6 +185,7 @@ app.init().then(async () => {
             var button_icon = document.createElement("div");
             button_icon.innerHTML = DROPDOWN_SVG;
             // button_icon.innerHTML = BUTTON_ICON;
+            button_icon.firstChild.classList.add("dropdownButton");
             button_icon.firstChild.style.position = 'absolute';
             button_icon.firstChild.style.right = '10px';
             
