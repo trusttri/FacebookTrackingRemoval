@@ -122,7 +122,7 @@ app.init().then(async () => {
 
                     adBtn.insertBefore(settingsBtn, adBtn.firstChild);
                     adBtn.addEventListener("click", e => changeMenu());
-                    adBtn.parentElement.parentElement.style.width = "120px";
+                    adBtn.parentElement.parentElement.style.width = "127px";
 
                 }
             }
@@ -454,7 +454,7 @@ app.init().then(async () => {
             for (const e of selectAllWithBase(node, sel)) {
                 // console.log('visibility')
                 // console.log(e);
-        
+      
                 const elementText = visibleText(e);
                 // console.log(elementText);
                 if ((texts.length === 0 || texts.includes(normalizeString(elementText))) && hide(e, elementText)) {
