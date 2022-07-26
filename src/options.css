@@ -28,7 +28,7 @@ input {
 
 body {
     width: 40rem;
-    background-color: #91a6ffff;
+    /*background-color: #91a6ffff;*/
 }
 .infoSection{
     text-align: center;
@@ -39,6 +39,10 @@ body {
 .title {
     font-size: 2em;
 }
+.default {
+    background-color: white;
+}
+
 .callout {
     /* font-size: 1em; */
     background-color: #ff5e5bff;
