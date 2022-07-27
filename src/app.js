@@ -35,35 +35,19 @@ const AD_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" st
 const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 
 const titles = [
-                    "Stop using data from partners to personalize ads", 
-                    "Review/disconnect off-Facebook activity",
-                    "Manage ad topics",
-                    "Review advertisers",
                     "Ad settings",
                     "All Facebook settings"
                 ]
 const descriptions = [
-                    "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
-                    "Control your off-Facebook activity, which is your activity on other businesses’ websites/apps.",
-                    "Choose ad topics you want to see less.",
-                    "Review and hide ads from advertisers you’ve seen.",
                     "",
                     "You can check more ad-related features not included in Ad Settings (e.g., Your Facebook Information tab)."
                     ]
 const urls = [
-            "https://www.facebook.com/adpreferences/?section=data_from_partners",
-            "https://www.facebook.com/off_facebook_activity",
-            "https://www.facebook.com/adpreferences/ad_topics",
-            "https://www.facebook.com/adpreferences/advertisers",
             "https://www.facebook.com/adpreferences/ad_settings",
             "https://www.facebook.com/settings"
             ]
 
 const icons = [
-                DISCONNECT_ICON, 
-                DISCONNECT_ICON, 
-                AD_ICON,
-                ADVERTISERS_ICON,
                 SETTINGS_ICON,
                 SETTINGS_ICON
             ]
@@ -171,11 +155,11 @@ app.init().then(async () => {
                     // add links to privacy controls
                     for (let i = 0; i < titles.length; i++) {
                         appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
-                        if(i==1 || i==3){
-                            var hr = document.createElement('div');
-                            hr.innerHTML = HR_BREAK
-                            parent_node.appendChild(hr)
-                        }
+                        // if(i==1 || i==3){
+                        //     var hr = document.createElement('div');
+                        //     hr.innerHTML = HR_BREAK
+                        //     parent_node.appendChild(hr)
+                        // }
                     }
                 }
                 });   
