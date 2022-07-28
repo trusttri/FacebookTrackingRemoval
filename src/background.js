@@ -135,31 +135,5 @@ app.init().then(() => {
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
     browser.tabs.onReplaced.addListener(fbTabs.delete.bind(fbTabs));
 
-    function checkRequest(details, forceBlock) {
-        if (!app.options.enabled)
-            return;
-
-        if (forceBlock || ["beacon", "ping"].includes(details.type)) {
-            app.log(`Blocking ${details.type} request to ${details.url}`);
-            return { cancel: true };
-        }
-    }
-
-    function* genBlockUrls(paths) {
-        for (let h of app.host_patterns)
-            for (let p of paths)
-                yield h.replace(/\*$/, p);
-    }
-
-    browser.webRequest.onBeforeRequest.addListener(
-        checkRequest,
-        { urls: app.host_patterns },
-        ["blocking"]
-    );
-
-    browser.webRequest.onBeforeRequest.addListener(
-        details => checkRequest(details, true),
-        { urls: [...genBlockUrls(["ajax/bz*", "ajax/bnzai*", "xti.php?*"]), ...app.host_patterns.map(h => h.replace("*.", "pixel."))] },
-        ["blocking"]
-    );
+   
 }).catch(console.warn);
