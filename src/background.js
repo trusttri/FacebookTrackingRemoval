@@ -1,24 +1,18 @@
 /*  This file is part of FacebookTrackingRemoval.
-
     FacebookTrackingRemoval is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     FacebookTrackingRemoval is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with FacebookTrackingRemoval.  If not, see <http://www.gnu.org/licenses/>.
-
     Copyright (C) 2016-2021 Michael Ziminsky
 */
 
 'use strict';
-
-
 
 // Do some cleanup after updating to 1.6.4+ for the first time
 // to get rid of old storage data that is no longer used
@@ -53,8 +47,6 @@ setInterval(refreshRules, 1000 * 60 * 60 * 12); // refresh every 12 hours
 app.init().then(() => {
     const optionsWindows = new Set();
     const fbTabs = new Map();
-
-    console.log('test')
 
     function updateCSS(id, opts) {
         const prev = fbTabs.get(id);
@@ -114,12 +106,11 @@ app.init().then(() => {
             .then(opts => handleChanged(app.options, opts))
             .then(app.init)
             .catch(app.warn);
-
+            
         chrome.storage.sync.clear();
     }
 
-    browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-        console.log(msg)
+    browser.runtime.onMessage.addListener((msg, sender) => {
         if (msg === "OPTIONS") {
             browser.extension.getViews()
                 .filter(w => !optionsWindows.has(w) && (w.location.pathname === "/src/options.html"))
@@ -137,50 +128,8 @@ app.init().then(() => {
         }
     });
 
-    //  browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    //     if (request.message === "URL") {
-    //         chrome.tabs.query({
-    //             'active': true,
-    //             'lastFocusedWindow': true
-    //         }, function(tabs) {
-    //             var url = tabs[0].url
-    //             console.log(url)
-    //             sendResponse({url}); //it seems this is not working
-    //             chrome.storage.local.set({"URL": url}, function(){console.log('url udated')});
-    //             return true;
-    //         });
-    //         return true;            
-    //     } 
-    // });
-
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
     browser.tabs.onReplaced.addListener(fbTabs.delete.bind(fbTabs));
 
-    function checkRequest(details, forceBlock) {
-        if (!app.options.enabled)
-            return;
-
-        if (forceBlock || ["beacon", "ping"].includes(details.type)) {
-            app.log(`Blocking ${details.type} request to ${details.url}`);
-            return { cancel: true };
-        }
-    }
-
-    function* genBlockUrls(paths) {
-        for (let h of app.host_patterns)
-            for (let p of paths)
-                yield h.replace(/\*$/, p);
-    }
-
-    browser.webRequest.onBeforeRequest.addListener(
-        checkRequest,
-        { urls: app.host_patterns },
-        ["blocking"]
-    );
-
-    browser.webRequest.onBeforeRequest.addListener(
-        details => checkRequest(details, true),
-        { urls: [...genBlockUrls(["ajax/bz*", "ajax/bnzai*", "xti.php?*"]), ...app.host_patterns.map(h => h.replace("*.", "pixel."))] },
-        ["blocking"]
-    );
+   
 }).catch(console.warn);
