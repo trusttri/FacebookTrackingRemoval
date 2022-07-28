@@ -87,27 +87,6 @@ app.init().then(async () => {
 
         _running = true;
 
-        (async () => {
-            // removeArticles(body, _userRules);
-            // console.log(body)
-            // if (app.options.delSuggest)
-            //     removeArticles(body, app.hide_rules.suggestions_smart);
-            // if (app.options.delPixeled)
-            //     removeArticles(body, app.hide_rules.content);
-            // if (app.options.pendingRules)
-            //     removeArticles(body, app.hide_rules.content_pending);
-
-            // if (app.options.internalRefs)
-            //     stripRefs(body);
-
-            // if (app.options.fixLinks && removeLinkTracking(body) && document.getElementById("newsFeedHeading")) {
-            // if (app.options.fixLinks && removeLinkTracking(body) && document.getElementById("newsFeedHeading")) {
-            //     const feed = document.getElementById("newsFeedHeading").parentNode;
-            //     for (const stream of feed.querySelectorAll("div._4ikz")) {
-            //         applyEventBlockers(stream);
-            //     }
-            // }
-        })();
     }
 
     if (document.body) {
