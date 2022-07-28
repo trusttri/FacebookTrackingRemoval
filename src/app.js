@@ -655,10 +655,10 @@ app.init().then(async () => {
             
         }).observe(body, (() => {
             const opts = { childList: true, subtree: true, characterData: false };
-            if (app.options.fixLinks) {
-                opts.attributes = true;
-                opts.attributeFilter = ["href"];
-            }
+            // if (app.options.fixLinks) {
+            //     opts.attributes = true;
+            //     opts.attributeFilter = ["href"];
+            // }
             return opts;
         })());
 
