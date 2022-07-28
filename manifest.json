@@ -31,7 +31,7 @@
   },
 
   "background": {
-    "service_worker": "background.js",
+    "service_worker": "background-real.js",
     "type": "module"
   },
 
@@ -62,7 +62,7 @@
     "resources": ["src/hide_rules/*",
                   "src/click_whitelist/*",
                   "src/param_cleaning/*",
-                  "browser-polyfill.min.js"],
+                  "src/browser-polyfill.min.js"],
     "matches": ["<all_urls>"]
   }],
 
