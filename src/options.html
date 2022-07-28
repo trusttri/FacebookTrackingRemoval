@@ -110,20 +110,40 @@
     <!-- <template id="btnReset">
         <img src="reset.svg" alt="Reset" class="reset" title="Default">
     </template> -->
-    <div>
-        <h4>Facebook ad study</h4>
+    <div class="infoSection">
+        <h4 class="title">Facebook ad settings study</h4>
+        <div id="resultBox"> <p id="result">Please enter your Prolific ID before getting started.</p></div>
     </div>
-    <div>
-        <form action="/action_page.php">
-          <label for="fname">Prolific ID:</label>
-          <input type="text" id="sessionID" name="sessionID"><br><br>
-          <button type="button" id="submit" class="addon-control">submit and start session</button>
-        </form>
-    </div>
+    
     <br>
-    <div>
-        <button type="button" id="reset" class="addon-control" disabled>end session</button> 
+    <div class="float-container">
+        <div class="float-child">
+            <div >
+                <form action="/action_page.php">
+                    <label for="fname" style="font-size : 16px">Prolific ID:</label>
+                    <input type="text" id="sessionID" name="sessionID" style="font-size : 16px"><br><br>
+                    <!-- <button type="button" id="submit" class="addon-control">submit ID and start session</button> -->
+                    <button type="submit" id="submit" class="addon-control" style="font-size : 17px; cursor: pointer;">start session</button>
+                </form>
+            </div>
+            <br>
+            <div>
+                <button type="button" id="end" class="addon-control" style="font-size : 17px; cursor: pointer;">submit and end session</button> 
+            </div>
+            <br>
+            <div>
+                <button type="button" id="reset" class="addon-control" style="font-size : 17px; cursor: pointer;">reset session</button> 
+            </div>
+        </div>
+        <div class="float-child">
+            <p>This is a Chrome extension built by researchers at the University of Michigan for <b>research purposes</b>. 
+            <br>
+            <br>
+            If you experience any difficulties or have questions, please reach out to <br> ad-control-study@umich.edu</p>
+            <img src="https://umich.edu/skins/um2013/media/images/U-M-logo-preview.jpg" alt="University of Michigan logo"/>
+        </div>
     </div>
+    
 
     <script type="text/javascript" src="/browser-polyfill.min.js"></script>
     <script type="text/javascript" src="common.js"></script>

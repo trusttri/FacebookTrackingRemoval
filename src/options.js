@@ -24,29 +24,143 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
+    chrome.storage.local.get(["submitted"], function(result){
+        if (result.submitted=="true") {
+            document.getElementById("submit").disabled=true;
+            document.getElementById("sessionID").disabled=true;
+            chrome.storage.local.get(["prolific_ID"], function(result){
+                if (result.prolific_ID) {
+                    document.getElementById("sessionID").value = result.prolific_ID
+                }
+            });
+
+        }
+    });
+
+
+    document.getElementById("sessionID").addEventListener("keyup", function(){
+        chrome.storage.local.set({"prolific_ID" : document.getElementById("sessionID").value}, function(){});
+    })
+
     
-    // document.getElementById("reset").addEventListener("click", _ => app.options.reset().then(() => document.body.classList.add("resetDone")));
-    document.getElementById("reset").addEventListener("click", function(){
-        chrome.storage.local.get(["log_history"], function(r){
-            if (r.log_history) {
-               console.log("clicked")
-               console.log(JSON.stringify(r.log_history))
-               // chrome.tabs.create({url: chrome.extension.getURL('options.html')});
-               var div = document.createElement('div')
-               div.innerHTML = JSON.stringify(r.log_history)
-               document.getElementById("reset").parentElement.append(div)
-            }
+    chrome.storage.local.get(["started"], function(result){
+        if (result.started == "true") {
+            document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("result").style.backgroundColor = "";
+            document.getElementById("result").style.color = "black";
+            document.getElementById("submit").disabled=true;
+            chrome.storage.local.get(["prolific_ID"], function(result){
+                if (result.prolific_ID) {
+                    document.getElementById("sessionID").value = result.prolific_ID;
+                }
+            })
+        }
+    })
+    
+
+    document.getElementById("end").addEventListener("click", function(){
+
+        // check if a session is started
+        chrome.storage.local.get(["started"], function(result){
+            console.log(result.started);
+
+            if (result.started != "true") {
+                document.getElementById("result").innerHTML = "Warning: Please start the session first.";
+                document.getElementById("result").style.backgroundColor = "";
+                document.getElementById("resultBox").className = "callout"
+                document.getElementById("result").style.color = "white";
+            } else {
+                
+                var prolific_ID = document.getElementById("sessionID").value;
+                // check if prolific ID is empty
+                if (prolific_ID.length == 0) {
+                    document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end the session.";
+                    document.getElementById("result").style.backgroundColor = "";
+                    document.getElementById("resultBox").className = "callout"
+                    document.getElementById("result").style.color = "white";
+                } else {
+
+                    chrome.storage.local.set({"submitted": "true"}, function(){});
+                    chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
+
+                    chrome.storage.local.get(["log_history"], function(r){
+                    //for logging the last page visited on FB
+                        if (r.log_history) {
+                            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                                var activeTab = tabs[0];
+                                r.log_history.push({'last_page:': activeTab.url}) 
+                                chrome.storage.local.set({"log_history": r.log_history}, function(){console.log(r.log_history)});
+                            });
+            
+                            var stringfied = JSON.stringify(r.log_history);
+                            var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+                            var id = document.getElementById("sessionID").value
+                            var url = "https://ad-control-study.si.umich.edu/send_log?prolific_id=" +id + "&log=" + cleaned_string;
+                            console.log(url)
+            
+                            var request = new XMLHttpRequest();
+                            request.onreadystatechange = function(){
+                                if (request.readyState == 4 && request.status == 200){
+                                    console.log('returned: ' + request.responseText)
+                                    var id = JSON.parse(request.responseText);
+                                    console.log(id);
+                                    document.getElementById("result").innerHTML = "Your session data has been safely submitted." + "<br>"
+                                    document.getElementById("result").innerHTML +=  "Your session ID is: " + "<span style='background-color: #3573d3; color: white; padding: 1px 5px 1px 5px'>" + id["session_path_id"] + "</span>" +"<br>" + "<strong>" + "Please copy the session ID and enter it in the Qualtrics survey." + "</strong>"
+                                    document.getElementById("resultBox").className = "default"
+                                    document.getElementById("result").style.color = "black";
+                                    document.getElementById("end").disabled=true;
+                                }
+                            };
+                            request.open('GET', url);
+                            request.send();
+                        }
+
+                    });
+                }
+           }
         });
+        
     })
 
     document.getElementById("submit").addEventListener("click", function(){
-        browser.runtime.sendMessage("RELOAD");
-        browser.runtime.sendMessage("RELOAD");
-        document.getElementById("reset").disabled = false;
-        document.getElementById("submit").disabled = true;
-        document.getElementById("sessionID").disabled = true;
 
+        var prolific_ID = document.getElementById("sessionID").value;
+
+        if (prolific_ID.length == 0) {
+            document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
+            document.getElementById("result").style.backgroundColor = "";
+            document.getElementById("resultBox").className = "callout"
+            document.getElementById("result").style.color = "white";
+        } else {
+            browser.runtime.sendMessage("RELOAD");
+            browser.runtime.sendMessage("RELOAD");
+            document.getElementById("submit").disabled=true;
+            // document.getElementById("sessionID").disabled=true;
+            // chrome.storage.local.set({"submitted": "true"}, function(){});
+            // chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
+            document.getElementById("result").textContent = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
+            
+            chrome.storage.local.set({"started" : "true"}, function(){});
+        }
+        
     })
+
+    document.getElementById("reset").addEventListener("click", function(){
+        chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
+        document.getElementById("submit").disabled=false;
+        document.getElementById("sessionID").disabled=false;
+        // document.getElementById("sessionID").value = "";
+        document.getElementById("end").disabled=false;
+        document.getElementById("result").style.color = "white";
+        document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Please enter your Prolific ID and click <b>start session</b> to start a new one. </span>";
+        document.getElementById("resultBox").className = "callout"
+        chrome.storage.local.set({"submitted": "false"}, function(){});
+        chrome.storage.local.set({"started": "false"}, function(){});
+        chrome.storage.local.set({"prolific_ID": ""}, function(){});
+    })
+
 
 
     // document.getElementById("legend").textContent += ` - v${browser.runtime.getManifest().version}`;

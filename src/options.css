@@ -27,7 +27,51 @@ input {
 }
 
 body {
-    width: max-content;
+    width: 40rem;
+    /*background-color: #91a6ffff;*/
+}
+.infoSection{
+    text-align: center;
+}
+.infoSection div p {
+    font-size: 1rem;
+}
+.title {
+    font-size: 2em;
+}
+.default {
+    background-color: white;
+}
+
+.callout {
+    /* font-size: 1em; */
+    background-color: #ff5e5bff;
+    border-radius: 15px;
+    height: 3.5rem;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    /* outline:auto; */
+    /* margin: 10px */
+}
+.callout p {
+    margin: 10px
+}
+
+.float-container {
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}  
+.float-child img {
+    width: inherit;
+    height: inherit;
 }
 
 ul {
