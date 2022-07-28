@@ -1,18 +1,14 @@
 /*  This file is part of FacebookTrackingRemoval.
-
     FacebookTrackingRemoval is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     FacebookTrackingRemoval is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with FacebookTrackingRemoval.  If not, see <http://www.gnu.org/licenses/>.
-
     Copyright (C) 2016-2021 Michael Ziminsky
 */
 
@@ -135,31 +131,5 @@ app.init().then(() => {
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
     browser.tabs.onReplaced.addListener(fbTabs.delete.bind(fbTabs));
 
-    function checkRequest(details, forceBlock) {
-        if (!app.options.enabled)
-            return;
-
-        if (forceBlock || ["beacon", "ping"].includes(details.type)) {
-            app.log(`Blocking ${details.type} request to ${details.url}`);
-            return { cancel: true };
-        }
-    }
-
-    function* genBlockUrls(paths) {
-        for (let h of app.host_patterns)
-            for (let p of paths)
-                yield h.replace(/\*$/, p);
-    }
-
-    browser.webRequest.onBeforeRequest.addListener(
-        checkRequest,
-        { urls: app.host_patterns },
-        ["blocking"]
-    );
-
-    browser.webRequest.onBeforeRequest.addListener(
-        details => checkRequest(details, true),
-        { urls: [...genBlockUrls(["ajax/bz*", "ajax/bnzai*", "xti.php?*"]), ...app.host_patterns.map(h => h.replace("*.", "pixel."))] },
-        ["blocking"]
-    );
+   
 }).catch(console.warn);
