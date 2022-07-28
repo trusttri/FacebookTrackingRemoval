@@ -85,50 +85,8 @@ app.init().then(() => {
         }
     });
 
-    //  browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    //     if (request.message === "URL") {
-    //         chrome.tabs.query({
-    //             'active': true,
-    //             'lastFocusedWindow': true
-    //         }, function(tabs) {
-    //             var url = tabs[0].url
-    //             console.log(url)
-    //             sendResponse({url}); //it seems this is not working
-    //             chrome.storage.local.set({"URL": url}, function(){console.log('url udated')});
-    //             return true;
-    //         });
-    //         return true;            
-    //     } 
-    // });
 
     browser.tabs.onRemoved.addListener(fbTabs.delete.bind(fbTabs));
     browser.tabs.onReplaced.addListener(fbTabs.delete.bind(fbTabs));
 
-    function checkRequest(details, forceBlock) {
-        if (!app.options.enabled)
-            return;
-
-        if (forceBlock || ["beacon", "ping"].includes(details.type)) {
-            app.log(`Blocking ${details.type} request to ${details.url}`);
-            return { cancel: true };
-        }
-    }
-
-    function* genBlockUrls(paths) {
-        for (let h of app.host_patterns)
-            for (let p of paths)
-                yield h.replace(/\*$/, p);
-    }
-
-    browser.webRequest.onBeforeRequest.addListener(
-        checkRequest,
-        { urls: app.host_patterns },
-        ["blocking"]
-    );
-
-    browser.webRequest.onBeforeRequest.addListener(
-        details => checkRequest(details, true),
-        { urls: [...genBlockUrls(["ajax/bz*", "ajax/bnzai*", "xti.php?*"]), ...app.host_patterns.map(h => h.replace("*.", "pixel."))] },
-        ["blocking"]
-    );
 }).catch(console.warn);
