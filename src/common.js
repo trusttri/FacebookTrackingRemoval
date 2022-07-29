@@ -60,10 +60,6 @@ const app = {};
         defaults: {
             value: Object.freeze({
                 enabled: true,
-                fixLinks: false, //Remove tracking from external links
-                internalRefs: false, //Remove tracking values from internal links
-                inlineVids: false,
-                fixVideos: false,
                 delPixeled: true, //Hide Sponsored articles
                 delSuggest: false, //Hide inline suggestions
                 useStyle: false,

@@ -72,8 +72,8 @@ const icons = [
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
-if (app.isChrome)
-    browser.runtime.sendMessage({});
+// if (app.isChrome)
+//     browser.runtime.sendMessage({});
 
 app.init().then(async () => {
     if (!app.options.enabled)
@@ -340,10 +340,10 @@ app.init().then(async () => {
             
         }).observe(body, (() => {
             const opts = { childList: true, subtree: true, characterData: false };
-            if (app.options.fixLinks) {
-                opts.attributes = true;
-                opts.attributeFilter = ["href"];
-            }
+            // if (app.options.fixLinks) {
+            //     opts.attributes = true;
+            //     opts.attributeFilter = ["href"];
+            // }
             return opts;
         })());
 
@@ -401,6 +401,6 @@ app.init().then(async () => {
         }
     });
 
-    browser.runtime.sendMessage(app.options);
+    // browser.runtime.sendMessage(app.options);
 
 }).catch(console.warn);
