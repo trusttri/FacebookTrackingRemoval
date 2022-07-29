@@ -79,7 +79,7 @@ app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
-    const _userRules = parseHideRules(app.options.userRules);
+    // const _userRules = parseHideRules(app.options.userRules);
 
     // function that detects and changes ads
     function hide(elem, label) {
@@ -313,7 +313,7 @@ app.init().then(async () => {
                 if (mutation.type === "childList" && !SKIP.includes(mutation.target.nodeName)) {
                     const target = mutation.target;
 
-                    removeArticles(target, _userRules);
+                    // removeArticles(target, _userRules);
 
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
@@ -350,7 +350,7 @@ app.init().then(async () => {
         _running = true;
 
         (async () => {
-            removeArticles(body, _userRules);
+            // removeArticles(body, _userRules);
             // console.log(body)
             // if (app.options.delSuggest)
             //     removeArticles(body, app.hide_rules.suggestions_smart);
@@ -384,22 +384,22 @@ app.init().then(async () => {
     }
 
     // Fallback for chrome based browsers that don't support tabs.removeCSS
-    browser.runtime.onMessage.addListener(msg => {
-        let styleElement = document.getElementById('fbtr-style');
-        if (!styleElement) {
-            styleElement = document.createElement('style');
-            styleElement.id = 'fbtr-style';
-            document.head.append(styleElement);
-        }
+    // browser.runtime.onMessage.addListener(msg => {
+    //     let styleElement = document.getElementById('fbtr-style');
+    //     if (!styleElement) {
+    //         styleElement = document.createElement('style');
+    //         styleElement.id = 'fbtr-style';
+    //         document.head.append(styleElement);
+    //     }
 
-        if (styleElement.sheet.cssRules.length)
-            styleElement.sheet.deleteRule(0);
+    //     if (styleElement.sheet.cssRules.length)
+    //         styleElement.sheet.deleteRule(0);
 
-        if (msg) {
-            // Timeout required for page to reparse
-            setTimeout(() => styleElement.sheet.insertRule(msg), 50);
-        }
-    });
+    //     if (msg) {
+    //         // Timeout required for page to reparse
+    //         setTimeout(() => styleElement.sheet.insertRule(msg), 50);
+    //     }
+    // });
 
     // browser.runtime.sendMessage(app.options);
 

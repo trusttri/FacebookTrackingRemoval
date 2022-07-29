@@ -177,7 +177,6 @@ const app = {};
                     await loadParamCleaning();
                     await loadClickWhitelist();
 
-                    app.log("Initialized Tracking Removal");
                     app.log(JSON.stringify(app.options));
 
                     inited = true;
