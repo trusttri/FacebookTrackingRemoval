@@ -132,6 +132,8 @@ app.init().then(() => {
             document.getElementById("resultBox").className = "callout"
             document.getElementById("result").style.color = "white";
         } else {
+            //deliberately twice
+            browser.runtime.sendMessage("RELOAD");
             browser.runtime.sendMessage("RELOAD");
             document.getElementById("submit").disabled=true;
             // document.getElementById("sessionID").disabled=true;
