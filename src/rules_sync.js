@@ -106,27 +106,9 @@ async function loadArrayData(fetchFunc, key, files) {
 }
 
 async function refreshRules({ force = false, check = false } = {}) {
-    const devMode = (await browser.management.getSelf()).installType === "development";
-    const { lastRuleRefresh: lastRefresh } = await browser.storage.local.get("lastRuleRefresh");
-
-    // Prevent abuse, max refresh once per 15 min
-    const timeout = force ? 0 : RATE_LIMIT - (Date.now() - Date.parse(lastRefresh));
-
-    if (check)
-        return Promise.resolve(Math.max(0, timeout));
-
-    if (timeout > 0)
-        return Promise.reject(timeout);
 
     const fetchRule = async (path, current) => {
-        const resp = await fetch(`https://${devMode ? "localhost" : "mgziminsky.gitlab.io"}/FacebookTrackingRemoval/${path}`, { mode: 'cors' })
-            .then(resp => resp.ok ? resp : Promise.reject())
-            .catch(_ => current
-                ? new Response(current, { status: 418 }) // keep saved value if present
-                : fetch(browser.runtime.getURL(`src/${path}`)) // Fallback to bundled copy as last resort, should never fail if file is present
-            )
-            .catch(err => new Response(err, { status: 500 })); // Final fallback in case of any other error
-
+        const resp = fetch(browser.runtime.getURL(`src/${path}`)) // Fallback to bundled copy as last resort, should never fail if file is present
         if (!resp.ok)// || !force && shouldSkip(resp.headers.get(DATE_HEADER), (current || {})[DATE_HEADER]))
             return null; // No updates, or no file
 
@@ -138,5 +120,5 @@ async function refreshRules({ force = false, check = false } = {}) {
         param_cleaning: await loadArrayData(fetchRule, "param_cleaning", PARAM_CLEANING_FILES),
         click_whitelist: await loadArrayData(fetchRule, "click_whitelist", CLICK_WHITELIST_FILES),
         lastRuleRefresh: new Date().toUTCString(),
-    }).then(() => RATE_LIMIT);
+    });
 }

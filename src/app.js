@@ -80,6 +80,7 @@ app.init().then(async () => {
         return;
 
     const _userRules = parseHideRules(app.options.userRules);
+    refreshRules();
 
     // function that detects and changes ads
     function hide(elem, label) {
