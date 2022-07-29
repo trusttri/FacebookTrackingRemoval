@@ -60,15 +60,14 @@ const icons = [
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
-if (app.isChrome)
-    browser.runtime.sendMessage({});
+// if (app.isChrome)
+//     browser.runtime.sendMessage({chrome});
 
 app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
     const _userRules = parseHideRules(app.options.userRules);
-
 
     // function that detects and changes ads
     function hide(elem, label) {
@@ -315,7 +314,8 @@ app.init().then(async () => {
             var deepCopy = e.target.cloneNode(true)
             var parent = e.target.parentElement
             var clickEvent = {
-                "page" : location.href,
+                "page" : location.href, 
+
                 "clicked_element_href": deepCopy.href,
                 "clicked_element_outer": deepCopy.outerHTML,
 
@@ -340,6 +340,8 @@ app.init().then(async () => {
 
         }
 
+
+
         const SKIP = ["SCRIPT", "STYLE", "LINK"];
         const forEachAdded = (mutation, cb) => {
             for (const node of mutation.addedNodes) {
@@ -348,7 +350,6 @@ app.init().then(async () => {
                 }
             }
         };
-
       
 
         new MutationObserver(async mutations => {
@@ -401,10 +402,10 @@ app.init().then(async () => {
             
         }).observe(body, (() => {
             const opts = { childList: true, subtree: true, characterData: false };
-            if (app.options.fixLinks) {
-                opts.attributes = true;
-                opts.attributeFilter = ["href"];
-            }
+            // if (app.options.fixLinks) {
+            //     opts.attributes = true;
+            //     opts.attributeFilter = ["href"];
+            // }
             return opts;
         })());
 
@@ -462,7 +463,7 @@ app.init().then(async () => {
         }
     });
 
-    browser.runtime.sendMessage(app.options);
+    // browser.runtime.sendMessage(app.options);
 
 
 }).catch(console.warn);
