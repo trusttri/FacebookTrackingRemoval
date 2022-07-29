@@ -104,9 +104,14 @@ const app = {};
         },
         [RULES_KEY]: {
             value: Object.seal({
-                article_wrapper: "",
-                suggestions_smart: {},
-                content: {},
+                article_wrapper: "article,div._55wo,div.mbm,div.pagelet,div[data-pagelet='RightRail']>*>*,div[role=article]",
+                suggestions_smart: {'span[dir]': [" aeklmnopuwy", " degopstu", " defgorstuy", " degoprstu", 
+                                                " bcefgiloprstuw", " adegpstu", " adegilmnostuv", "elrs", 
+                                                " adehilnorstv"
+                                                ]},
+                content: {'a[role=link],div[role=button],h3>*': [
+                            "denoprs", "inoprsé", "acdinoprt", "abcdilpu", "egnoprst", "ainoprstz"
+                        ]},
                 content_pending: {},
             }),
             enumerable: true
@@ -172,7 +177,6 @@ const app = {};
                     await loadParamCleaning();
                     await loadClickWhitelist();
 
-                    app.log("Initialized Tracking Removal");
                     app.log(JSON.stringify(app.options));
 
                     inited = true;
