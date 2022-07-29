@@ -51,7 +51,7 @@
         "*://*.facebookcorewwwi.onion/*"
       ],
       "css": ["src/app.css"],
-      "js": ["src/browser-polyfill.min.js", "src/common.js", "src/util.js", "src/app.js"],
+      "js": ["src/browser-polyfill.min.js", "src/common.js", "src/util.js", "src/rules_sync.js","src/app.js"],
       "run_at": "document_end"
     }
   ],
