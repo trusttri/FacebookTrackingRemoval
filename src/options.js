@@ -133,7 +133,6 @@ app.init().then(() => {
             document.getElementById("result").style.color = "white";
         } else {
             browser.runtime.sendMessage("RELOAD");
-            browser.runtime.sendMessage("RELOAD");
             document.getElementById("submit").disabled=true;
             // document.getElementById("sessionID").disabled=true;
             // chrome.storage.local.set({"submitted": "true"}, function(){});
@@ -309,8 +308,8 @@ app.init().then(() => {
 
 
     // Keep in sync with other options pages
-    browser.storage.onChanged.addListener(() => app.init().then(init));
+    // browser.storage.onChanged.addListener(() => app.init().then(init));
 
     // Tell the background script a new options window was opened
-    browser.runtime.sendMessage("OPTIONS");
+    // browser.runtime.sendMessage("OPTIONS");
 }, console.log);
