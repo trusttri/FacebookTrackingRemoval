@@ -31,7 +31,7 @@
   },
 
   "background": {
-    "service_worker": "background-real.js",
+    "service_worker": "background.js",
     "type": "module"
   },
 
