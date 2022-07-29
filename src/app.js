@@ -56,8 +56,8 @@ const icons = [
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
-if (app.isChrome)
-    browser.runtime.sendMessage({});
+// if (app.isChrome)
+//     browser.runtime.sendMessage({});
 
 app.init().then(async () => {
     if (!app.options.enabled)
@@ -69,8 +69,10 @@ app.init().then(async () => {
     function hide(elem, label) {
         /* temporary code */
         augmentButton(elem) // our code for augmenting button on ads
-            
 
+        var ad_content = elem.closest(app.hide_rules.article_wrapper)
+        var sponsor = ad_content.querySelector(".oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p")
+        console.log(sponsor.querySelector('span').innerHTML)
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
             return false;
@@ -218,16 +220,16 @@ app.init().then(async () => {
 
 /////////////////////////// END OUR CODE ///////////////////////////
 
-
-
     function removeArticles(node, rules) {
+        // console.log("removeArticles")
         for (const [sel, texts] of Object.entries(rules)) {
             // console.log(sel)
             for (const e of selectAllWithBase(node, sel)) {
                 // console.log('visibility')
-                // console.log(e);
+                
       
                 const elementText = visibleText(e);
+                // console.log(e)
                 // console.log(elementText);
                 if ((texts.length === 0 || texts.includes(normalizeString(elementText))) && hide(e, elementText)) {
                     app.log(() => {
@@ -288,25 +290,6 @@ app.init().then(async () => {
             }
         };
 
-        function waitForBtn(selector) {
-            return new Promise(resolve => {
-                if (document.getElementsByClassName(selector)[0]) {
-                    return resolve(document.getElementsByClassName(selector));
-                }
-
-                const observer = new MutationObserver(mutations => {
-                    if (document.getElementsByClassName(selector)[0]) {
-                        resolve(document.getElementsByClassName(selector));
-                        observer.disconnect();
-                    }
-                });
-
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-            });
-        }
 
         new MutationObserver(async mutations => {
             for (const mutation of mutations) {
@@ -340,10 +323,10 @@ app.init().then(async () => {
             
         }).observe(body, (() => {
             const opts = { childList: true, subtree: true, characterData: false };
-            if (app.options.fixLinks) {
-                opts.attributes = true;
-                opts.attributeFilter = ["href"];
-            }
+            // if (app.options.fixLinks) {
+            //     opts.attributes = true;
+            //     opts.attributeFilter = ["href"];
+            // }
             return opts;
         })());
 
@@ -401,6 +384,6 @@ app.init().then(async () => {
         }
     });
 
-    browser.runtime.sendMessage(app.options);
+    // browser.runtime.sendMessage(app.options);
 
 }).catch(console.warn);

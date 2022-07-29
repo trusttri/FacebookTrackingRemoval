@@ -132,6 +132,7 @@ app.init().then(() => {
             document.getElementById("resultBox").className = "callout"
             document.getElementById("result").style.color = "white";
         } else {
+            // deliberately twice
             browser.runtime.sendMessage("RELOAD");
             browser.runtime.sendMessage("RELOAD");
             document.getElementById("submit").disabled=true;
@@ -309,8 +310,8 @@ app.init().then(() => {
 
 
     // Keep in sync with other options pages
-    browser.storage.onChanged.addListener(() => app.init().then(init));
+    //browser.storage.onChanged.addListener(() => app.init().then(init));
 
     // Tell the background script a new options window was opened
-    browser.runtime.sendMessage("OPTIONS");
+    //browser.runtime.sendMessage("OPTIONS");
 }, console.log);
