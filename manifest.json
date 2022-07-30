@@ -1,7 +1,7 @@
 {
   "name": "Facebook Ad Control & Settings Study",
   "version": "0.0.1",
-  "description": "Extension for conducting a study on Facebook ad settings",
+  "description": "Extension for conducting an academic research study on Facebook ad settings",
   "default_locale": "en",
   "icons": { "128": "src/icon.png" },
 
@@ -10,17 +10,14 @@
 
   "permissions": [
     "storage",
-    "webRequest",
-    "declarativeNetRequest",
-    "scripting"
+    "unlimitedStorage"
   ],
 
    "host_permissions": [
       "*://*.facebook.com/*",
       "*://*.facebookcorewwwi.onion/*",
       "https://ad-control-study.si.umich.edu/*",
-      "https://umich.qualtrics.com/*",
-      "<all_urls>"
+      "https://umich.qualtrics.com/*"
   ],
 
 
