@@ -1,32 +1,36 @@
 {
   "name": "Facebook Ad Control & Settings Study",
-  "version": "1.9.3",
-  "description": "Extension for conducting a study on Facebook",
+  "version": "0.0.1",
+  "description": "Extension for conducting an academic research study on Facebook ad settings",
   "default_locale": "en",
   "icons": { "128": "src/icon.png" },
 
-  "author": "Michael Ziminsky, Jane Im, Weikun Lyu, Ruiyi Wang",
-  "homepage_url": "https://github.com/trusttri/FacebookTrackingRemoval",
+  "author": "Jane Im, Weikun Lyu, Ruiyi Wang, Nick Cook",
+  "homepage_url": "https://github.com/trusttri/augmentAdControl",
 
   "permissions": [
     "storage",
-    "*://*.facebook.com/*",
-    "*://*.facebookcorewwwi.onion/*",
-    "webRequest",
-    "webRequestBlocking",
-    "https://mgziminsky.gitlab.io/FacebookTrackingRemoval/*"
+    "unlimitedStorage"
   ],
+
+   "host_permissions": [
+      "*://*.facebook.com/*",
+      "*://*.facebookcorewwwi.onion/*",
+      "https://ad-control-study.si.umich.edu/*",
+      "https://umich.qualtrics.com/*"
+  ],
+
 
   "options_ui": {
     "page": "src/options.html"
   },
 
   "background": {
-    "scripts": ["browser-polyfill.min.js", "src/common.js", "src/util.js", "src/rules_sync.js", "src/background.js"],
-    "persistent": true
+    "service_worker": "background.js",
+    "type": "module"
   },
 
-  "page_action": {
+  "action": {
     "browser_style": true,
     "default_icon": "src/icon.png",
     "default_popup": "src/options.html",
@@ -44,18 +48,21 @@
         "*://*.facebookcorewwwi.onion/*"
       ],
       "css": ["src/app.css"],
-      "js": ["browser-polyfill.min.js", "src/common.js", "src/util.js", "src/app.js"],
+      "js": ["src/browser-polyfill.min.js", "src/common.js", "src/util.js", "src/app.js"],
       "run_at": "document_end"
     }
   ],
 
-  "web_accessible_resources": [
-    "src/hide_rules/*",
-    "src/click_whitelist/*",
-    "src/param_cleaning/*"
-  ],
+  "web_accessible_resources": [{
+    "resources": ["src/hide_rules/*",
+                  "src/click_whitelist/*",
+                  "src/param_cleaning/*",
+                  "src/browser-polyfill.min.js"],
+    "matches": ["<all_urls>"]
+  }],
 
   "incognito": "spanning",
 
-  "manifest_version": 2
+  "manifest_version": 3
+
 }
