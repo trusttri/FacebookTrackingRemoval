@@ -223,7 +223,7 @@ app.init().then(async () => {
 
             // create static dashboard content
             var content_frame_1 = document.createElement("div");
-            content_frame_1.classList.add( "abvwweq7", "ejjq64ki", "d2edcug0");
+            content_frame_1.classList.add( "abvwweq7", "ejjq64ki", "d2edcug0", "dashboardpanel");
             var content_frame_2 = document.createElement("div");
             content_frame_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb");
 
@@ -245,6 +245,7 @@ app.init().then(async () => {
                     content_frame_1.style.display = "none";
                 } else {
                     content_frame_1.style.display = "block";
+                    chrome.storage.local.set({"collapsed": "false"}, function(){});
                 }
             });
             
@@ -262,7 +263,7 @@ app.init().then(async () => {
     }
 
     function collapseDashboard() {
-        var panel = document.getElementsByClassName("abvwweq7 ejjq64ki d2edcug0")[0]
+        var panel = document.getElementsByClassName("abvwweq7 ejjq64ki d2edcug0 dashboardpanel")[0]
         chrome.storage.local.get(["collapsed"], function(result){
             if (result.collapsed=="false") {
                 chrome.storage.local.set({"collapsed": "true"}, function(){});
