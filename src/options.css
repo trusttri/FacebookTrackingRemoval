@@ -43,6 +43,14 @@ body {
     background-color: white;
 }
 
+.explain {
+    font-size: 0.84rem;
+}
+
+.explain p {
+    margin-block-start: 0.5em;
+}
+
 .callout {
     /* font-size: 1em; */
     background-color: #ff5e5bff;
