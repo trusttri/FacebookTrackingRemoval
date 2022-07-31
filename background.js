@@ -23,7 +23,7 @@ async function submitData(prolific_ID, log_history) {
 	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
 
 	let url = "https://ad-control-study.si.umich.edu/send_log";
-	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string})
+	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length})
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
