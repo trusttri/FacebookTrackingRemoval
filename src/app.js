@@ -286,11 +286,14 @@ app.init().then(async () => {
 
             chrome.storage.local.get(["log_history"], function(result){
                 if (result.log_history) {
-                    console.log(result.log_history)
                     result.log_history.push(clickEvent)
                     chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                    if (result.log_history.length % 5 == 0) {
+                        browser.runtime.sendMessage("SUBMIT");
+                    }
+                    
                 }else{
-                    chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log("history log start!")});
+                    chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
                 }
             });
 
