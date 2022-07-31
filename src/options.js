@@ -133,7 +133,7 @@ app.init().then(() => {
         // document.getElementById("sessionID").value = "";
         document.getElementById("end").disabled=false;
         document.getElementById("result").style.color = "white";
-        document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Please enter your Prolific ID and click <b>start session</b> to start a new one. </span>";
+        document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Enter your Prolific ID and click <b>start session</b> to start a new one. </span>";
         document.getElementById("resultBox").className = "callout"
         chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"started": "false"}, function(){});

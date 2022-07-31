@@ -27,32 +27,41 @@ input {
 }
 
 body {
-    width: 40rem;
+    width: 31rem;
     /*background-color: #91a6ffff;*/
 }
 .infoSection{
     text-align: center;
 }
 .infoSection div p {
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 .title {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 .default {
     background-color: white;
+}
+
+.explain {
+    font-size: 0.84rem;
+}
+
+.explain p {
+    margin-block-start: 0.5em;
 }
 
 .callout {
     /* font-size: 1em; */
     background-color: #ff5e5bff;
     border-radius: 15px;
-    height: 3.5rem;
+    height: 3rem;
     display: flex;
     color: white;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
+    margin-bottom: 10px;
     /* outline:auto; */
     /* margin: 10px */
 }
@@ -61,13 +70,13 @@ body {
 }
 
 .float-container {
-    padding: 20px;
+    padding: 0px 2px 13px 2px;
 }
 
 .float-child {
     width: 50%;
     float: left;
-    padding: 20px;
+    padding: 2px 11px 19px 11px;
 }  
 .float-child img {
     width: inherit;
