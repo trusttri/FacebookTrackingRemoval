@@ -2,7 +2,7 @@
 
 {
   "name": "Facebook Ad Control & Settings Study",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extension for conducting an academic research study on Facebook ad settings",
   "default_locale": "en",
   "icons": { "128": "src/icon.png" },
