@@ -49,7 +49,7 @@ async function signUp(prolific_ID) {
 		console.log(error);
 		chrome.runtime.sendMessage({
 		    status: "error",
-		    data: error.toString()
+		    data: error
 		});
 	}
 }
@@ -81,7 +81,7 @@ async function finalSubmitData(prolific_ID, log_history) {
 		console.log(error);
 		chrome.runtime.sendMessage({
 		    status: "error",
-		    data: error.toString()
+		    data: error
 		});
 	}
 }
