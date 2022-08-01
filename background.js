@@ -59,7 +59,7 @@ async function finalSubmitData(prolific_ID, log_history) {
 	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
 
 	let url = "https://ad-control-study.si.umich.edu/send_log";
-	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length})
+	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length, "final_submit": true})
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
@@ -91,7 +91,7 @@ async function periodicSubmitData(prolific_ID, log_history) {
 	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
 
 	let url = "https://ad-control-study.si.umich.edu/send_log";
-	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length})
+	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length, "final_submit": false})
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
