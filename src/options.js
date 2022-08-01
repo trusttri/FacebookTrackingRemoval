@@ -65,6 +65,10 @@ app.init().then(() => {
             document.getElementById("result").style.color = "black";
             document.getElementById("end").disabled=true;
 
+        } else if (request.status === "error") {
+            document.getElementById("result").textContent = "System error. Please reach out to ad-control-study@umich.edu.";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
         }
     });
 
