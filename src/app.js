@@ -55,7 +55,7 @@ const icons = [
                 SETTINGS_ICON
             ]
 
-
+const BATCH_SIZE = 25;
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
@@ -389,7 +389,7 @@ app.init().then(async () => {
                         if (result.log_history) {
                             result.log_history.push(clickEvent)
                             chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
-                            if (result.log_history.length % 5 == 0) {
+                            if (result.log_history.length % BATCH_SIZE == 0) {
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
