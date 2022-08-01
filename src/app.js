@@ -244,6 +244,51 @@ app.init().then(async () => {
         }
     }
 
+    function findClosestElementWithText(e) {
+        console.log(e)
+        if ((e.innerText === '') || (e.innerText === null) || (e.innerText === undefined)) {
+            if (e.parentElement) {
+                console.log('find parent')
+                return findClosestElementWithText(e.parentElement)
+            } else {
+                return 'none'
+            }
+        } else {
+            console.log(e.innerText)
+            return e
+        }
+    }
+
+    function findClosestElementWithAriaLabel(e) {
+        console.log(e)
+        if ((e.ariaLabel === '') || (e.ariaLabel === null) || (e.ariaLabel === undefined)) {
+            if (e.parentElement) {
+                console.log('find parent')
+                return findClosestElementWithAriaLabel(e.parentElement)
+            } else {
+                return 'none'
+            }
+        } else {
+            console.log(e.ariaLabel)
+            return e
+        }
+    }
+
+    function findClosestElementWithName(e) {
+        console.log(e)
+        if ((e.name === '') || (e.name === null) || (e.name === undefined)) {
+            if (e.parentElement) {
+                console.log('find parent')
+                return findClosestElementWithName(e.parentElement)
+            } else {
+                return 'none'
+            }
+        } else {
+            console.log(e.name)
+            return e
+        }
+    }
+
 
     let _running = false;
     function run(body) {
@@ -252,33 +297,46 @@ app.init().then(async () => {
 
         // add click detect
         document.onclick = (e) => {
-            var deepCopy = e.target.cloneNode(true)
-            var parent = e.target.parentElement
+
             var clickEvent = {
                 "page" : location.href, 
-                "clicked_element_href": deepCopy.href,
-                "clicked_element_outer": deepCopy.outerHTML,
-
-                // "parent_1_outer": parent.outerHTML,
-                // "parent_2_outer": parent.parentElement.outerHTML,
-
+                "clicked_element_outer": e.target.cloneNode(true).outerHTML,
                 "timestamp": Date.now(), 
-                "pageX": e.pageX, 
-                "pageY": e.pageY
             }
 
-            chrome.storage.local.get(["log_history"], function(result){
-                if (result.log_history) {
-                    result.log_history.push(clickEvent)
-                    chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
-                    if (result.log_history.length % 5 == 0) {
-                        browser.runtime.sendMessage("SUBMIT");
-                    }
-                    
-                }else{
-                    chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+            var closest_element_with_name = findClosestElementWithName(e.target)
+            if (typeof(closest_element_with_name) !== "string"){
+                clickEvent['closest_element_with_name'] = closest_element_with_name.cloneNode(true).outerHTML
+            }
+
+            var closest_element_with_inner_text = findClosestElementWithText(e.target)
+            if (typeof(closest_element_with_inner_text) !== "string"){
+                clickEvent['closest_element_with_inner_text'] = closest_element_with_inner_text.cloneNode(true).outerHTML
+            }
+
+            var closest_element_with_arialabel = findClosestElementWithAriaLabel(e.target)
+            if (typeof(closest_element_with_arialabel) !== "string"){
+                clickEvent['closest_element_with_arialabel'] = closest_element_with_arialabel.cloneNode(true).outerHTML
+            }
+
+            chrome.storage.local.get(["prolific_ID"], function(result){
+                if (result.prolific_ID) {
+                    chrome.storage.local.get(["log_history"], function(result){
+                        if (result.log_history) {
+                            result.log_history.push(clickEvent)
+                            chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                            if (result.log_history.length % 5 == 0) {
+                                browser.runtime.sendMessage("SUBMIT");
+                            }
+                            
+                        }else{
+                            chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                        }
+                    });
                 }
             });
+
+            
 
         }
 
