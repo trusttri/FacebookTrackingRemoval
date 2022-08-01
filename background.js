@@ -53,6 +53,10 @@ async function finalSubmitData(prolific_ID, log_history) {
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
 	} catch (error) {
 		console.log(error.toString());
+		chrome.runtime.sendMessage({
+		    status: "error",
+		    data: error.toString()
+		});
 	}
 }
 
@@ -70,7 +74,10 @@ async function periodicSubmitData(prolific_ID, log_history) {
 		const result = await response.json();
 		console.log(result)
 	} catch (error) {
-		console.log(error.toString());
+		chrome.runtime.sendMessage({
+		    status: "error",
+		    data: error.toString()
+		});
 	}
 }
 
