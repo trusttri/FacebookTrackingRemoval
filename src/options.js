@@ -24,6 +24,10 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
+    var form = document.getElementById("mainForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+
     chrome.storage.local.get(["submitted"], function(result){
         if (result.submitted=="true") {
             document.getElementById("submit").disabled=true;
