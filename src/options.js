@@ -26,20 +26,7 @@ app.init().then(() => {
 
     var form = document.getElementById("mainForm");
     function handleForm(event) { event.preventDefault(); } 
-    form.addEventListener('submit', handleForm);
-
-    chrome.storage.local.get(["submitted"], function(result){
-        if (result.submitted=="true") {
-            document.getElementById("submit").disabled=true;
-            document.getElementById("sessionID").disabled=true;
-            chrome.storage.local.get(["prolific_ID"], function(result){
-                if (result.prolific_ID) {
-                    document.getElementById("sessionID").value = result.prolific_ID
-                }
-            });
-
-        }
-    });
+    form.addEventListener('id_submit', handleForm);
 
 
     document.getElementById("sessionID").addEventListener("keyup", function(){
@@ -52,7 +39,7 @@ app.init().then(() => {
             document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
             document.getElementById("result").style.backgroundColor = "";
             document.getElementById("result").style.color = "black";
-            document.getElementById("submit").disabled=true;
+            document.getElementById("id_submit").disabled=true;
             chrome.storage.local.get(["prolific_ID"], function(result){
                 if (result.prolific_ID) {
                     document.getElementById("sessionID").value = result.prolific_ID;
@@ -77,7 +64,7 @@ app.init().then(() => {
             // deliberately twice
             browser.runtime.sendMessage("RELOAD");
             browser.runtime.sendMessage("RELOAD");
-            document.getElementById("submit").disabled=true;
+            document.getElementById("id_submit").disabled=true;
             document.getElementById("result").textContent = "Please read the survey instructions and complete the tasks.";
             document.getElementById("result").style.color = "white";
             document.getElementById("resultBox").className = "callout"
@@ -86,7 +73,6 @@ app.init().then(() => {
     });
 
     document.getElementById("end").addEventListener("click", function(){
-
         // check if a session is started
         chrome.storage.local.get(["started"], function(result){
             console.log(result.started);
@@ -97,24 +83,28 @@ app.init().then(() => {
                 document.getElementById("resultBox").className = "callout"
                 document.getElementById("result").style.color = "white";
             } else {
-                
-                var prolific_ID = document.getElementById("sessionID").value;
-                // check if prolific ID is empty
-                if (prolific_ID.length == 0) {
-                    document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end the session.";
-                    document.getElementById("result").style.backgroundColor = "";
-                    document.getElementById("resultBox").className = "callout"
-                    document.getElementById("result").style.color = "white";
-                } else {
-                    chrome.storage.local.set({"submitted": "true"}, function(){});
-                    browser.runtime.sendMessage("FINAL_SUBMIT");
-                }
+                chrome.storage.local.get(["prolific_ID"], function(result){
+                    if (result.prolific_ID) {
+                        if (result.prolific_ID.length == 0) {
+                            document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end the session.";
+                            document.getElementById("result").style.backgroundColor = "";
+                            document.getElementById("resultBox").className = "callout"
+                            document.getElementById("result").style.color = "white";
+                        } else {
+                            document.getElementById("result").textContent = "Submitting the results...";
+                            document.getElementById("result").style.color = "white";
+                            document.getElementById("resultBox").className = "progress"
+                            browser.runtime.sendMessage("FINAL_SUBMIT"); 
+                        }
+                    }
+                });
            }
         });
         
     })
 
-    document.getElementById("submit").addEventListener("click", function(){
+    //submit prolific_id
+    document.getElementById("id_submit").addEventListener("click", function(){
 
         var prolific_ID = document.getElementById("sessionID").value;
         chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
@@ -125,7 +115,7 @@ app.init().then(() => {
             document.getElementById("resultBox").className = "callout"
             document.getElementById("result").style.color = "white";
         } else {
-            document.getElementById("submit").disabled=true;
+            document.getElementById("id_submit").disabled=true;
             document.getElementById("result").textContent = "Signing up...";
             document.getElementById("result").style.color = "white";
             document.getElementById("resultBox").className = "callout"
@@ -136,14 +126,12 @@ app.init().then(() => {
 
     document.getElementById("reset").addEventListener("click", function(){
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
-        document.getElementById("submit").disabled=false;
+        document.getElementById("id_submit").disabled=false;
         document.getElementById("sessionID").disabled=false;
-        // document.getElementById("sessionID").value = "";
         document.getElementById("end").disabled=false;
         document.getElementById("result").style.color = "white";
         document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Enter your Prolific ID and click <b>start session</b> to start a new one. </span>";
         document.getElementById("resultBox").className = "callout"
-        chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
     })

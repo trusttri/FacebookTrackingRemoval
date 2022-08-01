@@ -65,6 +65,19 @@ body {
     /* outline:auto; */
     /* margin: 10px */
 }
+
+.progress {
+    background-color: #5bb2ff;
+    border-radius: 15px;
+    height: 3rem;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
 .callout p {
     margin: 10px
 }
