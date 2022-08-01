@@ -32,8 +32,7 @@ chrome.runtime.onMessage.addListener(msg => {
 });
 
 async function signUp(prolific_ID) {
-	// let url = "https://ad-control-study.si.umich.edu/sign_up";
-	let url = "http://localhost:8000/sign_up";
+	let url = "https://ad-control-study.si.umich.edu/sign_up";
 	var data_to_send = JSON.stringify({"prolific_id": prolific_ID})
 	try {
 		const response = await fetch(url, {method: 'POST', 
