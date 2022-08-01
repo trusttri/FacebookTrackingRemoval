@@ -44,7 +44,7 @@ app.init().then(() => {
 
     
     chrome.storage.local.get(["started"], function(result){
-        if (result.started == "true") {
+        if ((result.started == "true") || (result.started == "undefined")) {
             document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
             document.getElementById("result").style.backgroundColor = "";
             document.getElementById("result").style.color = "black";
@@ -93,7 +93,7 @@ app.init().then(() => {
                     chrome.storage.local.set({"submitted": "true"}, function(){});
                     chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
                     console.log('send message')
-                    browser.runtime.sendMessage("SUBMIT");
+                    browser.runtime.sendMessage("FINAL_SUBMIT");
                 }
            }
         });

@@ -115,7 +115,7 @@ app.init().then(async () => {
                             result.log_history.push(clickEvent)
                             chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
                             if (result.log_history.length % 5 == 0) {
-                                browser.runtime.sendMessage("SUBMIT");
+                                browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
                         }else{
