@@ -245,10 +245,9 @@ app.init().then(async () => {
     }
 
     function findClosestElementWithText(e) {
-        console.log(e)
-        if ((e.innerText === '') || (e.innerText === null) || (e.innerText === undefined)) {
+        const outliers = ["View", "Edit", "Close", "Use Activity Log", "Limit Past Posts", "Turn off", "Hide Ads", "Undo", "See more"]
+        if ((e.innerText === '') || (outliers.includes(e.innerText)) || (e.innerText === null) || (e.innerText === undefined)) {
             if (e.parentElement) {
-                console.log('find parent')
                 return findClosestElementWithText(e.parentElement)
             } else {
                 return 'none'
@@ -260,10 +259,8 @@ app.init().then(async () => {
     }
 
     function findClosestElementWithAriaLabel(e) {
-        console.log(e)
         if ((e.ariaLabel === '') || (e.ariaLabel === null) || (e.ariaLabel === undefined)) {
             if (e.parentElement) {
-                console.log('find parent')
                 return findClosestElementWithAriaLabel(e.parentElement)
             } else {
                 return 'none'
@@ -275,10 +272,8 @@ app.init().then(async () => {
     }
 
     function findClosestElementWithName(e) {
-        console.log(e)
         if ((e.name === '') || (e.name === null) || (e.name === undefined)) {
             if (e.parentElement) {
-                console.log('find parent')
                 return findClosestElementWithName(e.parentElement)
             } else {
                 return 'none'
@@ -317,6 +312,14 @@ app.init().then(async () => {
             var closest_element_with_arialabel = findClosestElementWithAriaLabel(e.target)
             if (typeof(closest_element_with_arialabel) !== "string"){
                 clickEvent['closest_element_with_arialabel'] = closest_element_with_arialabel.cloneNode(true).outerHTML
+            }
+
+            const ad_topic_options = ["No Preference", "See Less"]
+            var is_ad_topic_popup = ad_topic_options.includes(e.target.innerText) || ad_topic_options.includes(closest_element_with_inner_text.innerText)
+
+            if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
+                var ad_topic = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')[0].innerText
+                clickEvent['ad_topic'] = ad_topic
             }
 
             chrome.storage.local.get(["prolific_ID"], function(result){
