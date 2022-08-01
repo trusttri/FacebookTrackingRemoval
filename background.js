@@ -35,6 +35,7 @@ async function submitData(prolific_ID, log_history) {
 		    status: "submitted",
 		    data: result
 		});
+		chrome.storage.local.clear();
 	} catch (error) {
 		console.log(error.toString());
 	}
