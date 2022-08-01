@@ -69,6 +69,15 @@ app.init().then(() => {
             document.getElementById("result").textContent = "System error. Please reach out to ad-control-study@umich.edu.";
             document.getElementById("result").style.color = "white";
             document.getElementById("resultBox").className = "callout"
+        } else if (request.status === "signed_up") {
+            // deliberately twice
+            browser.runtime.sendMessage("RELOAD");
+            browser.runtime.sendMessage("RELOAD");
+            document.getElementById("submit").disabled=true;
+            document.getElementById("result").textContent = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
+            chrome.storage.local.set({"started" : "true"}, function(){});
         }
     });
 
@@ -95,10 +104,7 @@ app.init().then(() => {
                     document.getElementById("resultBox").className = "callout"
                     document.getElementById("result").style.color = "white";
                 } else {
-
                     chrome.storage.local.set({"submitted": "true"}, function(){});
-                    chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
-                    console.log('send message')
                     browser.runtime.sendMessage("FINAL_SUBMIT");
                 }
            }
@@ -109,6 +115,7 @@ app.init().then(() => {
     document.getElementById("submit").addEventListener("click", function(){
 
         var prolific_ID = document.getElementById("sessionID").value;
+        chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
 
         if (prolific_ID.length == 0) {
             console.log("ask for resubmit")
@@ -117,18 +124,11 @@ app.init().then(() => {
             document.getElementById("resultBox").className = "callout"
             document.getElementById("result").style.color = "white";
         } else {
-            //deliberately twice
-            browser.runtime.sendMessage("RELOAD");
-            browser.runtime.sendMessage("RELOAD");
             document.getElementById("submit").disabled=true;
-            // document.getElementById("sessionID").disabled=true;
-            // chrome.storage.local.set({"submitted": "true"}, function(){});
-            // chrome.storage.local.set({"prolific_ID": document.getElementById("sessionID").value}, function(){});
-            document.getElementById("result").textContent = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("result").textContent = "Signing up...";
             document.getElementById("result").style.color = "white";
             document.getElementById("resultBox").className = "callout"
-            
-            chrome.storage.local.set({"started" : "true"}, function(){});
+            browser.runtime.sendMessage("SIGN_UP");
         }
         
     })
