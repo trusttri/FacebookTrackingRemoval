@@ -24,9 +24,36 @@ chrome.runtime.onMessage.addListener(msg => {
 				}
 			});
 		});
+	} else if (msg === "SIGN_UP") {
+		chrome.storage.local.get(["prolific_ID"], function(res){
+			signUp(res.prolific_ID)
+		});
 	}
 });
 
+async function signUp(prolific_ID) {
+	// let url = "https://ad-control-study.si.umich.edu/sign_up";
+	let url = "http://localhost:8000/sign_up";
+	var data_to_send = JSON.stringify({"prolific_id": prolific_ID})
+	try {
+		const response = await fetch(url, {method: 'POST', 
+			headers: {'Content-Type': 'application/json'}, 
+			body: data_to_send
+		});
+		const result = await response.json();
+		chrome.runtime.sendMessage({
+		    status: "signed_up",
+		    data: result
+		});
+		console.log(result)
+	} catch (error) {
+		console.log(error);
+		chrome.runtime.sendMessage({
+		    status: "error",
+		    data: error.toString()
+		});
+	}
+}
 
 async function finalSubmitData(prolific_ID, log_history) {
 	var stringfied = JSON.stringify(log_history);
@@ -52,7 +79,7 @@ async function finalSubmitData(prolific_ID, log_history) {
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
 	} catch (error) {
-		console.log(error.toString());
+		console.log(error);
 		chrome.runtime.sendMessage({
 		    status: "error",
 		    data: error.toString()
@@ -76,7 +103,7 @@ async function periodicSubmitData(prolific_ID, log_history) {
 	} catch (error) {
 		chrome.runtime.sendMessage({
 		    status: "error",
-		    data: error.toString()
+		    data: error
 		});
 	}
 }
