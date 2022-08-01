@@ -24,6 +24,10 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
+    var form = document.getElementById("mainForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+
     chrome.storage.local.get(["submitted"], function(result){
         if (result.submitted=="true") {
             document.getElementById("submit").disabled=true;
@@ -81,8 +85,6 @@ app.init().then(() => {
         }
     });
 
-
-
     document.getElementById("end").addEventListener("click", function(){
 
         // check if a session is started
@@ -118,7 +120,6 @@ app.init().then(() => {
         chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
 
         if (prolific_ID.length == 0) {
-            console.log("ask for resubmit")
             document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
             document.getElementById("result").style.backgroundColor = "";
             document.getElementById("resultBox").className = "callout"
@@ -148,10 +149,4 @@ app.init().then(() => {
     })
 
 
-
-    // Keep in sync with other options pages
-    // browser.storage.onChanged.addListener(() => app.init().then(init));
-
-    // Tell the background script a new options window was opened
-    // browser.runtime.sendMessage("OPTIONS");
 }, console.log);
