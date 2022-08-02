@@ -51,7 +51,7 @@ app.init().then(() => {
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         if (request.status === "submitted") {
             document.getElementById("result").innerHTML = "Your session data has been safely submitted." + "<br>"
-            document.getElementById("result").innerHTML +=  "Your session ID is: " + "<span style='background-color: #3573d3; color: white; padding: 1px 5px 1px 5px'>" + request.data["session_path_id"] + "</span>" +"<br>" + "<strong>" + "Please copy the session ID and enter it in the Qualtrics survey." + "</strong>"
+            document.getElementById("result").innerHTML +=  "Your session ID: " + "<span style='background-color: #3573d3; color: white; padding: 1px 5px 1px 5px'>" + request.data["session_path_id"] + "</span>" +"<br>" + "<strong>" + "Copy the session ID and enter it in the Qualtrics survey." + "</strong>"
             document.getElementById("resultBox").className = "default"
             document.getElementById("result").style.color = "black";
             document.getElementById("end").disabled=true;
@@ -130,7 +130,7 @@ app.init().then(() => {
         document.getElementById("sessionID").disabled=false;
         document.getElementById("end").disabled=false;
         document.getElementById("result").style.color = "white";
-        document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Enter your Prolific ID and click <b>start session</b> to start a new one. </span>";
+        document.getElementById("result").innerHTML = "<span style='padding: 1px 5px 1px 5px'> You cleared the previous session. <br> Enter your Prolific ID and click <b>start session</b>. </span>";
         document.getElementById("resultBox").className = "callout"
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
