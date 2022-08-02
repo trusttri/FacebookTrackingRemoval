@@ -27,14 +27,19 @@ input {
 }
 
 body {
-    width: 31rem;
+    width: 26rem;
     /*background-color: #91a6ffff;*/
 }
+
+button {
+    font-size: 14px;
+}
+
 .infoSection{
     text-align: center;
 }
 .infoSection div p {
-    font-size: 0.95rem;
+    font-size: 0.89rem;
 }
 .title {
     font-size: 1.8em;
@@ -89,7 +94,7 @@ body {
 .float-child {
     width: 50%;
     float: left;
-    padding: 2px 11px 19px 11px;
+    padding: 2px 6px 12px 6px;
 }  
 .float-child img {
     width: inherit;
