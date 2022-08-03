@@ -36,9 +36,9 @@ app.init().then(() => {
     
     chrome.storage.local.get(["started"], function(result){
         if ((result.started == "true") || (result.started == "undefined")) {
-            document.getElementById("result").innerHTML = "Please read the survey instructions and complete the tasks.";
-            document.getElementById("result").style.backgroundColor = "";
-            document.getElementById("result").style.color = "black";
+            document.getElementById("result").innerHTML = "Please read the Qualtrics survey instructions<br>and complete the tasks.";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "study_start"
             document.getElementById("id_submit").disabled=true;
             chrome.storage.local.get(["prolific_ID"], function(result){
                 if (result.prolific_ID) {
@@ -51,7 +51,7 @@ app.init().then(() => {
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         if (request.status === "submitted") {
             document.getElementById("result").innerHTML = "Your session data has been safely submitted." + "<br>"
-            document.getElementById("result").innerHTML +=  "Your session ID: " + "<span style='background-color: #3573d3; color: white; padding: 1px 5px 1px 5px'>" + request.data["session_path_id"] + "</span>" +"<br>" + "<strong>" + "Copy the session ID and enter it in the Qualtrics survey." + "</strong>"
+            document.getElementById("result").innerHTML +=  "Session ID: " + "<span style='background-color: #3573d3; color: white; padding: 1px 5px 1px 5px'>" + request.data["session_path_id"] + "</span>" +"<br>" + "<strong>" + "Copy the session ID and enter it in the Qualtrics survey." + "</strong>"
             document.getElementById("resultBox").className = "default"
             document.getElementById("result").style.color = "black";
             document.getElementById("end").disabled=true;
@@ -65,9 +65,10 @@ app.init().then(() => {
             browser.runtime.sendMessage("RELOAD");
             browser.runtime.sendMessage("RELOAD");
             document.getElementById("id_submit").disabled=true;
-            document.getElementById("result").textContent = "Please read the survey instructions and complete the tasks.";
+            document.getElementById("sessionID").disabled=true;
+            document.getElementById("result").innerHTML = "Please read the Qualtrics survey instructions<br>and complete the tasks.";
             document.getElementById("result").style.color = "white";
-            document.getElementById("resultBox").className = "callout"
+            document.getElementById("resultBox").className = "study_start"
             chrome.storage.local.set({"started" : "true"}, function(){});
         }
     });
@@ -87,7 +88,6 @@ app.init().then(() => {
                     if (result.prolific_ID) {
                         if (result.prolific_ID.length == 0) {
                             document.getElementById("result").innerHTML = "Please first enter your Prolific ID and end the session.";
-                            document.getElementById("result").style.backgroundColor = "";
                             document.getElementById("resultBox").className = "callout"
                             document.getElementById("result").style.color = "white";
                         } else {
@@ -109,13 +109,12 @@ app.init().then(() => {
         var prolific_ID = document.getElementById("sessionID").value;
         chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
 
-        if (prolific_ID.length == 0) {
+        if (prolific_ID.length === 0) {
             document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
-            document.getElementById("result").style.backgroundColor = "";
-            document.getElementById("resultBox").className = "callout"
             document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
         } else {
-            document.getElementById("id_submit").disabled=true;
+            document.getElementById("id_submit").disabled = true;
             document.getElementById("result").textContent = "Signing up...";
             document.getElementById("result").style.color = "white";
             document.getElementById("resultBox").className = "callout"
