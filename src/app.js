@@ -128,7 +128,7 @@ app.init().then(async () => {
             dashboard_node.id = "dashboard";
             dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
             var menu_frame = document.createElement("div");
-            menu_frame.classList.add("j83agx80", "l9j0dhe7", "k4urcfbm");
+            menu_frame.classList.add("j83agx80", "l9j0dhe7", "k4urcfbm", "dashboard");
             var menu_style = document.createElement("div");
             menu_style.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "hybvsw6c", "io0zqebd", "m5lcvass", "fbipl8qg", "nwvqtn77", "k4urcfbm", "ni8dbmo4", "stjgntxs", "sbcfpzgs");
             menu_style.style.borderRadius = "border-radius:max(0px, min(8px, calc((100vw - 4px - 100%) * 9999))) / 8px";
