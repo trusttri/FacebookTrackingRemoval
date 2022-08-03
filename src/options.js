@@ -24,9 +24,11 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
-    var form = document.getElementById("mainForm");
-    function handleForm(event) { event.preventDefault(); } 
-    form.addEventListener('id_submit', handleForm);
+     document.getElementById('mainForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        console.log("default prevented")
+        return false;
+   });
 
 
     document.getElementById("sessionID").addEventListener("keyup", function(){
