@@ -54,3 +54,8 @@ summary.fbtrLabel {
     background-color: lightgray;
 }
 
+.dashboard{
+    border: solid 1px #185add;
+    border-radius: 8px;
+}
+
