@@ -49,7 +49,7 @@ async function signUp(prolific_ID) {
 		console.log(error);
 		chrome.runtime.sendMessage({
 		    status: "error",
-		    data: error.toString()
+		    data: error
 		});
 	}
 }
@@ -74,14 +74,13 @@ async function finalSubmitData(prolific_ID, log_history) {
 
 		//need to clear
 		chrome.storage.local.set({"log_history": []}, function(){});
-		chrome.storage.local.set({"submitted": "false"}, function(){});
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
 	} catch (error) {
 		console.log(error);
 		chrome.runtime.sendMessage({
 		    status: "error",
-		    data: error.toString()
+		    data: error
 		});
 	}
 }
