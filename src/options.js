@@ -24,10 +24,27 @@ app.init().then(() => {
     // Set version text
     // document.title += ` - v${browser.runtime.getManifest().version}`;
 
-     document.getElementById('mainForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log("default prevented")
-        return false;
+    function submitButton() {
+        var prolific_ID = document.getElementById("sessionID").value;
+        chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
+
+        if (prolific_ID.length === 0) {
+            document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
+        } else {
+            document.getElementById("id_submit").disabled = true;
+            document.getElementById("result").textContent = "Signing up...";
+            document.getElementById("result").style.color = "white";
+            document.getElementById("resultBox").className = "callout"
+            browser.runtime.sendMessage("SIGN_UP");
+        }
+    }
+
+     document.getElementById('mainForm').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter'){
+            submitButton();
+        }
    });
 
 
@@ -106,24 +123,7 @@ app.init().then(() => {
     })
 
     //submit prolific_id
-    document.getElementById("id_submit").addEventListener("click", function(){
-
-        var prolific_ID = document.getElementById("sessionID").value;
-        chrome.storage.local.set({"prolific_ID": prolific_ID}, function(){});
-
-        if (prolific_ID.length === 0) {
-            document.getElementById("result").innerHTML = "Please type in your Proflic ID before starting";
-            document.getElementById("result").style.color = "white";
-            document.getElementById("resultBox").className = "callout"
-        } else {
-            document.getElementById("id_submit").disabled = true;
-            document.getElementById("result").textContent = "Signing up...";
-            document.getElementById("result").style.color = "white";
-            document.getElementById("resultBox").className = "callout"
-            browser.runtime.sendMessage("SIGN_UP");
-        }
-        
-    })
+    document.getElementById("id_submit").addEventListener("click", submitButton());
 
     document.getElementById("reset").addEventListener("click", function(){
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
