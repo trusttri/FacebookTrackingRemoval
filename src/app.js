@@ -41,24 +41,21 @@ const titles = [
                     "Review/disconnect off-Facebook activity",
                     "Manage ad topics",
                     "Review advertisers",
-                    "Ad settings",
-                    "All Facebook settings"
+                    "Ad settings"
                 ]
 const descriptions = [
                     "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
                     "Control how Facebook connects your activity on other businesses’ websites/apps to your account.",
                     "Choose ad topics you want to see less.",
                     "Review and hide ads from advertisers you’ve seen.",
-                    "",
-                    "You can check more ad-related features not included in Ad Settings (e.g., Your Facebook Information tab)."
+                    ""
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/?section=data_from_partners",
             "https://www.facebook.com/off_facebook_activity",
             "https://www.facebook.com/adpreferences/ad_topics",
             "https://www.facebook.com/adpreferences/advertisers",
-            "https://www.facebook.com/adpreferences/ad_settings",
-            "https://www.facebook.com/settings"
+            "https://www.facebook.com/adpreferences/ad_settings"
             ]
 
 const icons = [
