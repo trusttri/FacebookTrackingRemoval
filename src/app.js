@@ -40,21 +40,21 @@ const titles = [
                     "Stop using data from partners to personalize ads", 
                     "Review/disconnect off-Facebook activity",
                     "Manage ad topics",
-                    "Review advertisers",
+                    "Audience-based advertising",
                     "Ad settings"
                 ]
 const descriptions = [
                     "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
                     "Control how Facebook connects your activity on other businesses’ websites/apps to your account.",
                     "Choose ad topics you want to see less.",
-                    "Review and hide ads from advertisers you’ve seen.",
+                    "View advertisers using your activity or information and decide whether you want ads based on the data.",
                     ""
                     ]
 const urls = [
             "https://www.facebook.com/adpreferences/?section=data_from_partners",
             "https://www.facebook.com/off_facebook_activity",
             "https://www.facebook.com/adpreferences/ad_topics",
-            "https://www.facebook.com/adpreferences/advertisers",
+            "https://www.facebook.com/adpreferences/?section=audience_based_advertising",
             "https://www.facebook.com/adpreferences/ad_settings"
             ]
 
@@ -63,7 +63,6 @@ const icons = [
                 DISCONNECT_ICON, 
                 AD_ICON,
                 ADVERTISERS_ICON,
-                SETTINGS_ICON,
                 SETTINGS_ICON
             ]
 
