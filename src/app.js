@@ -39,7 +39,7 @@ const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6
 
 const titles = [
                     "Stop using data from partners to personalize ads", 
-                    "Review/disconnect off-Facebook activity",
+                    "Review/disconnect your off-Facebook activity",
                     "Manage ad topics",
                     "Manage audience-based advertising",
                     "Ad settings"
