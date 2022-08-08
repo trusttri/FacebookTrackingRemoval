@@ -38,7 +38,7 @@ const BTN_SETTINGS_ICON = '<img class="hu5pjgll" style="vertical-align: middle; 
                   
 const titles = [
                     "Stop using data from partners to personalize ads", 
-                    "Review/disconnect off-Facebook activity",
+                    "Review/disconnect your off-Facebook activity",
                     "Manage ad topics",
                     "Manage audience-based advertising",
                     "Ad settings"
