@@ -40,14 +40,14 @@ const titles = [
                     "Stop using data from partners to personalize ads", 
                     "Review/disconnect your off-Facebook activity",
                     "Manage ad topics",
-                    "Manage whether/how advertisers can reach you",
+                    "Manage audience-based advertising",
                     "Ad settings"
                 ]
 const descriptions = [
                     "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
                     "Control how Facebook connects your activity on other businesses’ websites/apps to your account.",
                     "Choose ad topics you want to see less.",
-                    "View advertisers using your activity or information (e.g., coded contact information) and decide whether you want ads based on the data.",
+                    "Review and restrict advertisers who have targeted you based on information uploaded about you (e.g., coded contact information) or your activity.",
                     ""
                     ]
 const urls = [
