@@ -41,7 +41,7 @@ const titles = [
                     "Stop using data from partners to personalize ads", 
                     "Review/disconnect off-Facebook activity",
                     "Manage ad topics",
-                    "Audience-based advertising",
+                    "Manage audience-based advertising",
                     "Ad settings"
                 ]
 const descriptions = [
@@ -439,8 +439,6 @@ app.init().then(async () => {
             for (const mutation of mutations) {
                 if (mutation.type === "childList" && !SKIP.includes(mutation.target.nodeName)) {
                     const target = mutation.target;
-
-                    removeArticles(target, _userRules);
             
                     createDashboard();
                     refreshHome();
