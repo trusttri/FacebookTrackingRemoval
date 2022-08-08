@@ -40,7 +40,7 @@ const titles = [
                     "Stop using data from partners to personalize ads", 
                     "Review/disconnect off-Facebook activity",
                     "Manage ad topics",
-                    "Audience-based advertising",
+                    "Manage audience-based advertising",
                     "Ad settings"
                 ]
 const descriptions = [
