@@ -56,6 +56,7 @@ const icons = [
             ]
 
 const BATCH_SIZE = 25;
+const QUERY_STRING_FOR_LAYOUT = ".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv";
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
@@ -67,9 +68,13 @@ app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
-    var topBar = document.querySelector(".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv")
-    chrome.storage.local.set({"layout_type": "no_dropdown_icon"}, function(){console.log("no_dropdown_icon")});
-    
+    var topBar = document.querySelector(QUERY_STRING_FOR_LAYOUT)
+    if(topBar){
+        chrome.storage.local.set({"layout_type": "no_dropdown_icon"}, function(){console.log("no_dropdown_icon")});
+    }else{
+        chrome.storage.local.set({"layout_type": "dropdown_icon"}, function(){console.log("dropdown_icon")});
+    }
+          
     // function that detects and changes ads
     function hide(elem, label) {
         /* temporary code */
@@ -305,6 +310,8 @@ app.init().then(async () => {
             }
         }
     }
+
+
 
     function findClosestElementWithText(e) {
         const outliers = ["View", "Edit", "Close", "Use Activity Log", "Limit Past Posts", "Turn off", "Hide Ads", "Undo", "See more"]
