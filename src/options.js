@@ -123,7 +123,10 @@ app.init().then(() => {
     })
 
     //submit prolific_id
-    document.getElementById("id_submit").addEventListener("click", submitButton());
+    document.getElementById("id_submit").addEventListener("click", function() {
+        console.log("submit prolific id");
+        submitButton()
+    });
 
     document.getElementById("reset").addEventListener("click", function(){
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
