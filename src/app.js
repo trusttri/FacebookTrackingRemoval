@@ -47,7 +47,7 @@ const descriptions = [
                     "Decide if you want to see ads based on your activity on other businesses' websites/apps or offline.",
                     "Control how Facebook connects your activity on other businesses’ websites/apps to your account.",
                     "Choose ad topics you want to see less.",
-                    "Review and restrict advertisers who have targeted you based on information uploaded about you (e.g., coded contact information) or your activity.",
+                    "Review and restrict advertisers who have targeted you based on information uploaded about you (e.g., your email address or phone number) or your activity.",
                     ""
                     ]
 const urls = [
