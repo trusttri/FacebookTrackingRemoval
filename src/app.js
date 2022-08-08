@@ -428,7 +428,6 @@ app.init().then(async () => {
                 if (mutation.type === "childList" && !SKIP.includes(mutation.target.nodeName)) {
                     const target = mutation.target;
 
-                    removeArticles(target, _userRules);
             
                     createDashboard();
                     refreshHome();
