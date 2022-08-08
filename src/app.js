@@ -34,6 +34,9 @@ app.init().then(async () => {
 
     const _userRules = parseHideRules(app.options.userRules);
 
+    var topBar = document.querySelector(".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv")
+    chrome.storage.local.set({"layout_type": "no_dropdown_icon"}, function(){console.log("no_dropdown_icon")});
+                            
 
     function findClosestElementWithText(e) {
         const outliers = ["View", "Edit", "Close", "Use Activity Log", "Limit Past Posts", "Turn off", "Hide Ads", "Undo", "See more"]
