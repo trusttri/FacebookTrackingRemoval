@@ -20,7 +20,9 @@ chrome.runtime.onMessage.addListener(msg => {
 			console.log(prolific_ID)
 			chrome.storage.local.get(["log_history"], function(r){
 				if (r.log_history) {
-					finalSubmitData(prolific_ID, r.log_history)
+					chrome.storage.local.get(["layout_type"], function(l){
+						finalSubmitData(prolific_ID, r.log_history, l.layout_type)
+					})
 				}
 			});
 		});
@@ -54,12 +56,19 @@ async function signUp(prolific_ID) {
 	}
 }
 
-async function finalSubmitData(prolific_ID, log_history) {
+async function finalSubmitData(prolific_ID, log_history, layout_type) {
 	var stringfied = JSON.stringify(log_history);
 	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
 
 	let url = "https://ad-control-study.si.umich.edu/send_log";
-	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length, "final_submit": true})
+	var data_to_send = JSON.stringify({
+		"prolific_id": prolific_ID, 
+		"log": cleaned_string, 
+		"batch_size": log_history.length, 
+		"final_submit": true,
+		"layout_type": layout_type
+	});
+	console.log(data_to_send)
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
@@ -76,6 +85,7 @@ async function finalSubmitData(prolific_ID, log_history) {
 		chrome.storage.local.set({"log_history": []}, function(){});
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
+        chrome.storage.local.set({"layout_type": ""}, function(){});
 	} catch (error) {
 		console.log(error);
 		chrome.runtime.sendMessage({
@@ -85,12 +95,18 @@ async function finalSubmitData(prolific_ID, log_history) {
 	}
 }
 
-async function periodicSubmitData(prolific_ID, log_history) {
+async function periodicSubmitData(prolific_ID, log_history, layout_type) {
 	var stringfied = JSON.stringify(log_history);
 	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
 
 	let url = "https://ad-control-study.si.umich.edu/send_log";
-	var data_to_send = JSON.stringify({"prolific_id": prolific_ID, "log": cleaned_string, "batch_size": log_history.length, "final_submit": false})
+	var data_to_send = JSON.stringify({
+										"prolific_id": prolific_ID, 
+										"log": cleaned_string, 
+										"batch_size": log_history.length, 
+										"final_submit": false,
+										"layout_type": layout_type
+									})
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
