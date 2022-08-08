@@ -80,8 +80,9 @@ app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
-    const _userRules = parseHideRules(app.options.userRules);
-
+    var topBar = document.querySelector(".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv")
+    chrome.storage.local.set({"layout_type": "no_dropdown_icon"}, function(){console.log("no_dropdown_icon")});
+    
     // function that detects and changes ads
     function hide(elem, label) {
         /* temporary code */
