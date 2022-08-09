@@ -257,7 +257,20 @@ app.init().then(async () => {
                 }
             });
             
-
+            dashboard_node.addEventListener('click', function () {
+                chrome.storage.local.get(["log_history"], function(result){
+                    var clickEvent = {
+                        "clicked_element_outer": "dashboard",
+                        "timestamp": Date.now(), 
+                    }
+                    if (result.log_history) {
+                        result.log_history.push(clickEvent)
+                        chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                    }else{
+                        chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                    }
+                });
+            })
         }
 
     }
@@ -482,7 +495,6 @@ app.init().then(async () => {
         _running = true;
 
         (async () => {
-            removeArticles(body, _userRules);
             // console.log(body)
             // if (app.options.delSuggest)
             //     removeArticles(body, app.hide_rules.suggestions_smart);
