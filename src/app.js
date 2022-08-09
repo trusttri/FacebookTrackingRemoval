@@ -123,9 +123,24 @@ app.init().then(async () => {
                     settingsBtn.style = AD_BUTTON_STYLE
 
                     adBtn.insertBefore(settingsBtn, adBtn.firstChild);
-                    adBtn.addEventListener("click", e => changeMenu());
                     adBtn.parentElement.parentElement.style.width = "8.2rem";
 
+                    adBtn.addEventListener("click", function() {
+                        changeMenu();
+
+                        chrome.storage.local.get(["log_history"], function(result){
+                            var clickEvent = {
+                                "clicked_element_outer": "ad-button",
+                                "timestamp": Date.now(), 
+                            }
+                            if (result.log_history) {
+                                result.log_history.push(clickEvent)
+                                chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                            }else{
+                                chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                            }
+                        });
+                    });
                 }
             }
         }
