@@ -24,8 +24,9 @@ const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f es
 const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=white style="display: inline-block; vertical-align: middle; margin-bottom: 0.27rem;" viewBox="-1 -4.5 15.5 19.5" height="100%" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 8rem; padding: 0.1rem 0.1rem; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.89rem; cursor: pointer; color: white; background-color: rgb(24, 119, 242); border: 0.5px solid var(--blue-link); font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 12px; font-size: 1.1rem; font-weight: 550; color:#1877F2; font-family: sans-serif;'      
-
+const HEADER_STYLE = 'margin: 10px 0px; padding: 5px 12px; font-size: 1.1rem; font-weight: 550; color:#1877F2; font-family: sans-serif; background-color: var(--comment-background);'      
+const DROPDOWN_INTRO_STYLE = 'padding: 5px 12px 0px 12px; font-size: 0.9rem; font-weight: 520; font-family: inherit; color: var(--primary-text);'      
+const DROPDOWN_INTRO_BLURB = "First set of options are for this ad. The next set of options are for all ads.";
 // ICONS
 const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/5yNj8IGYD_V.png&quot;); background-position: 0px -298px; background-size: 25px 400px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
@@ -131,42 +132,46 @@ app.init().then(async () => {
                 var innerdiv_string = '.rpm2j7zs.k7i0oixp.gvuykj2m.ni8dbmo4.du4w35lb.q5bimw55.ofs802cu.pohlnb88.dkue75c7.mb9wzai9.l56l04vs.r57mb794.l9j0dhe7.kh7kg01d.eg9m0zos.c3g1iek1.gs1a9yip.rq0escxv.j83agx80.cbu4d94t.rz4wbd8a.a8nywdso.smdty95z.c1zf3a5g.geg40m2u'
                 waitForElm(innerdiv_string).then((inner_elm) => { 
                     if(document.getElementsByClassName('FBTR-Menu').length == 0) {
-                    inner_elm[0].style.width = '550px';
-                    
-                    var nodes = elm
-                    var parent_node = nodes[0].parentElement
-                    
+                        inner_elm[0].style.width = '550px';
 
-                    var this_ad_header = document.createElement('div')
-                    this_ad_header.className += 'FBTR-Menu';
-                    this_ad_header.innerHTML = MENU_OPTION_NODE_WITH_DESC
-                    this_ad_header.textContent = "For this ad"
-                    this_ad_header.style = HEADER_STYLE;
-                    parent_node.insertBefore(this_ad_header, nodes[0])
+                        var nodes = elm
+                        var parent_node = nodes[0].parentElement
+                        
+                        var dropdown_intro =  document.createElement('div')
+                        dropdown_intro.className += 'FBTR-Menu';
+                        dropdown_intro.innerHTML = DROPDOWN_INTRO_BLURB;
+                        dropdown_intro.style = DROPDOWN_INTRO_STYLE;
+                        parent_node.insertBefore(dropdown_intro, nodes[0])
 
-                    var hr = document.createElement('div');
-                    hr.innerHTML = HR_BREAK
-                    parent_node.appendChild(hr)
-                    
-                    var general_header = document.createElement('div')
-                    general_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
-                    general_header.textContent = "For all ads"
-                    general_header.style = HEADER_STYLE;
+                        var this_ad_header = document.createElement('div')
+                        this_ad_header.className += 'FBTR-Menu';
+                        this_ad_header.innerHTML = MENU_OPTION_NODE_WITH_DESC
+                        this_ad_header.textContent = "For this ad"
+                        this_ad_header.style = HEADER_STYLE;
+                        parent_node.insertBefore(this_ad_header, nodes[0])
 
-                    parent_node.appendChild(general_header)
+                        var hr = document.createElement('div');
+                        // hr.innerHTML = HR_BREAK
+                        parent_node.appendChild(hr)
+                        
+                        var general_header = document.createElement('div')
+                        general_header.innerHTML = MENU_OPTION_NODE_WITHOUT_DESC
+                        general_header.textContent = "For all ads"
+                        general_header.style = HEADER_STYLE;
+
+                        parent_node.appendChild(general_header)
 
 
                     // add links to privacy controls
-                    for (let i = 0; i < titles.length; i++) {
+                    for (let i = 0; i < titles.length; i++) { 
                         appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
-                        // if(i==1 || i==3){
-                        //     var hr = document.createElement('div');
-                        //     hr.innerHTML = HR_BREAK
-                        //     parent_node.appendChild(hr)
-                        // }
-                    }
-                }
-                });   
+                      var scrollbar_string = '.rq0escxv.mkhogb32.n7fi1qx3.b5wmifdl.jb3vyjys.ph5uu5jm.qt6c0cv9.b3onmgus.hzruof5a.pmk7jnqg.kr520xx4.enuw37q7.dpja2al7.art1omkt.nw2je8n7.hhz5lgdu'
+                      var bar_elm = inner_elm[0].querySelector(scrollbar_string)
+                      if(bar_elm){
+                          bar_elm.classList=[]
+                          bar_elm.classList.add("rq0escxv","mkhogb32","n7fi1qx3","jb3vyjys","ph5uu5jm","qt6c0cv9","b3onmgus","hzruof5a","pmk7jnqg","kr520xx4","enuw37q7","art1omkt", "nw2je8n7","hhz5lgdu","pedkr2u6","z1801hqc")
+                      }
+                    });   
                
             });
 
