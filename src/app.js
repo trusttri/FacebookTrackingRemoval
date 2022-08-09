@@ -25,8 +25,6 @@ const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
 const DROPDOWN_SVG = '<svg fill=white style="display: inline-block; vertical-align: middle; margin-bottom: 0.27rem;" viewBox="-1 -4.5 15.5 19.5" height="100%" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 8rem; padding: 0.1rem 0.1rem; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.89rem; cursor: pointer; color: white; background-color: rgb(24, 119, 242); border: 0.5px solid var(--blue-link); font-family: sans-serif;'
 const HEADER_STYLE = 'margin: 10px 0px; padding: 5px 12px; font-size: 1.1rem; font-weight: 550; color:#1877F2; font-family: sans-serif; background-color: var(--comment-background);'      
-const DROPDOWN_INTRO_STYLE = 'padding: 5px 12px 0px 12px; font-size: 0.9rem; font-weight: 520; font-family: inherit; color: var(--primary-text);'      
-const DROPDOWN_INTRO_BLURB = "First set of options are for this ad. The next set of options are for all ads.";
 // ICONS
 const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/5yNj8IGYD_V.png&quot;); background-position: 0px -298px; background-size: 25px 400px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
@@ -165,12 +163,6 @@ app.init().then(async () => {
                         var nodes = elm
                         var parent_node = nodes[0].parentElement
                         
-                        var dropdown_intro =  document.createElement('div')
-                        dropdown_intro.className += 'FBTR-Menu';
-                        dropdown_intro.innerHTML = DROPDOWN_INTRO_BLURB;
-                        dropdown_intro.style = DROPDOWN_INTRO_STYLE;
-                        parent_node.insertBefore(dropdown_intro, nodes[0])
-
                         var this_ad_header = document.createElement('div')
                         this_ad_header.className += 'FBTR-Menu';
                         this_ad_header.innerHTML = MENU_OPTION_NODE_WITH_DESC
