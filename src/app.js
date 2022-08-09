@@ -162,17 +162,18 @@ app.init().then(async () => {
                         parent_node.appendChild(general_header)
 
 
-                    // add links to privacy controls
-                    for (let i = 0; i < titles.length; i++) { 
-                        appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
-                      var scrollbar_string = '.rq0escxv.mkhogb32.n7fi1qx3.b5wmifdl.jb3vyjys.ph5uu5jm.qt6c0cv9.b3onmgus.hzruof5a.pmk7jnqg.kr520xx4.enuw37q7.dpja2al7.art1omkt.nw2je8n7.hhz5lgdu'
-                      var bar_elm = inner_elm[0].querySelector(scrollbar_string)
-                      if(bar_elm){
-                          bar_elm.classList=[]
-                          bar_elm.classList.add("rq0escxv","mkhogb32","n7fi1qx3","jb3vyjys","ph5uu5jm","qt6c0cv9","b3onmgus","hzruof5a","pmk7jnqg","kr520xx4","enuw37q7","art1omkt", "nw2je8n7","hhz5lgdu","pedkr2u6","z1801hqc")
-                      }
-                    });   
-               
+                        // add links to privacy controls
+                        for (let i = 0; i < titles.length; i++) { 
+                            appendAdSettingOption(parent_node, titles[i], descriptions[i], urls[i], icons[i], i)
+                            var scrollbar_string = '.rq0escxv.mkhogb32.n7fi1qx3.b5wmifdl.jb3vyjys.ph5uu5jm.qt6c0cv9.b3onmgus.hzruof5a.pmk7jnqg.kr520xx4.enuw37q7.dpja2al7.art1omkt.nw2je8n7.hhz5lgdu'
+                            var bar_elm = inner_elm[0].querySelector(scrollbar_string)
+                            if(bar_elm){
+                                bar_elm.classList=[]
+                                bar_elm.classList.add("rq0escxv","mkhogb32","n7fi1qx3","jb3vyjys","ph5uu5jm","qt6c0cv9","b3onmgus","hzruof5a","pmk7jnqg","kr520xx4","enuw37q7","art1omkt", "nw2je8n7","hhz5lgdu","pedkr2u6","z1801hqc")
+                            }
+                        }
+                    }
+                });
             });
 
         }
