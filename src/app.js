@@ -362,10 +362,23 @@ app.init().then(async () => {
             }
         } else {
             console.log(e.name)
-            return e
+            return e.name
         }
     }
 
+    function logPopupType() {
+        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        if(popup) {
+            var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupType) {
+                console.log(popupType.innerText)
+                return popupType.innerText
+            } else {
+                return 'none'
+            }
+        }
+        return 'none'
+    }
 
     let _running = false;
     function run(body) {
@@ -383,8 +396,8 @@ app.init().then(async () => {
             }
 
             var closest_element_with_name = findClosestElementWithName(e.target)
-            if (typeof(closest_element_with_name) !== "string"){
-                clickEvent['closest_element_with_name'] = closest_element_with_name.cloneNode(true).outerHTML
+            if (closest_element_with_name !== 'none'){
+                clickEvent['closest_element_with_name'] = closest_element_with_name
             }
 
             var closest_element_with_inner_text = findClosestElementWithText(e.target)
@@ -395,6 +408,11 @@ app.init().then(async () => {
             var closest_element_with_arialabel = findClosestElementWithAriaLabel(e.target)
             if (typeof(closest_element_with_arialabel) !== "string"){
                 clickEvent['closest_element_with_arialabel'] = closest_element_with_arialabel.cloneNode(true).outerHTML
+            }
+
+            var popup = logPopupType()
+            if (popup !== "none") {
+                clickEvent['popup'] = popup
             }
 
             const ad_topic_options = ["No Preference", "See Less"]
