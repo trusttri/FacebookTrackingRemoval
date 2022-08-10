@@ -335,22 +335,29 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
+            console.log("---inner text---")
             console.log(e.innerText)
             return e
         }
     }
 
-    function findClosestElementWithAriaLabel(e) {
+    function findClosestElementWithAriaLabelParent(e) {
         if ((e.ariaLabel === '') || (e.ariaLabel === null) || (e.ariaLabel === undefined)) {
             if (e.parentElement) {
-                return findClosestElementWithAriaLabel(e.parentElement)
+                return findClosestElementWithAriaLabelParent(e.parentElement)
             } else {
                 return 'none'
             }
         } else {
+            console.log("---aria label---")
             console.log(e.ariaLabel)
             return e
         }
+    }
+
+    function findClosestElementWithAriaLabelChild(e) {
+        console.log(e.querySelector('[aria-label]'))
+        return e.querySelector('[aria-label]')
     }
 
     function findClosestElementWithName(e) {
@@ -361,8 +368,37 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
+            console.log("---name---")
             console.log(e.name)
             return e.name
+        }
+    }
+
+    function findClosestElementWithAriaChecked(e) {
+        if ((e.ariaChecked === '') || (e.ariaChecked === null) || (e.ariaChecked === undefined)) {
+            if (e.parentElement) {
+                return findClosestElementWithAriaChecked(e.parentElement)
+            } else {
+                return 'none'
+            }
+        } else {
+            console.log("---aria checked---")
+            console.log(e.ariaChecked)
+            return e.ariaChecked
+        }
+    }
+
+    function findClosestElementWithRole(e) {
+        if ((e.role === '') || (e.role === null) || (e.role === undefined)) {
+            if (e.parentElement) {
+                return findClosestElementWithRole(e.parentElement)
+            } else {
+                return 'none'
+            }
+        } else {
+            console.log("---role---")
+            console.log(e.role)
+            return e.role
         }
     }
 
@@ -373,6 +409,20 @@ app.init().then(async () => {
             if(popupType) {
                 console.log(popupType.innerText)
                 return popupType.innerText
+            } else {
+                return 'none'
+            }
+        }
+        return 'none'
+    }
+
+    function logPopupHeader() {
+        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        if(popup) {
+            var popupHeader = popup.querySelectorAll('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupHeader.length > 2) {
+                console.log(popupHeader[2].innerText)
+                return popupHeader[2].innerText
             } else {
                 return 'none'
             }
@@ -391,28 +441,51 @@ app.init().then(async () => {
 
             var clickEvent = {
                 "page" : location.href, 
-                "clicked_element_outer": e.target.cloneNode(true).outerHTML,
+                "clicked_element": e.target.cloneNode(true).outerHTML,
                 "timestamp": Date.now()
+            }
+
+            
+            var closest_element_with_inner_text = findClosestElementWithText(e.target)
+            if (typeof(closest_element_with_inner_text) !== "string"){
+                clickEvent['closest_inner_text'] = closest_element_with_inner_text.cloneNode(true).outerHTML
+            }
+
+            var closest_element_with_arialabel_parent = findClosestElementWithAriaLabelParent(e.target)
+            if (typeof(closest_element_with_arialabel_parent) !== "string"){
+                clickEvent['closest_arialabel_parent'] = closest_element_with_arialabel_parent.cloneNode(true).outerHTML
+            }
+
+            var closest_element_with_arialabel_child = findClosestElementWithAriaLabelChild(e.target)
+            if (closest_element_with_arialabel_child !== null){
+                console.log(closest_element_with_arialabel_child)
+                clickEvent['closest_arialabel_child'] = closest_element_with_arialabel_child.cloneNode(true).outerHTML
             }
 
             var closest_element_with_name = findClosestElementWithName(e.target)
             if (closest_element_with_name !== 'none'){
-                clickEvent['closest_element_with_name'] = closest_element_with_name
+                clickEvent['closest_name'] = closest_element_with_name
             }
 
-            var closest_element_with_inner_text = findClosestElementWithText(e.target)
-            if (typeof(closest_element_with_inner_text) !== "string"){
-                clickEvent['closest_element_with_inner_text'] = closest_element_with_inner_text.cloneNode(true).outerHTML
+            var closest_element_with_role = findClosestElementWithRole(e.target)
+            if (closest_element_with_role !== 'none'){
+                clickEvent['closest_role'] = closest_element_with_role
             }
 
-            var closest_element_with_arialabel = findClosestElementWithAriaLabel(e.target)
-            if (typeof(closest_element_with_arialabel) !== "string"){
-                clickEvent['closest_element_with_arialabel'] = closest_element_with_arialabel.cloneNode(true).outerHTML
+
+            var closest_element_with_ariachecked = findClosestElementWithAriaChecked(e.target)
+            if (closest_element_with_ariachecked !== 'none'){
+                clickEvent['closest_ariachecked'] = closest_element_with_ariachecked
             }
 
-            var popup = logPopupType()
-            if (popup !== "none") {
-                clickEvent['popup'] = popup
+            var popupType = logPopupType()
+            if (popupType  !== "none") {
+                clickEvent['popupType'] = popupType
+            }
+
+            var popupHeader = logPopupHeader()
+            if (popupHeader !== "none") {
+                clickEvent['popupHeader'] = popupHeader
             }
 
             const ad_topic_options = ["No Preference", "See Less"]
