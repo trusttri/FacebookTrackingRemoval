@@ -335,8 +335,8 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---inner text---")
-            console.log(e.innerText)
+            // console.log("---inner text---")
+            // console.log(e.innerText)
             return e
         }
     }
@@ -349,14 +349,14 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---aria label---")
-            console.log(e.ariaLabel)
+            // console.log("---aria label---")
+            // console.log(e.ariaLabel)
             return e
         }
     }
 
     function findClosestElementWithAriaLabelChild(e) {
-        console.log(e.querySelector('[aria-label]'))
+        // console.log(e.querySelector('[aria-label]'))
         return e.querySelector('[aria-label]')
     }
 
@@ -368,8 +368,8 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---name---")
-            console.log(e.name)
+            // console.log("---name---")
+            // console.log(e.name)
             return e.name
         }
     }
@@ -382,8 +382,8 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---aria checked---")
-            console.log(e.ariaChecked)
+            // console.log("---aria checked---")
+            // console.log(e.ariaChecked)
             return e.ariaChecked
         }
     }
@@ -396,8 +396,8 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---role---")
-            console.log(e.role)
+            // console.log("---role---")
+            // console.log(e.role)
             return e.role
         }
     }
@@ -407,7 +407,7 @@ app.init().then(async () => {
         if(popup) {
             var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
             if(popupType) {
-                console.log(popupType.innerText)
+                // console.log(popupType.innerText)
                 return popupType.innerText
             } else {
                 return 'none'
@@ -421,7 +421,7 @@ app.init().then(async () => {
         if(popup) {
             var popupHeader = popup.querySelectorAll('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
             if(popupHeader.length > 2) {
-                console.log(popupHeader[2].innerText)
+                // console.log(popupHeader[2].innerText)
                 return popupHeader[2].innerText
             } else {
                 return 'none'
