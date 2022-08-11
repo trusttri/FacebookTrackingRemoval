@@ -40,7 +40,7 @@ app.init().then(async () => {
     }else{
         chrome.storage.local.set({"layout_type": "dropdown_icon"}, function(){console.log("dropdown_icon")});
     }
-                            
+    
 
     function findClosestElementWithText(e) {
         const outliers = ["View", "Edit", "Close", "Use Activity Log", "Limit Past Posts", "Turn off", "Hide Ads", "Undo", "See more"]
@@ -84,8 +84,8 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---name---")
-            console.log(e.name)
+            // console.log("---name---")
+            // console.log(e.name)
             return e
         }
     }
@@ -173,13 +173,11 @@ app.init().then(async () => {
 
             var closest_element_with_arialabel_child = findClosestElementWithAriaLabelChild(e.target)
             if (closest_element_with_arialabel_child !== null){
-                console.log(closest_element_with_arialabel_child)
                 clickEvent['closest_arialabel_child'] = closest_element_with_arialabel_child.cloneNode(true).outerHTML
             }
 
             var closest_element_with_name = findClosestElementWithName(e.target)
-
-            if (closest_element_with_name !== 'none'){
+            if (typeof(closest_element_with_name) !== "string"){
                 clickEvent['closest_name'] = closest_element_with_name
             }
 
@@ -217,13 +215,17 @@ app.init().then(async () => {
                     chrome.storage.local.get(["log_history"], function(result){
                         if (result.log_history) {
                             result.log_history.push(clickEvent)
-                            chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                            chrome.storage.local.set({"log_history": result.log_history}, function(){
+                                // console.log(result.log_history)
+                            });
                             if (result.log_history.length % BATCH_SIZE == 0) {
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
                         }else{
-                            chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                            chrome.storage.local.set({"log_history": [clickEvent]}, function(){
+                                // console.log(result.log_history)
+                            });
                         }
                     });
                 }
