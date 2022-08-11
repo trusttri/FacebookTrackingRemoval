@@ -79,7 +79,7 @@ app.init().then(async () => {
 
         var ad_content = elem.closest(app.hide_rules.article_wrapper)
         var sponsor = ad_content.querySelector(".oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p")
-        console.log(sponsor.querySelector('span').innerHTML)
+        // console.log(sponsor.querySelector('span').innerHTML)
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
             return false;
@@ -115,7 +115,7 @@ app.init().then(async () => {
 
                         chrome.storage.local.get(["log_history"], function(result){
                             var clickEvent = {
-                                "clicked_element_outer": "ad-button",
+                                "clicked_element": "ad-button",
                                 "timestamp": Date.now(), 
                             }
                             if (result.log_history) {
@@ -310,7 +310,7 @@ app.init().then(async () => {
         } else {
             // console.log("---name---")
             // console.log(e.name)
-            return e.name
+            return e
         }
     }
 
@@ -397,12 +397,11 @@ app.init().then(async () => {
 
             var closest_element_with_arialabel_child = findClosestElementWithAriaLabelChild(e.target)
             if (closest_element_with_arialabel_child !== null){
-                console.log(closest_element_with_arialabel_child)
                 clickEvent['closest_arialabel_child'] = closest_element_with_arialabel_child.cloneNode(true).outerHTML
             }
 
             var closest_element_with_name = findClosestElementWithName(e.target)
-            if (closest_element_with_name !== 'none'){
+            if (typeof(closest_element_with_name) !== "string"){
                 clickEvent['closest_name'] = closest_element_with_name
             }
 
@@ -433,7 +432,7 @@ app.init().then(async () => {
             if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
                 var ad_topic = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')[0].innerText
                 clickEvent['ad_topic'] = ad_topic
-                console.log(ad_topic)
+                // console.log(ad_topic)
             }
 
             chrome.storage.local.get(["prolific_ID"], function(result){
@@ -441,13 +440,17 @@ app.init().then(async () => {
                     chrome.storage.local.get(["log_history"], function(result){
                         if (result.log_history) {
                             result.log_history.push(clickEvent)
-                            chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                            chrome.storage.local.set({"log_history": result.log_history}, function(){
+                                // console.log(result.log_history)
+                            });
                             if (result.log_history.length % BATCH_SIZE == 0) {
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
                             
                         }else{
-                            chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                            chrome.storage.local.set({"log_history": [clickEvent]}, function(){
+                                // console.log(result.log_history)
+                            });
                         }
                     });
                 }
