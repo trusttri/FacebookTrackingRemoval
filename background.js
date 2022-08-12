@@ -92,6 +92,8 @@ async function finalSubmitData(prolific_ID, log_history, layout_type) {
         chrome.storage.local.set({"started": "false"}, function(){});
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
         chrome.storage.local.set({"layout_type": ""}, function(){});
+        chrome.storage.local.set({"popup_history": []}, function(){});
+        
 	} catch (error) {
 		console.log(error);
 		chrome.runtime.sendMessage({
