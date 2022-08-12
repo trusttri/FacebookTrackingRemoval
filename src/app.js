@@ -428,6 +428,32 @@ app.init().then(async () => {
         return 'none'
     }
 
+    function logPopupInData() {
+        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        if(popup) {
+            var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupType) {
+                // console.log(popupType.innerText)
+                chrome.storage.local.get(["popup_history"], function(r){
+                    var popupEvent = [popupType.innerText, Date.now()]
+                    if (r.popup_history) {
+                        r.popup_history.push(popupEvent)
+                        chrome.storage.local.set({"popup_history": r.popup_history}, function(){
+                            console.log(r.popup_history)
+                        });
+
+                    }else{
+                        chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
+                            console.log(r.popup_history)
+                        });
+                    }
+                });
+            } else {
+                console.log('none')
+            }
+        }
+    }
+
     let _running = false;
     function run(body) {
         if (_running)
@@ -499,7 +525,7 @@ app.init().then(async () => {
                         if (result.log_history) {
                             result.log_history.push(clickEvent)
                             chrome.storage.local.set({"log_history": result.log_history}, function(){
-                                // console.log(result.log_history)
+                                console.log(result.log_history)
                             });
                             if (result.log_history.length % BATCH_SIZE == 0) {
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
@@ -507,7 +533,7 @@ app.init().then(async () => {
 
                         }else{
                             chrome.storage.local.set({"log_history": [clickEvent]}, function(){
-                                // console.log(result.log_history)
+                                console.log(result.log_history)
                             });
                         }
                     });
@@ -536,7 +562,7 @@ app.init().then(async () => {
             
                     createDashboard();
                     refreshHome();
-                    
+                    logPopupInData();
                     
                     // browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
                   
