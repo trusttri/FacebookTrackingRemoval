@@ -130,6 +130,9 @@ app.init().then(() => {
 
     document.getElementById("reset").addEventListener("click", function(){
         chrome.storage.local.set({"log_history": []}, function(){console.log('reset')});
+        chrome.storage.local.set({"prolific_ID": ""}, function(){});
+        chrome.storage.local.set({"layout_type": ""}, function(){});
+        chrome.storage.local.set({"popup_history": []}, function(){});
         document.getElementById("id_submit").disabled=false;
         document.getElementById("sessionID").disabled=false;
         document.getElementById("end").disabled=false;
