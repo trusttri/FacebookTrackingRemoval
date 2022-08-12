@@ -446,20 +446,25 @@ app.init().then(async () => {
             var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
             if(popupType) {
                 // console.log(popupType.innerText)
-                chrome.storage.local.get(["popup_history"], function(r){
-                    var popupEvent = [popupType.innerText, Date.now()]
-                    if (r.popup_history) {
-                        r.popup_history.push(popupEvent)
-                        chrome.storage.local.set({"popup_history": r.popup_history}, function(){
-                            console.log(r.popup_history)
-                        });
+                chrome.storage.local.get(["prolific_ID"], function(p){
+                    if (p.prolific_ID) {
+                        chrome.storage.local.get(["popup_history"], function(r){
+                            var popupEvent = [popupType.innerText, Date.now()]
+                            if (r.popup_history) {
+                                r.popup_history.push(popupEvent)
+                                chrome.storage.local.set({"popup_history": r.popup_history}, function(){
+                                    console.log(r.popup_history)
+                                });
 
-                    }else{
-                        chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
-                            console.log(r.popup_history)
+                            }else{
+                                chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
+                                    console.log(r.popup_history)
+                                });
+                            }
                         });
                     }
                 });
+                
             } else {
                 console.log('none')
             }
