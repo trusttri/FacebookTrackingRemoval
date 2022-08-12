@@ -20,9 +20,15 @@ chrome.runtime.onMessage.addListener(msg => {
 			console.log(prolific_ID)
 			chrome.storage.local.get(["log_history"], function(r){
 				if (r.log_history) {
-					chrome.storage.local.get(["layout_type"], function(l){
-						finalSubmitData(prolific_ID, r.log_history, l.layout_type)
-					})
+					chrome.storage.local.get(["popup_history"], function(p){
+	                    if (p.popup_history) {
+	                        r.log_history.push(p.popup_history);
+	                        chrome.storage.local.get(["layout_type"], function(l){
+								finalSubmitData(prolific_ID, r.log_history, l.layout_type)
+							})
+
+	                    }
+                	});
 				}
 			});
 		});
