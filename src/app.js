@@ -236,8 +236,18 @@ app.init().then(async () => {
             const ad_topic_options = ["No Preference", "See Less"]
             var is_ad_topic_popup = ad_topic_options.includes(e.target.innerText) || ad_topic_options.includes(closest_element_with_inner_text.innerText)
 
+            var ad_topic='';
             if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
-                var ad_topic = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')[0].innerText
+                var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')
+                if(ad_topic_exist.length>0){
+                    ad_topic = ad_topic_exist[0].innerText
+                }else{
+                    var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m misohx42 hrzyx87i')
+                    if(ad_topic_exist.length>0){
+                        ad_topic = ad_topic_exist[0].innerText
+                    }
+                }
+                // console.log(ad_topic)
                 clickEvent['ad_topic'] = ad_topic
             }
 
