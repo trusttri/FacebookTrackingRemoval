@@ -67,7 +67,7 @@ const icons = [
                 SETTINGS_ICON
             ]
 
-const BATCH_SIZE = 25;
+const BATCH_SIZE = 10;
 const QUERY_STRING_FOR_LAYOUT = ".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv";
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
@@ -86,6 +86,8 @@ app.init().then(async () => {
     }else{
         chrome.storage.local.set({"layout_type": "dropdown_icon"}, function(){console.log("dropdown_icon")});
     }
+
+    chrome.storage.local.set({"browser_size": [[window.innerHeight, window.innerWidth, Date.now()]]}, function(){});
           
     // function that detects and changes ads
     function hide(elem, label) {
@@ -416,8 +418,11 @@ app.init().then(async () => {
         var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
         if(popup) {
             var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupType==null){
+                popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.ns63r2gh.iv3no6db.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            }
+            console.log(popupType);
             if(popupType) {
-                // console.log(popupType.innerText)
                 return popupType.innerText
             } else {
                 return 'none'
@@ -430,8 +435,12 @@ app.init().then(async () => {
         var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
         if(popup) {
             var popupHeader = popup.querySelectorAll('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupHeader.length < 2){
+                popupHeader = popup.getElementsByClassName('d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 ns63r2gh iv3no6db o3w64lxj b2s5l15y hnhda86s oo9gr5id oqcyycmt')
+            }
+            
             if(popupHeader.length > 2) {
-                // console.log(popupHeader[2].innerText)
+                console.log(popupHeader[2].innerText)
                 return popupHeader[2].innerText
             } else {
                 return 'none'
@@ -440,10 +449,56 @@ app.init().then(async () => {
         return 'none'
     }
 
+    function logPopupInData() {
+        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        if(popup) {
+            var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupType==null){
+                popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.ns63r2gh.iv3no6db.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            }
+            console.log(popupType);
+            if(popupType) {
+                // console.log(popupType.innerText)
+                chrome.storage.local.get(["prolific_ID"], function(p){
+                    if (p.prolific_ID) {
+                        chrome.storage.local.get(["popup_history"], function(r){
+                            var popupEvent = [popupType.innerText, Date.now()]
+                            if (r.popup_history) {
+                                r.popup_history.push(popupEvent)
+                                chrome.storage.local.set({"popup_history": r.popup_history}, function(){
+                                    console.log(r.popup_history)
+                                });
+                            }else{
+                                chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
+                                    console.log(r.popup_history)
+                                });
+                            }
+                        });
+                    }
+                });
+                
+            } else {
+                console.log('none')
+            }
+        }
+    }
+
     let _running = false;
     function run(body) {
         if (_running)
             return;
+        window.addEventListener('resize', function(){
+            chrome.storage.local.get(["browser_size"], function(res){
+                if(res.browser_size) {
+                    res.browser_size.push([window.innerHeight, window.innerWidth, Date.now()])
+                    chrome.storage.local.set({"browser_size": res.browser_size}, function(){
+                        console.log(res.browser_size)
+                    });
+                }else{
+                    chrome.storage.local.set({"browser_size": [[window.innerHeight, window.innerWidth, Date.now()]]}, function(){});
+                }
+            })
+        });
 
 
         // add click detect
@@ -452,7 +507,9 @@ app.init().then(async () => {
             var clickEvent = {
                 "page" : location.href, 
                 "clicked_element": e.target.cloneNode(true).outerHTML,
-                "timestamp": Date.now()
+                "timestamp": Date.now(),
+                "w": window.innerWidth,
+                "h": window.innerHeight
             }
 
             
@@ -500,10 +557,25 @@ app.init().then(async () => {
             const ad_topic_options = ["No Preference", "See Less"]
             var is_ad_topic_popup = ad_topic_options.includes(e.target.innerText) || ad_topic_options.includes(closest_element_with_inner_text.innerText)
 
-            if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
-                var ad_topic = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')[0].innerText
-                clickEvent['ad_topic'] = ad_topic
+            try{
+                var ad_topic='';
+                if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
+                    var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')
+                    if(ad_topic_exist.length>0){
+                        ad_topic = ad_topic_exist[0].innerText
+                    }else{
+                        var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m misohx42 hrzyx87i')
+                        if(ad_topic_exist.length>0){
+                            ad_topic = ad_topic_exist[0].innerText
+                        }
+                    }
+                    clickEvent['ad_topic'] = ad_topic
+                }
+            } catch(err) {
+                clickEvent['error'] = err.message;
             }
+
+            console.log(clickEvent)
 
             chrome.storage.local.get(["prolific_ID"], function(result){
                 if (result.prolific_ID) {
@@ -511,15 +583,16 @@ app.init().then(async () => {
                         if (result.log_history) {
                             result.log_history.push(clickEvent)
                             chrome.storage.local.set({"log_history": result.log_history}, function(){
-                                // console.log(result.log_history)
+                                console.log(result.log_history)
                             });
                             if (result.log_history.length % BATCH_SIZE == 0) {
+                                console.log('periodic submit')
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
                         }else{
                             chrome.storage.local.set({"log_history": [clickEvent]}, function(){
-                                // console.log(result.log_history)
+                                console.log(result.log_history)
                             });
                         }
                     });
@@ -547,7 +620,7 @@ app.init().then(async () => {
             
                     createDashboard();
                     refreshHome();
-                    
+                    logPopupInData();
                     
                     // browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
                   
