@@ -90,8 +90,8 @@ app.init().then(async () => {
         /* temporary code */
         augmentButton(elem) // our code for augmenting button on ads
 
-        var ad_content = elem.closest(app.hide_rules.article_wrapper)
-        var sponsor = ad_content.querySelector(".oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p")
+        // var ad_content = elem.closest(app.hide_rules.article_wrapper)
+        // var sponsor = ad_content.querySelector(".oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p")
         // console.log(sponsor.querySelector('span').innerHTML)
         let target;
         if (!elem || !(target = elem.closest(app.hide_rules.article_wrapper)))
@@ -395,6 +395,10 @@ app.init().then(async () => {
         var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
         if(popup) {
             var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            if(popupType==null){
+                popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.ns63r2gh.iv3no6db.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            }
+            console.log(popupType);
             if(popupType) {
                 // console.log(popupType.innerText)
                 chrome.storage.local.get(["prolific_ID"], function(p){
@@ -406,7 +410,6 @@ app.init().then(async () => {
                                 chrome.storage.local.set({"popup_history": r.popup_history}, function(){
                                     console.log(r.popup_history)
                                 });
-
                             }else{
                                 chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
                                     console.log(r.popup_history)
