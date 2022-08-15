@@ -86,6 +86,8 @@ app.init().then(async () => {
     }else{
         chrome.storage.local.set({"layout_type": "dropdown_icon"}, function(){console.log("dropdown_icon")});
     }
+
+    chrome.storage.local.set({"browser_size": [[window.innerHeight, window.innerWidth, Date.now()]]}, function(){});
           
     // function that detects and changes ads
     function hide(elem, label) {
@@ -478,6 +480,18 @@ app.init().then(async () => {
     function run(body) {
         if (_running)
             return;
+        window.addEventListener('resize', function(){
+            chrome.storage.local.get(["browser_size"], function(res){
+                if(res.browser_size) {
+                    res.browser_size.push([window.innerHeight, window.innerWidth, Date.now()])
+                    chrome.storage.local.set({"browser_size": res.browser_size}, function(){
+                        console.log(res.browser_size)
+                    });
+                }else{
+                    chrome.storage.local.set({"browser_size": [[window.innerHeight, window.innerWidth, Date.now()]]}, function(){});
+                }
+            })
+        });
 
 
         // add click detect
@@ -487,6 +501,8 @@ app.init().then(async () => {
                 "page" : location.href, 
                 "clicked_element": e.target.cloneNode(true).outerHTML,
                 "timestamp": Date.now(),
+                "w": window.innerWidth,
+                "h": window.innerHeight
             }
 
             
@@ -563,6 +579,7 @@ app.init().then(async () => {
                                 console.log(result.log_history)
                             });
                             if (result.log_history.length % BATCH_SIZE == 0) {
+                                console.log('periodic submit')
                                 browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
