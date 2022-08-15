@@ -53,6 +53,8 @@ async function signUp(prolific_ID) {
 		    data: result
 		});
 		console.log(result)
+		chrome.storage.local.set({"popup_history": []}, function(){});
+
 	} catch (error) {
 		console.log(error);
 		chrome.runtime.sendMessage({
