@@ -70,6 +70,8 @@ async function signUp(prolific_ID) {
 		});
 		console.log(result)
 		chrome.storage.local.set({"popup_history": []}, function(){});
+		chrome.storage.local.set({"layout_type": ""}, function(){});
+		chrome.storage.local.set({"browser_size": []}, function(){});
 
 	} catch (error) {
 		console.log(error);
@@ -112,6 +114,7 @@ async function finalSubmitData(prolific_ID, log_history, layout_type, browser_si
         chrome.storage.local.set({"prolific_ID": ""}, function(){});
         chrome.storage.local.set({"layout_type": ""}, function(){});
         chrome.storage.local.set({"popup_history": []}, function(){});
+        chrome.storage.local.set({"browser_size": []}, function(){});
         
 	} catch (error) {
 		console.log(error);
