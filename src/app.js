@@ -19,7 +19,7 @@
 'use strict';
 
 
-const BATCH_SIZE = 25;
+const BATCH_SIZE = 10;
 const QUERY_STRING_FOR_LAYOUT = ".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv";
 
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
