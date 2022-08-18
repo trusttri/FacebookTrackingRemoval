@@ -59,3 +59,19 @@ summary.fbtrLabel {
     border-radius: 8px;
 }
 
+.dashboard_inner{
+    border: solid 1px #bec3c9a3;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: white; 
+    background-color: rgb(24, 119, 242); 
+}
+
+.dashboard-intro {
+    font-size: .9375rem;
+    padding-bottom: 0.3rem;
+}
+
+.innypi6y {
+    font-weight: 600;
+}
