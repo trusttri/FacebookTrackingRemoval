@@ -19,23 +19,25 @@
 'use strict';
 
 
-const MENU_OPTION_NODE_WITH_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(); background-position: 0px -404px; background-size: 33px 1388px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">[Title]</span></div><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 tia6h79c mdeji52x sq6gx45u a3bd9o3v b1v8xokw m9osqain hzawbc8m" dir="auto">[Description]</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
-const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz p7hjln8o esuyzwwr f1sip0of n00je7tq arfg74bv qs9ysxi8 k77z8yql abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 rq0escxv nhd2j8a9 j83agx80 btwxx1t3 pfnyh3mw opuu4ng7 kj2yoqh6 kvgmc6g5 oygrvhab l9j0dhe7 i1ao9s8h du4w35lb bp9cbjyn cxgpxx05 dflh9lhu sj5x9vvc scb9dxdr" role="menuitem" tabindex="0"><div class="bp9cbjyn tiyi1ipj j83agx80 taijpn5t tvfksri0"><i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/ym/r/ad7XYzccM9Z.png&quot;); background-position: 0px -677px; background-size: 33px 1186px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i></div><div class="bp9cbjyn j83agx80 btwxx1t3 buofh1pr i1fnvgqd hpfvmrgz"><div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg"><div class="qzhwtbm6 knvmm38d"><span class="d2edcug0 hpfvmrgz qv66sw1b c1et5uql oi732d6d ik7dh3pa ht8s03o8 a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn iv3no6db jq4qci2q a3bd9o3v ekzkrbhg oo9gr5id hzawbc8m" dir="auto">Copy link</span></div></div></div><div class="n00je7tq arfg74bv qs9ysxi8 k77z8yql i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s rnr61an3" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
-const HR_BREAK = '<hr class="aov4n071 dhix69tm wkznzc2l bi6gxh9e pwoa4pd7">'
-const DROPDOWN_SVG = '<svg fill=white style="display: inline-block; vertical-align: text-bottom; padding-right: 2px;" viewBox="0 0 14 14" width="1em" height="1em" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
-const AD_BUTTON_STYLE = 'width: 100px; padding: 3px 10px; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.98rem; cursor: pointer; color: #216fdb; border: 2px solid #98bff1; font-family: sans-serif;'
-const HEADER_STYLE = 'padding: 5px 0px; font-size: 1.25rem; font-weight: 700; color: white; font-family: sans-serif;'   
+const MENU_OPTION_NODE_WITH_DESC = '<div class="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn s5oniofx rn8ck1ys s3jn8y49 o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 f14ij5to l3ldwz01 icdlwmnq qgrdou9d bdao358l fsf7x5fv alzwoclg jl2a5g8c jez8cy9q sb3qexpo l7miuv0d m8h3af8h kjdc1dyq om3e55n1 cr00lzj9 g4tp4svg i85zmo3j q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze" role="menuitem" tabindex="0"><div class="i85zmo3j lpqsk9lh alzwoclg jcxyg2ei tpvapw4o"><img class="gneimcpu b0w474w7" src="https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/MdmhsmOJOCq.png" alt="" height="20" width="20"></div><div class="i85zmo3j alzwoclg jl2a5g8c cgu29s5g sl27f92c aeinzg81"><div class="alzwoclg cqf1kptm siwo0mpr gu5uzgus"><div class="jroqu855 nthtkgg5"><span class="gvxzyvdx aeinzg81 t7p7dqev gh25dzvf tb6i94ri gupuyl1y i2onq4tn b6ax4al1 gem102v4 ncib64c9 mrvwc6qr sx8pxkcf f597kf1v cpcgwwas f5mw3jnl hxfwr5lz k1z55t6l oog5qr5w tpi2lg9u pbevjfx6 ztn2w49o" dir="auto">Report ad</span></div><div class="jroqu855 nthtkgg5"><span class="gvxzyvdx aeinzg81 t7p7dqev gh25dzvf tb6i94ri gupuyl1y i2onq4tn b6ax4al1 gem102v4 ncib64c9 mrvwc6qr sx8pxkcf f597kf1v cpcgwwas pk1vzqw1 szxhu1pg glosn74e oog5qr5w tes86rjd rtxb060y ztn2w49o" dir="auto">Tell us about a problem with this ad.</span></div></div></div><div class="o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 z6erz7xo on4d8346 jkp44r48 l10tt5db s8sjc6am myo4itp8 ekq1a7f9 pym4i58u ldembo95 mwa1sm0y hi696u2r" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn s5oniofx rn8ck1ys s3jn8y49 o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 f14ij5to l3ldwz01 icdlwmnq qgrdou9d bdao358l fsf7x5fv alzwoclg jl2a5g8c jez8cy9q sb3qexpo l7miuv0d m8h3af8h kjdc1dyq om3e55n1 cr00lzj9 g4tp4svg i85zmo3j q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze" role="menuitem" tabindex="0"><div class="i85zmo3j lpqsk9lh alzwoclg jcxyg2ei tpvapw4o"><img class="gneimcpu b0w474w7" src="https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/80lDbyBfLdn.png" alt="" height="20" width="20"></div><div class="i85zmo3j alzwoclg jl2a5g8c cgu29s5g sl27f92c aeinzg81"><div class="alzwoclg cqf1kptm siwo0mpr gu5uzgus"><div class="jroqu855 nthtkgg5"><span class="gvxzyvdx aeinzg81 t7p7dqev gh25dzvf tb6i94ri gupuyl1y i2onq4tn b6ax4al1 gem102v4 ncib64c9 mrvwc6qr sx8pxkcf f597kf1v cpcgwwas f5mw3jnl hxfwr5lz k1z55t6l oog5qr5w tpi2lg9u pbevjfx6 ztn2w49o" dir="auto">Turn on notifications for this post</span></div></div></div><div class="o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 z6erz7xo on4d8346 jkp44r48 l10tt5db s8sjc6am myo4itp8 ekq1a7f9 pym4i58u ldembo95 mwa1sm0y hi696u2r" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
+const DASHBOARD_HEADER = '<div class="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn s5oniofx rn8ck1ys s3jn8y49 o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 f14ij5to l3ldwz01 icdlwmnq qgrdou9d fsf7x5fv alzwoclg jl2a5g8c jez8cy9q sb3qexpo l7miuv0d m8h3af8h kjdc1dyq om3e55n1 cr00lzj9 g4tp4svg i85zmo3j q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze" role="menuitem" tabindex="0"><div class="i85zmo3j lpqsk9lh alzwoclg jcxyg2ei tpvapw4o"><img class="gneimcpu b0w474w7" src="https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/80lDbyBfLdn.png" alt="" height="20" width="20"></div><div class="i85zmo3j alzwoclg jl2a5g8c cgu29s5g sl27f92c aeinzg81"><div class="alzwoclg cqf1kptm siwo0mpr gu5uzgus"><div class="jroqu855 nthtkgg5"><span class="gvxzyvdx aeinzg81 t7p7dqev gh25dzvf tb6i94ri gupuyl1y i2onq4tn b6ax4al1 gem102v4 ncib64c9 mrvwc6qr sx8pxkcf f597kf1v cpcgwwas f5mw3jnl hxfwr5lz k1z55t6l oog5qr5w tpi2lg9u pbevjfx6 ztn2w49o" dir="auto">Turn on notifications for this post</span></div></div></div><div class="o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 z6erz7xo on4d8346 jkp44r48 l10tt5db s8sjc6am myo4itp8 ekq1a7f9 pym4i58u ldembo95 mwa1sm0y hi696u2r" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
 
+const HR_BREAK = '<hr class="th51lws0 p9ctufpz rj0o91l8 mfn553m3 tccefgj0">'
+const DROPDOWN_SVG = '<svg fill="white" viewBox="-1 -3.4 16 16" width="1em" height="1em" class="dropdown style="vertical-align: middle; margin-bottom: 0.27rem; display: inline-block;"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+const AD_BUTTON_STYLE = 'width: 8rem; padding: 0.23rem 0.05rem 0.2rem 0.07rem; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.89rem; cursor: pointer; border: 0.5px solid var(--blue-link); font-family: sans-serif;'
+const HEADER_STYLE = 'padding: 0.6rem 0rem; font-size: 1.25rem; font-weight: 700; color: white; font-family: sans-serif;'   
+// ICONS
 const BUTTON_NODE = '<div aria-label="Close" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"></div>';
 const BUTTON_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/8VnyvQJM2fQ.png&quot;); background-position: 0px -444px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>';
 const BUTTON_SUB_NODE = '<div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="bottom:-8px;left:-8px;right:-8px;top:-8px"></div>';
 
-// ICONS
-const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/5yNj8IGYD_V.png&quot;); background-position: 0px -298px; background-size: 25px 400px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const DISCONNECT_ICON = '<i data-visualcompletion="css-img" class="gneimcpu b0w474w7" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yt/r/4EPP2T0Rs5N.png&quot;); background-position: 0px -331px; background-size: 37px 352px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 const INFORMATION_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/eCCDLUsDIXQ.png&quot;); background-position: 0px -300px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
-const ADVERTISERS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/LXdzc74h5Pi.png&quot;); background-position: 0px -914px; background-size: 33px 1658px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
-const AD_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yr/r/GsbYDvdGUgU.png&quot;); background-position: 0px -268px; background-size: 25px 476px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
-const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const ADVERTISERS_ICON = '<i data-visualcompletion="css-img" class="gneimcpu b0w474w7" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/PqWPQ2GHYn6.png&quot;); background-position: 0px -747px; background-size: 25px 1572px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+const AD_ICON = '<i data-visualcompletion="css-img" class="gneimcpu b0w474w7" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/4E-JB4cntAF.png&quot;); background-position: 0px -273px; background-size: 21px 311px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
+// const SETTINGS_ICON ='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M495.9 166.6C499.2 175.2 496.4 184.9 489.6 191.2L446.3 230.6C447.4 238.9 448 247.4 448 256C448 264.6 447.4 273.1 446.3 281.4L489.6 320.8C496.4 327.1 499.2 336.8 495.9 345.4C491.5 357.3 486.2 368.8 480.2 379.7L475.5 387.8C468.9 398.8 461.5 409.2 453.4 419.1C447.4 426.2 437.7 428.7 428.9 425.9L373.2 408.1C359.8 418.4 344.1 427 329.2 433.6L316.7 490.7C314.7 499.7 307.7 506.1 298.5 508.5C284.7 510.8 270.5 512 255.1 512C241.5 512 227.3 510.8 213.5 508.5C204.3 506.1 197.3 499.7 195.3 490.7L182.8 433.6C167 427 152.2 418.4 138.8 408.1L83.14 425.9C74.3 428.7 64.55 426.2 58.63 419.1C50.52 409.2 43.12 398.8 36.52 387.8L31.84 379.7C25.77 368.8 20.49 357.3 16.06 345.4C12.82 336.8 15.55 327.1 22.41 320.8L65.67 281.4C64.57 273.1 64 264.6 64 256C64 247.4 64.57 238.9 65.67 230.6L22.41 191.2C15.55 184.9 12.82 175.3 16.06 166.6C20.49 154.7 25.78 143.2 31.84 132.3L36.51 124.2C43.12 113.2 50.52 102.8 58.63 92.95C64.55 85.8 74.3 83.32 83.14 86.14L138.8 103.9C152.2 93.56 167 84.96 182.8 78.43L195.3 21.33C197.3 12.25 204.3 5.04 213.5 3.51C227.3 1.201 241.5 0 256 0C270.5 0 284.7 1.201 298.5 3.51C307.7 5.04 314.7 12.25 316.7 21.33L329.2 78.43C344.1 84.96 359.8 93.56 373.2 103.9L428.9 86.14C437.7 83.32 447.4 85.8 453.4 92.95C461.5 102.8 468.9 113.2 475.5 124.2L480.2 132.3C486.2 143.2 491.5 154.7 495.9 166.6V166.6zM256 336C300.2 336 336 300.2 336 255.1C336 211.8 300.2 175.1 256 175.1C211.8 175.1 176 211.8 176 255.1C176 300.2 211.8 336 256 336z"/></svg>'
+const SETTINGS_ICON = '<i data-visualcompletion="css-img" class="gneimcpu b0w474w7" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/yIxBtjx5FNB.png&quot;); background-position: -21px -579px; background-size: 73px 736px; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>'
 
 const titles = [
                     "Stop using data from partners to personalize ads", 
@@ -118,16 +120,16 @@ app.init().then(async () => {
         var icon = document.createElement('div')
         icon.innerHTML = icon_string
         console.log(icon)
-        choice.querySelector('i').parentElement.appendChild(icon)
-        choice.querySelector('i').remove()
+        choice.querySelector('img').parentElement.appendChild(icon)
+        choice.querySelector('img').remove()
 
         parent.appendChild(choice)
         
 
         choice.addEventListener("click", e => window.open(url));
 
-        choice.addEventListener("mouseover", e => choice.classList.add('rnr61an3'))
-        choice.addEventListener("mouseout", e => choice.classList.remove('rnr61an3'))
+        choice.addEventListener("mouseover", e => choice.classList.add('hi696u2r'))
+        choice.addEventListener("mouseout", e => choice.classList.remove('hi696u2r'))
     }
 
     function createDashboard() {
@@ -143,27 +145,36 @@ app.init().then(async () => {
             console.log("dashboard append")
             // create static dashboard header
             var dashboard_node = document.createElement("div");
-            dashboard_node.id = "dashboard";
-            dashboard_node.classList.add("j83agx80", "btwxx1t3", "taijpn5t", "sjgh65i0", "cxgpxx05");
+            dashboard_node.id = "dashboard"; 
+            //alzwoclg om3e55n1 mfclru0v
+            dashboard_node.classList.add("alzwoclg", "om3e55n1", "mfclru0v");
+         
             var menu_frame = document.createElement("div");
-            menu_frame.classList.add("j83agx80", "l9j0dhe7", "k4urcfbm", "dashboard");
+            // bdao358l om3e55n1 g4tp4svg oab4agdp g6da2mms yn3a2qjl b52o6v01 a96hb305 mfclru0v lq84ybu9 hf30pyar b3dzj11p
+            menu_frame.classList.add("bdao358l", "om3e55n1", "g4tp4svg", "oab4agdp", "g6da2mms", "yn3a2qjl", "b52o6v01", "a96hb305", "mfclru0v", "lq84ybu9", "hf30pyar", "b3dzj11p", "dashboard");
+            menu_frame.style.borderRadius = "border-radius:max(0px, min(8px, calc((100vw - 4px - 100%) * 9999))) / 8px";
+
             var menu_style = document.createElement("div");
-            menu_style.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "hybvsw6c", "io0zqebd", "m5lcvass", "fbipl8qg", "nwvqtn77", "k4urcfbm", "ni8dbmo4", "stjgntxs", "sbcfpzgs");
-            menu_style.style.borderRadius = "border-radius:max(0px, min(8px, calc((100vw - 4px - 100%) * 9999))) / 8px";
+            menu_style.classList.add("bdao358l", "om3e55n1", "g4tp4svg");
+            
             var menu_bar_1 = document.createElement("div");
-            menu_bar_1.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "rj1gh0hx", "buofh1pr", "g5gj957u", "hpfvmrgz", "i1fnvgqd", "gs1a9yip", "owycx6da", "btwxx1t3", "b5q2rw42", "lq239pai", "hddg9phg", "linmgsc8", "n851cfcs", "jb3vyjys", "rz4wbd8a", "qt6c0cv9", "a8nywdso");
+            menu_bar_1.classList.add("dashboard_inner", "om3e55n1", "g4tp4svg", "alzwoclg", "jez8cy9q", "t5n4vrf6", "o9w3sbdw", "sr926ui1", "jl2a5g8c", "r227ecj6", "gt60zsk1", "ktovzxj4", "g1smwn4j");
             menu_bar_1.setAttribute("role", "tablist");
-            menu_bar_1.style.backgroundColor = "#1877F2";
+            // menu_bar_1.style.backgroundColor = "#1877F2";
+           
             var menu_bar_2 = document.createElement("div");
             menu_bar_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "cbu4d94t", "d2edcug0", "hpfvmrgz", "rj1gh0hx", "buofh1pr", "g5gj957u", "p8fzw8mz", "pcp91wgn", "ipjc6fyt", "qt6c0cv9");
+           
             var menu_bar_3 = document.createElement("div");
             menu_bar_3.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "pfnyh3mw", "jifvfom9", "gs1a9yip", "owycx6da", "btwxx1t3", "hv4rvrfc", "dati1w0a", "mysgfdmx", "hddg9phg");
+           
             var menu_bar_4 = document.createElement("div");
             menu_bar_4.classList.add("oajrlxb2", "qu0x051f", "esr5mh6w", "e9989ue4", "r7d6kgcz", "p7hjln8o", "f1sip0of", "n00je7tq", "arfg74bv", "qs9ysxi8", "k77z8yql", "abiwlrkh", "p8dawk7l", "lzcic4wl", "dwo3fsh8", "g5ia77u1", "mf7ej076", "goun2846", "ccm00jje", "s44p3ltw", "mk2mc5f4", "rt8b4zig", "n8ej3o3l", "agehan2d", "sk4xxmp2", "rq0escxv", "gmql0nx0", "nhd2j8a9", "j83agx80", "kvgmc6g5", "cxmmr5t8", "oygrvhab", "hcukyx3x", "jb3vyjys", "rz4wbd8a", "qt6c0cv9", "a8nywdso", "l9j0dhe7", "i1ao9s8h", "esuyzwwr", "tkr6xdv7");
             menu_bar_4.setAttribute("aria-hidden", "false");
             menu_bar_4.setAttribute("aria-selected", "true");
             menu_bar_4.setAttribute("role", "tab");
             menu_bar_4.setAttribute("tabindex", "0");
+          
             var menu_bar_5 = document.createElement("div");
             menu_bar_5.classList.add("bp9cbjyn", "rq0escxv", "j83agx80", "pfnyh3mw", "frgo5egb", "l9j0dhe7", "buofh1pr", "cb02d2ww", "taijpn5t", "aj9r9hf7");
             // var menu_title = document.createElement("span");
@@ -199,9 +210,9 @@ app.init().then(async () => {
 
             // create intro text node
             var intro_frame_node = document.createElement("div");
-            intro_frame_node.classList.add("ecm0bbzt", "hv4rvrfc", "ihqw7lf3", "dati1w0a");
+            intro_frame_node.classList.add("bp9cbjyn", "rq0escxv", "j83agx80", "pfnyh3mw", "frgo5egb", "l9j0dhe7", "buofh1pr", "cb02d2ww", "taijpn5t", "aj9r9hf7");
             var intro_div_1 = document.createElement("div");
-            intro_div_1.classList.add("j83agx80", "cbu4d94t", "ew0dbk1b", "irj2b8pg");
+            intro_div_1.classList.add("dashboard-intro", "j83agx80", "cbu4d94t", "ew0dbk1b", "irj2b8pg");
             var intro_div_2 = document.createElement("div");
             intro_div_2.classList.add("qzhwtbm6", "knvmm38d");
             var intro_span = document.createElement("span");
