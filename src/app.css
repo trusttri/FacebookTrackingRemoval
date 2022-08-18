@@ -52,26 +52,37 @@ summary.fbtrLabel {
 .dropdownButton:hover {
     border-radius: 10px;
     background-color: lightgray;
+    cursor: pointer;
 }
 
-.dashboard{
+
+.dashboard {
     border: solid 1px #bec3c9a3;
     border-radius: 8px;
 }
 
-.dashboard_inner{
+.dashboardpanel {
+    margin-top: 0.5rem;
+    padding-left: 0.3rem;
+}
+
+.menu_bar_2{
     border: solid 1px #bec3c9a3;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     color: white; 
     background-color: rgb(24, 119, 242); 
 }
 
-.dashboard-intro {
-    font-size: .9375rem;
-    padding-bottom: 0.3rem;
+.fb_color {
+    background-color: rgb(24, 119, 242); 
 }
 
-.innypi6y {
-    font-weight: 600;
+.intro {
+    font-size: .9375rem;
+    margin-bottom: 0.53rem;
 }
+
+.dropdown_button {
+    margin-top: 1rem;
+}
+
+

@@ -24,11 +24,11 @@ const MENU_OPTION_NODE_WITHOUT_DESC = '<div class="qi72231t nu7423ey n3hqoq4p r8
 const DASHBOARD_HEADER = '<div class="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn s5oniofx rn8ck1ys s3jn8y49 o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 f14ij5to l3ldwz01 icdlwmnq qgrdou9d fsf7x5fv alzwoclg jl2a5g8c jez8cy9q sb3qexpo l7miuv0d m8h3af8h kjdc1dyq om3e55n1 cr00lzj9 g4tp4svg i85zmo3j q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze" role="menuitem" tabindex="0"><div class="i85zmo3j lpqsk9lh alzwoclg jcxyg2ei tpvapw4o"><img class="gneimcpu b0w474w7" src="https://static.xx.fbcdn.net/rsrc.php/v3/yW/r/80lDbyBfLdn.png" alt="" height="20" width="20"></div><div class="i85zmo3j alzwoclg jl2a5g8c cgu29s5g sl27f92c aeinzg81"><div class="alzwoclg cqf1kptm siwo0mpr gu5uzgus"><div class="jroqu855 nthtkgg5"><span class="gvxzyvdx aeinzg81 t7p7dqev gh25dzvf tb6i94ri gupuyl1y i2onq4tn b6ax4al1 gem102v4 ncib64c9 mrvwc6qr sx8pxkcf f597kf1v cpcgwwas f5mw3jnl hxfwr5lz k1z55t6l oog5qr5w tpi2lg9u pbevjfx6 ztn2w49o" dir="auto">Turn on notifications for this post</span></div></div></div><div class="o9erhkwx dzqi5evh hupbnkgi hvb2xoa8 z6erz7xo on4d8346 jkp44r48 l10tt5db s8sjc6am myo4itp8 ekq1a7f9 pym4i58u ldembo95 mwa1sm0y hi696u2r" data-visualcompletion="ignore" style="border-radius: 4px;"></div></div>'
 
 const HR_BREAK = '<hr class="th51lws0 p9ctufpz rj0o91l8 mfn553m3 tccefgj0">'
-const DROPDOWN_SVG = '<svg fill="white" viewBox="-1 -3.4 16 16" width="1em" height="1em" class="dropdown style="vertical-align: middle; margin-bottom: 0.27rem; display: inline-block;"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
+const DROPDOWN_SVG = '<svg fill=white style="display: inline-block; vertical-align: text-bottom; margin-right: 1rem;" viewBox="0 0 15.5 15.5" width="1.5rem" height="1.5rem" class="dropdown a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh jnigpg78 odw8uiq3"><g fill-rule="evenodd" transform="translate(-448 -544)"><path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path></g></svg>'
 const AD_BUTTON_STYLE = 'width: 8rem; padding: 0.23rem 0.05rem 0.2rem 0.07rem; text-align: center; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.89rem; cursor: pointer; border: 0.5px solid var(--blue-link); font-family: sans-serif;'
 const HEADER_STYLE = 'padding: 0.6rem 0rem; font-size: 1.25rem; font-weight: 700; color: white; font-family: sans-serif;'   
 // ICONS
-const BUTTON_NODE = '<div aria-label="Close" class="oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"></div>';
+const BUTTON_NODE = '<div aria-label="Close" class="dropdown_button oajrlxb2 gs1a9yip mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o tgvbjcpo hpfvmrgz i1ao9s8h esuyzwwr f1sip0of du4w35lb n00je7tq arfg74bv qs9ysxi8 k77z8yql btwxx1t3 abiwlrkh p8dawk7l lzcic4wl dwo3fsh8 g5ia77u1 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 pq6dq46d kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 pzggbiyp pkj7ub1o bqnlxs5p kkg9azqs c24pa1uk ln9iyx3p fe6kdd0r ar1oviwq l10q8mi9 sq40qgkc s8quxz6p pdjglbur" role="button" tabindex="0"></div>';
 const BUTTON_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll m6k467ps" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/8VnyvQJM2fQ.png&quot;); background-position: 0px -444px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>';
 const BUTTON_SUB_NODE = '<div class="i09qtzwb n7fi1qx3 b5wmifdl hzruof5a pmk7jnqg j9ispegn kr520xx4 c5ndavph art1omkt ot9fgl3s s45kfl79 emlxlaya bkmhp75w spb7xbtv" data-visualcompletion="ignore" style="bottom:-8px;left:-8px;right:-8px;top:-8px"></div>';
 
@@ -134,37 +134,41 @@ app.init().then(async () => {
             // create static dashboard header
             var dashboard_node = document.createElement("div");
             dashboard_node.id = "dashboard"; 
-            //alzwoclg om3e55n1 mfclru0v
-            dashboard_node.classList.add("alzwoclg", "om3e55n1", "mfclru0v");
          
+            // alzwoclg jl2a5g8c jcxyg2ei p8bdhjjv q46jt4gp
             var menu_frame = document.createElement("div");
-            // bdao358l om3e55n1 g4tp4svg oab4agdp g6da2mms yn3a2qjl b52o6v01 a96hb305 mfclru0v lq84ybu9 hf30pyar b3dzj11p
-            menu_frame.classList.add("bdao358l", "om3e55n1", "g4tp4svg", "oab4agdp", "g6da2mms", "yn3a2qjl", "b52o6v01", "a96hb305", "mfclru0v", "lq84ybu9", "hf30pyar", "b3dzj11p", "dashboard");
+            menu_frame.classList.add("dashboard", "alzwoclg", "jl2a5g8c", "jcxyg2ei", "p8bdhjjv");
             menu_frame.style.borderRadius = "border-radius:max(0px, min(8px, calc((100vw - 4px - 100%) * 9999))) / 8px";
 
+            // alzwoclg om3e55n1 mfclru0v
             var menu_style = document.createElement("div");
-            menu_style.classList.add("bdao358l", "om3e55n1", "g4tp4svg");
+            menu_style.classList.add("menu_style", "alzwoclg", "om3e55n1", "mfclru0v");
             
+            //bdao358l om3e55n1 g4tp4svg oab4agdp g6da2mms yn3a2qjl b52o6v01 a96hb305 mfclru0v lq84ybu9 hf30pyar b3dzj11p
             var menu_bar_1 = document.createElement("div");
-            menu_bar_1.classList.add("dashboard_inner", "om3e55n1", "g4tp4svg", "alzwoclg", "jez8cy9q", "t5n4vrf6", "o9w3sbdw", "sr926ui1", "jl2a5g8c", "r227ecj6", "gt60zsk1", "ktovzxj4", "g1smwn4j");
+            menu_bar_1.classList.add("menu_bar_1", "bdao358l", "om3e55n1", "g4tp4svg", "oab4agdp", "g6da2mms", "yn3a2qjl", "b52o6v01", "a96hb305", "mfclru0v", "lq84ybu9", "hf30pyar", "b3dzj11p");
             menu_bar_1.setAttribute("role", "tablist");
             // menu_bar_1.style.backgroundColor = "#1877F2";
            
+            //bdao358l om3e55n1 g4tp4svg alzwoclg jg3vgc78 cgu29s5g i15ihif8 aeinzg81 sl27f92c o9w3sbdw sr926ui1 jl2a5g8c nuznn79q snu7ymun g1smwn4j a05blw6y qjfq86k5 srn514ro oxkhqvkx rl78xhln nch0832m
             var menu_bar_2 = document.createElement("div");
-            menu_bar_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "cbu4d94t", "d2edcug0", "hpfvmrgz", "rj1gh0hx", "buofh1pr", "g5gj957u", "p8fzw8mz", "pcp91wgn", "ipjc6fyt", "qt6c0cv9");
+            menu_bar_2.classList.add("menu_bar_2","bdao358l", "om3e55n1", "g4tp4svg", "alzwoclg", "jg3vgc78", "cgu29s5g", "i15ihif8", "aeinzg81", "sl27f92c", "o9w3sbdw", "sr926ui1", "jl2a5g8c", "nuznn79q", "snu7ymun", "g1smwn4j", "a05blw6y", "qjfq86k5", "srn514ro", "oxkhqvkx", "rl78xhln", "nch0832m");
            
+            //bdao358l om3e55n1 g4tp4svg alzwoclg cqf1kptm gvxzyvdx aeinzg81 jg3vgc78 cgu29s5g i15ihif8 i5oewl5a nnzkd6d7 f9xcifuu rl78xhln
             var menu_bar_3 = document.createElement("div");
-            menu_bar_3.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb", "j83agx80", "pfnyh3mw", "jifvfom9", "gs1a9yip", "owycx6da", "btwxx1t3", "hv4rvrfc", "dati1w0a", "mysgfdmx", "hddg9phg");
+            menu_bar_3.classList.add("menu_bar_3", "bdao358l", "om3e55n1", "g4tp4svg", "alzwoclg", "cqf1kptm", "gvxzyvdx", "aeinzg81", "jg3vgc78", "cgu29s5g", "i15ihif8", "i5oewl5a", "nnzkd6d7", "f9xcifuu", "rl78xhln");
            
+            //bdao358l om3e55n1 g4tp4svg alzwoclg jez8cy9q t5n4vrf6 o9w3sbdw sr926ui1 jl2a5g8c r227ecj6 gt60zsk1 ktovzxj4 g1smwn4j
             var menu_bar_4 = document.createElement("div");
-            menu_bar_4.classList.add("oajrlxb2", "qu0x051f", "esr5mh6w", "e9989ue4", "r7d6kgcz", "p7hjln8o", "f1sip0of", "n00je7tq", "arfg74bv", "qs9ysxi8", "k77z8yql", "abiwlrkh", "p8dawk7l", "lzcic4wl", "dwo3fsh8", "g5ia77u1", "mf7ej076", "goun2846", "ccm00jje", "s44p3ltw", "mk2mc5f4", "rt8b4zig", "n8ej3o3l", "agehan2d", "sk4xxmp2", "rq0escxv", "gmql0nx0", "nhd2j8a9", "j83agx80", "kvgmc6g5", "cxmmr5t8", "oygrvhab", "hcukyx3x", "jb3vyjys", "rz4wbd8a", "qt6c0cv9", "a8nywdso", "l9j0dhe7", "i1ao9s8h", "esuyzwwr", "tkr6xdv7");
+            menu_bar_4.classList.add("menu_bar_4", "bdao358l", "om3e55n1", "g4tp4svg", "alzwoclg", "jez8cy9q", "t5n4vrf6", "o9w3sbdw", "sr926ui1", "jl2a5g8c", "r227ecj6", "gt60zsk1", "ktovzxj4", "g1smwn4j");
             menu_bar_4.setAttribute("aria-hidden", "false");
             menu_bar_4.setAttribute("aria-selected", "true");
             menu_bar_4.setAttribute("role", "tab");
             menu_bar_4.setAttribute("tabindex", "0");
           
+            //bdao358l om3e55n1 g4tp4svg alzwoclg cqf1kptm jez8cy9q gvxzyvdx aeinzg81 bmgto6uh f9xcifuu cgu29s5g
             var menu_bar_5 = document.createElement("div");
-            menu_bar_5.classList.add("bp9cbjyn", "rq0escxv", "j83agx80", "pfnyh3mw", "frgo5egb", "l9j0dhe7", "buofh1pr", "cb02d2ww", "taijpn5t", "aj9r9hf7");
+            menu_bar_5.classList.add("menu_bar_5", "bdao358l", "om3e55n1", "g4tp4svg", "alzwoclg", "cqf1kptm", "jez8cy9q", "gvxzyvdx", "aeinzg81", "bmgto6uh", "f9xcifuu", "cgu29s5g");
             // var menu_title = document.createElement("span");
             // menu_title.classList.add("d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
             // const headline_text = "Advertising Controls";
@@ -198,19 +202,12 @@ app.init().then(async () => {
 
             // create intro text node
             var intro_frame_node = document.createElement("div");
-            intro_frame_node.classList.add("bp9cbjyn", "rq0escxv", "j83agx80", "pfnyh3mw", "frgo5egb", "l9j0dhe7", "buofh1pr", "cb02d2ww", "taijpn5t", "aj9r9hf7");
-            var intro_div_1 = document.createElement("div");
-            intro_div_1.classList.add("dashboard-intro", "j83agx80", "cbu4d94t", "ew0dbk1b", "irj2b8pg");
-            var intro_div_2 = document.createElement("div");
-            intro_div_2.classList.add("qzhwtbm6", "knvmm38d");
-            var intro_span = document.createElement("span");
-            intro_span.classList.add("d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
+            var intro_span = document.createElement("div");
+            intro_span.classList.add("intro", "oog5qr5w", "d2edcug0", "hpfvmrgz", "qv66sw1b", "c1et5uql", "oi732d6d", "ik7dh3pa", "ht8s03o8", "a8c37x1j", "fe6kdd0r", "mau55g9w", "c8b282yb", "keod5gw0", "nxhoafnm", "aigsh9s9", "d9wwppkn", "iv3no6db", "jq4qci2q", "a3bd9o3v", "ekzkrbhg", "oo9gr5id", "hzawbc8m");
             const intro_text = "Control how Facebook uses your data and displays ads."
             intro_span.insertAdjacentText("afterbegin", intro_text);
             intro_span.style.color = "white";
-            intro_div_2.appendChild(intro_span);
-            intro_div_1.appendChild(intro_div_2);
-            intro_frame_node.appendChild(intro_div_1);
+            intro_frame_node.appendChild(intro_span);
 
             menu_bar_5.appendChild(menu_title);
             menu_bar_4.appendChild(menu_bar_5);
@@ -237,12 +234,14 @@ app.init().then(async () => {
             }
 
             menu_parent.insertBefore(dashboard_node, menu_parent.firstChild);
-            menu_bar_2.parentNode.insertBefore(button_container, menu_bar_2.nextSibling);
-            menu_bar_3.parentNode.insertBefore(intro_frame_node, menu_bar_3.nextSibling);
+            menu_bar_2.append(button_container);
+            menu_bar_5.appendChild(intro_frame_node);
 
             // create static dashboard content
             var content_frame_1 = document.createElement("div");
-            content_frame_1.classList.add( "abvwweq7", "ejjq64ki", "d2edcug0", "dashboardpanel");
+            content_frame_1.classList.add("dashboardpanel", "bdao358l", "om3e55n1", "g4tp4svg", "alzwoclg", "jg3vgc78", "cgu29s5g", "i15ihif8", "aeinzg81", "sl27f92c", "o9w3sbdw", "sr926ui1", "jl2a5g8c", "nuznn79q", "snu7ymun", "g1smwn4j", "a05blw6y", "srn514ro", "oxkhqvkx", "rl78xhln", "nch0832m");
+            content_frame_1.style.marginTop = "0.5rem";
+            content_frame_1.style.paddingLeft = "0.3rem";
             var content_frame_2 = document.createElement("div");
             content_frame_2.classList.add("rq0escxv", "l9j0dhe7", "du4w35lb");
 
@@ -256,8 +255,8 @@ app.init().then(async () => {
             }
             content_frame_1.appendChild(content_frame_2);
 
-            menu_bar_1.parentNode.insertBefore(content_frame_1, menu_bar_1.nextSibling);
-
+            //menu_bar_1.parentNode.insertBefore(content_frame_1, menu_bar_1.nextSibling);
+            menu_bar_1.appendChild(content_frame_1);
             // collpase if need be
             chrome.storage.local.get(["collapsed"], function(result){
                 if (result.collapsed=="true") {
@@ -295,7 +294,7 @@ app.init().then(async () => {
     }
 
     function collapseDashboard() {
-        var panel = document.getElementsByClassName("abvwweq7 ejjq64ki d2edcug0 dashboardpanel")[0]
+        var panel = document.getElementsByClassName("dashboardpanel")[0]
         chrome.storage.local.get(["collapsed"], function(result){
             if (result.collapsed=="false") {
                 chrome.storage.local.set({"collapsed": "true"}, function(){});
