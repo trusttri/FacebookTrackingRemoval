@@ -102,7 +102,6 @@ app.init().then(async () => {
     function hide(elem, label) {
         /* temporary code */
         augmentButton(elem) // our code for augmenting button on ads
-
         // var ad_content = elem.closest(app.hide_rules.article_wrapper)
         // var sponsor = ad_content.querySelector(".oajrlxb2.g5ia77u1.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.rq0escxv.nhd2j8a9.nc684nl6.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.i1ao9s8h.esuyzwwr.f1sip0of.lzcic4wl.gpro0wi8.oo9gr5id.lrazzd5p")
         // console.log(sponsor.querySelector('span').innerHTML)
@@ -156,6 +155,51 @@ app.init().then(async () => {
             }
         }
         
+    }
+
+    function augmentButtonSide() {
+        // var sideAds = document.getElementsByClassName('alzwoclg n3hqoq4p r86q59rh b3qcqh3k fq87ekyn p5mefues j32recxq j94dm2s7 trbvugp6 fsf7x5fv no6h3tfh m8h3af8h h07fizzr kjdc1dyq jbg88c62 ztn2w49o q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze ie32ypzk him0ws1g')
+        var sideAds = document.querySelectorAll('.i85zmo3j.z6erz7xo.alzwoclg.h28iztb5.s8sjc6am.ekq1a7f9')
+        for(let i=0; i<sideAds.length; i++) {
+            var header = sideAds[i];
+            if (header){
+                var adBtn = header.querySelector('[aria-label="More"]')
+                if (adBtn){
+                    var three_dot_svg = adBtn.querySelector('svg')
+                    if(three_dot_svg && !three_dot_svg.classList.contains("dropdown") && !three_dot_svg.classList.contains("settingsBtn")){
+                        three_dot_svg.remove()
+
+                        var settingsBtn = document.createElement('div');
+
+                        //settingsBtn.innerHTML = DROPDOWN_SVG + "<span>ad settings</span>"
+                        // const BTN_SETTINGS_ICON = '<i data-visualcompletion="css-img" class="hu5pjgll lzf7d6o1" style="background-image: ur(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yn/r/bcLkvwxZS8v.png&quot;); background-position: 0px -270px; magin-left: 10px; background-size: auto; width: 12px; height: 12px; background-repeat: no-repeat; display: inline-block;"></i>'
+                        settingsBtn.innerHTML = BTN_SETTINGS_ICON + '<strong><span style="padding-right: 0.1rem">ad settings</span></strong>' + DROPDOWN_SVG
+                        settingsBtn.style = AD_BUTTON_STYLE
+
+                        adBtn.insertBefore(settingsBtn, adBtn.firstChild);
+                        adBtn.style.width = "8.2rem";
+                        adBtn.style.height = "1.8rem";
+
+                        adBtn.addEventListener("click", function() {
+                            changeMenu();
+
+                            chrome.storage.local.get(["log_history"], function(result){
+                                var clickEvent = {
+                                    "clicked_element": "ad-button",
+                                    "timestamp": Date.now(), 
+                                }
+                                if (result.log_history) {
+                                    result.log_history.push(clickEvent)
+                                    chrome.storage.local.set({"log_history": result.log_history}, function(){console.log(result.log_history)});
+                                }else{
+                                    chrome.storage.local.set({"log_history": [clickEvent]}, function(){console.log(result.log_history)});
+                                }
+                            });
+                        });
+                    }
+                }
+            }
+        }
     }
 
     function changeMenu() {
@@ -582,7 +626,7 @@ app.init().then(async () => {
 
                     // removeArticles(target, _userRules);
                     logPopupInData();
-
+                    augmentButtonSide();
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
                     if (app.options.delPixeled)
