@@ -95,8 +95,8 @@ app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
-    var topBarExist = document.querySelector(QUERY_STRING_FOR_LAYOUT)
     if (location.href==FB_URL) {
+        var topBarExist = document.querySelector(QUERY_STRING_FOR_LAYOUT)
         var sideAdExist = document.getElementsByClassName(SIDE_AD).length > 0;
         var layout = ""
         chrome.storage.local.get(["layout_type"], function(l){
