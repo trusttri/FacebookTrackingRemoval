@@ -59,6 +59,7 @@ summary.fbtrLabel {
 .dashboard {
     border: solid 1px #bec3c9a3;
     border-radius: 8px;
+    max-width: 680px;
 }
 
 .dashboardpanel {
