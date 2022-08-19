@@ -157,6 +157,7 @@ app.init().then(async () => {
             // create static dashboard header
             var dashboard_node = document.createElement("div");
             dashboard_node.id = "dashboard"; 
+            dashboard_node.classList.add("m8h3af8h", "pry8b2m5", "kjdc1dyq", "p8zq7ayg", "imjq5d63", "dm6rj7fv", "n7p8i11x", "ksav2qyx", "ovvwtbxn", "eqaaof95")
          
             // alzwoclg jl2a5g8c jcxyg2ei p8bdhjjv q46jt4gp
             var menu_frame = document.createElement("div");
