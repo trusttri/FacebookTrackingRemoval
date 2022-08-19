@@ -477,7 +477,7 @@ app.init().then(async () => {
             if(popupType==null){
                 popupType = popup.querySelector(POPUP_TYPE_WINDOWS)
             }
-            console.log(popupType);
+            // console.log(popupType);
             if(popupType) {
                 // console.log(popupType.innerText)
                 chrome.storage.local.get(["prolific_ID"], function(p){
@@ -487,11 +487,11 @@ app.init().then(async () => {
                             if (r.popup_history) {
                                 r.popup_history.push(popupEvent)
                                 chrome.storage.local.set({"popup_history": r.popup_history}, function(){
-                                    console.log(r.popup_history)
+                                    // console.log(r.popup_history)
                                 });
                             }else{
                                 chrome.storage.local.set({"popup_history": [popupEvent]}, function(){
-                                    console.log(r.popup_history)
+                                    // console.log(r.popup_history)
                                 });
                             }
                         });
