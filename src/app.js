@@ -84,7 +84,10 @@ const AD_TOPIC_MAC = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dly
 const AD_TOPIC_WINDOWS = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dlyfsiuo.t7p7dqev.gh25dzvf.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.fq4sesb3.eawxt9kr.o48pnaf2.pbevjfx6.ztn2w49o.ckkis2m5.ib8x7mpr'
 
 const SIDE_AD = "alzwoclg n3hqoq4p r86q59rh b3qcqh3k fq87ekyn p5mefues j32recxq j94dm2s7 trbvugp6 fsf7x5fv no6h3tfh m8h3af8h h07fizzr kjdc1dyq jbg88c62 ztn2w49o q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze ie32ypzk him0ws1g"
+
 const FB_URL = "https://www.facebook.com/"
+const DATA_PARTNERS_POPUP = "https://www.facebook.com/adpreferences/?section=audience_based_advertising"
+const AUDIENCE_POPUP = "https://www.facebook.com/adpreferences/?section=audience_based_advertising"
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
@@ -526,6 +529,13 @@ app.init().then(async () => {
         }
     }
 
+    function reloadPopup() {
+        if(location.href==DATA_PARTNERS_POPUP || location.href==AUDIENCE_POPUP) {
+            var reloadBtn = document.querySelector('[aria-label="Reload Page"]')
+            if (reloadBtn) { location.reload() }
+        }
+    }
+
     let _running = false;
     function run(body) {
         if (_running)
@@ -664,21 +674,7 @@ app.init().then(async () => {
                     createDashboard();
                     refreshHome();
                     logPopupInData();
-                    
-                    // browser.runtime.sendMessage({message: "URL"}).then(function (response) { 
-                  
-                    // });
-         
-                    // chrome.storage.local.get(["URL"], function(result){
-                    //     console.log(result.URL)
-                    //     if(result.URL=="https://www.facebook.com/"){
-                    //         createDashboard();
-                    //         refreshHome();
-                    //     }else{
-                
-                    //     }
-                    // });
-                       
+                    reloadPopup();
                     // if (app.options.delSuggest)
                     //     removeArticles(target, app.hide_rules.suggestions_smart);
                     if (app.options.delPixeled)
