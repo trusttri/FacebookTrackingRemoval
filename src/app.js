@@ -56,6 +56,17 @@ const icons = [
 const BATCH_SIZE = 10;
 const QUERY_STRING_FOR_LAYOUT = ".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv";
 
+const POPUP = '.om3e55n1.g4tp4svg.l56fsmiw.alzwoclg.cqf1kptm.icdlwmnq.lq84ybu9.hf30pyar.bjrpyg6s.k0kqjr44.g6da2mms.yn3a2qjl.b52o6v01.a96hb305.qdjxsfl2.jydkgpbv.pikqa3ac.s0xl3u4v.r1od7cao.tu41pnuf.mfclru0v'
+
+const POPUP_TYPE_MAC = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.tb6i94ri.gupuyl1y.i2onq4tn.b6ax4al1.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.m2nijcs8.ib8x7mpr.rq8durfe.luz166fr.o48pnaf2.pbevjfx6.hsphh064'
+const POPUP_TYPE_WINDOWS = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.exr7barw.b6ax4al1.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.bx1hu7np.hxfwr5lz.rq8durfe.luz166fr.o48pnaf2.pbevjfx6.hsphh064'
+
+const POPUP_SUBTYPE_MAC = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.tb6i94ri.gupuyl1y.i2onq4tn.b6ax4al1.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.m2nijcs8.ib8x7mpr.rq8durfe.luz166fr.o48pnaf2.pbevjfx6.hsphh064'
+const POPUP_SUBTYPE_WINDOWS = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.exr7barw.b6ax4al1.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.bx1hu7np.hxfwr5lz.rq8durfe.luz166fr.o48pnaf2.pbevjfx6.hsphh064'
+
+const AD_TOPIC_MAC = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dlyfsiuo.t7p7dqev.gh25dzvf.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.tb6i94ri.gupuyl1y.fq4sesb3.eawxt9kr.o48pnaf2.pbevjfx6.ztn2w49o.thx2cq4v.dpb8o5vd'
+const AD_TOPIC_WINDOWS = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dlyfsiuo.t7p7dqev.gh25dzvf.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.fq4sesb3.eawxt9kr.o48pnaf2.pbevjfx6.ztn2w49o.ckkis2m5.ib8x7mpr'
+
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
@@ -352,11 +363,11 @@ app.init().then(async () => {
     }
 
     function logPopupType() {
-        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        var popup = document.querySelector(POPUP)
         if(popup) {
-            var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            var popupType = popup.querySelector(POPUP_TYPE_MAC)
             if(popupType==null){
-                popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.ns63r2gh.iv3no6db.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+                popupType = popup.querySelector(POPUP_TYPE_WINDOWS)
             }
             console.log(popupType);
             if(popupType) {
@@ -369,11 +380,11 @@ app.init().then(async () => {
     }
 
     function logPopupHeader() {
-        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        var popup = document.querySelector(POPUP)
         if(popup) {
-            var popupHeader = popup.querySelectorAll('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            var popupHeader = popup.querySelectorAll(POPUP_SUBTYPE_MAC)
             if(popupHeader.length < 2){
-                popupHeader = popup.getElementsByClassName('d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 ns63r2gh iv3no6db o3w64lxj b2s5l15y hnhda86s oo9gr5id oqcyycmt')
+                popupHeader = popup.querySelectorAll(POPUP_SUBTYPE_WINDOWS)
             }
             
             if(popupHeader.length > 2) {
@@ -387,11 +398,11 @@ app.init().then(async () => {
     }
 
     function logPopupInData() {
-        var popup = document.querySelector('.l9j0dhe7.du4w35lb.cjfnh4rs.j83agx80.cbu4d94t.lzcic4wl.ni8dbmo4.stjgntxs.oqq733wu.cwj9ozl2.io0zqebd.m5lcvass.fbipl8qg.nwvqtn77.nwpbqux9.iy3k6uwz.e9a99x49.g8p4j16d.bv25afu3.gc7gaz0o.k4urcfbm')
+        var popup = document.querySelector(POPUP)
         if(popup) {
-            var popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.oi732d6d.ik7dh3pa.ht8s03o8.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.d3f4x2em.hrzyx87i.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+            var popupType = popup.querySelector(POPUP_TYPE_MAC)
             if(popupType==null){
-                popupType = popup.querySelector('.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.fe6kdd0r.mau55g9w.c8b282yb.keod5gw0.nxhoafnm.aigsh9s9.ns63r2gh.iv3no6db.o3w64lxj.b2s5l15y.hnhda86s.oo9gr5id.oqcyycmt')
+                popupType = popup.querySelector(POPUP_TYPE_WINDOWS)
             }
             console.log(popupType);
             if(popupType) {
@@ -496,13 +507,13 @@ app.init().then(async () => {
             try{
                 var ad_topic='';
                 if(is_ad_topic_popup && location.href==="https://www.facebook.com/adpreferences/ad_topics"){
-                    var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 oi732d6d ik7dh3pa d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m qg6bub1s h6olsfn3')
-                    if(ad_topic_exist.length>0){
-                        ad_topic = ad_topic_exist[0].innerText
+                    var ad_topic_exist = document.querySelector(AD_TOPIC_MAC)
+                    if(ad_topic_exist){
+                        ad_topic = ad_topic_exist.innerText
                     }else{
-                        var ad_topic_exist = document.getElementsByClassName('a8c37x1j hihg3u9x ggxiycxj l9j0dhe7 d2edcug0 hpfvmrgz lis9t9rg qv66sw1b c1et5uql fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d548f0b1 m6dqt4wy hnhda86s oo9gr5id hzawbc8m misohx42 hrzyx87i')
-                        if(ad_topic_exist.length>0){
-                            ad_topic = ad_topic_exist[0].innerText
+                        var ad_topic_exist = document.querySelector(AD_TOPIC_WINDOWS)
+                        if(ad_topic_exist){
+                            ad_topic = ad_topic_exist.innerText
                         }
                     }
                     clickEvent['ad_topic'] = ad_topic
