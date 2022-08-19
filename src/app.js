@@ -71,6 +71,7 @@ const POPUP_SUBTYPE_WINDOWS = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.exr7barw.b6a
 const AD_TOPIC_MAC = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dlyfsiuo.t7p7dqev.gh25dzvf.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.tb6i94ri.gupuyl1y.fq4sesb3.eawxt9kr.o48pnaf2.pbevjfx6.ztn2w49o.thx2cq4v.dpb8o5vd'
 const AD_TOPIC_WINDOWS = '.b6ax4al1.i54nktwv.z2vv26z9.om3e55n1.gvxzyvdx.aeinzg81.dlyfsiuo.t7p7dqev.gh25dzvf.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.fq4sesb3.eawxt9kr.o48pnaf2.pbevjfx6.ztn2w49o.ckkis2m5.ib8x7mpr'
 
+const SIDE_AD = "alzwoclg n3hqoq4p r86q59rh b3qcqh3k fq87ekyn p5mefues j32recxq j94dm2s7 trbvugp6 fsf7x5fv no6h3tfh m8h3af8h h07fizzr kjdc1dyq jbg88c62 ztn2w49o q46jt4gp b0eko5f3 r5g9zsuq fwlpnqze ie32ypzk him0ws1g"
 // NOTE: Needs to run in IFrames as well because some options pages are loaded as IFrames
 
 // Activates page action since show_matches isn't supported...
@@ -81,13 +82,23 @@ app.init().then(async () => {
     if (!app.options.enabled)
         return;
 
-    var topBar = document.querySelector(QUERY_STRING_FOR_LAYOUT)
-    if(topBar){
-        chrome.storage.local.set({"layout_type": "no_dropdown_icon"}, function(){console.log("no_dropdown_icon")});
+    var topBarExist = document.querySelector(QUERY_STRING_FOR_LAYOUT)
+    var sideAdExist = document.getElementsByClassName(SIDE_AD).length > 0
+    var layout = "";
+    if(topBarExist){
+        if(sideAdExist) {
+            layout = "no_dropdown_icon / side_ad"
+        }else {
+             layout = "no_dropdown_icon / no_side_ad"
+        }
     }else{
-        chrome.storage.local.set({"layout_type": "dropdown_icon"}, function(){console.log("dropdown_icon")});
+        if(sideAdExist) {
+            layout = "dropdown_icon / side_ad"
+        }else {
+             layout = "dropdown_icon / no_side_ad"
+        }
     }
-
+    chrome.storage.local.set({"layout_type": layout}, function(){console.log(layout)});
     chrome.storage.local.set({"browser_size": [[window.innerHeight, window.innerWidth, Date.now()]]}, function(){});
           
     // function that detects and changes ads
