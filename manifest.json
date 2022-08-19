@@ -2,7 +2,7 @@
 
 {
   "name": "Research Study on Facebook",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Extension for conducting an academic research study about ads on Facebook",
   "default_locale": "en",
   "icons": { "128": "src/icon.png" },
