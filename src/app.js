@@ -438,7 +438,7 @@ app.init().then(async () => {
             if(popupType==null){
                 popupType = popup.querySelector(POPUP_TYPE_WINDOWS)
             }
-            console.log(popupType);
+            // console.log(popupType);
             if(popupType) {
                 return popupType.innerText
             } else {
@@ -473,7 +473,7 @@ app.init().then(async () => {
             if(popupType==null){
                 popupType = popup.querySelector(POPUP_TYPE_WINDOWS)
             }
-            console.log(popupType);
+            // console.log(popupType);
             if(popupType) {
                 // console.log(popupType.innerText)
                 chrome.storage.local.get(["prolific_ID"], function(p){
