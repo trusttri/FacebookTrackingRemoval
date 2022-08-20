@@ -1,12 +1,12 @@
 {
   "name": "Research Study on Facebook",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extension for conducting an academic research study about ads on Facebook",
   "default_locale": "en",
   "icons": { "128": "src/icon.png" },
 
   "author": "Jane Im, Weikun Lyu, Ruiyi Wang, Nick Cook",
-  "homepage_url": "https://github.com/trusttri/augmentAdControl",
+  "homepage_url": "htt ps://github.com/trusttri/augmentAdControl",
 
   "permissions": [
     "storage",
