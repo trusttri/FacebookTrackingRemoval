@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(msg => {
 	                        chrome.storage.local.get(["layout_type"], function(l){
 	                        	chrome.storage.local.get(["browser_size"], function(b){
 					                if(b.browser_size) {
-					                	periodicSubmitData(prolific_ID, r.log_history, l.layout_type, b.browser_size)
+					                	// periodicSubmitData(prolific_ID, r.log_history, l.layout_type, b.browser_size)
 					                }
 					            })
 							})
