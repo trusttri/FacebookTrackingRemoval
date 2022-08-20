@@ -70,8 +70,8 @@ const icons = [
             ]
 
 const BATCH_SIZE = 10;
-const QUERY_STRING_FOR_LAYOUT = ".thodolrn.ojvp67qx.taijpn5t.buofh1pr.j83agx80.aovydwv3.bqdfd6uv";
-
+const QUERY_STRING_FOR_LAYOUT = ".qmqpeqxj.e7u6y3za.qwcclf47.nmlomj2f.s8sjc6am.j7qd3pol";
+const TOPBAR = ".l38y3qj3.ekq1a7f9.khm9p5p9.lcfup58g.r227ecj6.on4d8346";
 const POPUP = '.om3e55n1.g4tp4svg.l56fsmiw.alzwoclg.cqf1kptm.icdlwmnq.lq84ybu9.hf30pyar.bjrpyg6s.k0kqjr44.g6da2mms.yn3a2qjl.b52o6v01.a96hb305.qdjxsfl2.jydkgpbv.pikqa3ac.s0xl3u4v.r1od7cao.tu41pnuf.mfclru0v'
 
 const POPUP_TYPE_MAC = '.gvxzyvdx.aeinzg81.t7p7dqev.gh25dzvf.tb6i94ri.gupuyl1y.i2onq4tn.b6ax4al1.gem102v4.ncib64c9.mrvwc6qr.sx8pxkcf.f597kf1v.cpcgwwas.m2nijcs8.ib8x7mpr.rq8durfe.luz166fr.o48pnaf2.pbevjfx6.hsphh064'
@@ -99,22 +99,24 @@ app.init().then(async () => {
         return;
 
     if (location.href==FB_URL) {
-        var topBarExist = document.querySelector(QUERY_STRING_FOR_LAYOUT)
+        var topBar = document.querySelector(TOPBAR);
+
+        var dropdownExist = topBar.querySelector(QUERY_STRING_FOR_LAYOUT);
         var sideAdExist = document.getElementsByClassName(SIDE_AD).length > 0;
         var layout = ""
         chrome.storage.local.get(["layout_type"], function(l){
             if(l.layout_type=="" || l.layout_type==null) {
-                if(topBarExist){
-                    if(sideAdExist) {
-                        layout = "no_dropdown_icon / side_ad"
-                    }else {
-                         layout = "no_dropdown_icon / no_side_ad"
-                    }
-                }else{
+                if(dropdownExist){
                     if(sideAdExist) {
                         layout = "dropdown_icon / side_ad"
                     }else {
                          layout = "dropdown_icon / no_side_ad"
+                    }
+                }else{
+                    if(sideAdExist) {
+                        layout = "no_dropdown_icon / side_ad"
+                    }else {
+                         layout = "no_dropdown_icon / no_side_ad"
                     }
                 }
 
