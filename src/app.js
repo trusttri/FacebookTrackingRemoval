@@ -627,8 +627,8 @@ app.init().then(async () => {
                                 console.log(result.log_history)
                             });
                             if (result.log_history.length % BATCH_SIZE == 0) {
-                                console.log('periodic submit')
-                                browser.runtime.sendMessage("PERIODIC_SUBMIT");
+                                // console.log('periodic submit')
+                                // browser.runtime.sendMessage("PERIODIC_SUBMIT");
                             }
 
                         }else{
