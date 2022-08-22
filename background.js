@@ -83,24 +83,36 @@ async function signUp(prolific_ID) {
 }
 
 async function finalSubmitData(prolific_ID, log_history, layout_type, browser_size) {
-	var stringfied = JSON.stringify(log_history);
-	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+	// var stringfied = JSON.stringify(log_history);
+	// var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+	// var browser_string = JSON.stringify(browser_size)
+	// let url = "https://ad-control-study.si.umich.edu/send_log";
+	// var data_to_send = JSON.stringify({
+	// 	"prolific_id": prolific_ID, 
+	// 	"log": cleaned_string, 
+	// 	"batch_size": log_history.length, 
+	// 	"final_submit": true,
+	// 	"layout_type": layout_type,
+	// 	"browser": browser_string
+	// });
 	var browser_string = JSON.stringify(browser_size)
 	let url = "https://ad-control-study.si.umich.edu/send_log";
 	var data_to_send = JSON.stringify({
 		"prolific_id": prolific_ID, 
-		"log": cleaned_string, 
+		"log": log_history, 
 		"batch_size": log_history.length, 
 		"final_submit": true,
 		"layout_type": layout_type,
 		"browser": browser_string
 	});
+	var data_to_send = data_to_send.replaceAll("&", "").replaceAll("#", "")
 	console.log(data_to_send)
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
 			body: data_to_send
 		});
+		console.log("ready to send")
 		const result = await response.json();
 		console.log(result)
 		chrome.runtime.sendMessage({
@@ -126,18 +138,30 @@ async function finalSubmitData(prolific_ID, log_history, layout_type, browser_si
 }
 
 async function periodicSubmitData(prolific_ID, log_history, layout_type, browser_size) {
-	var stringfied = JSON.stringify(log_history);
-	var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+	// var stringfied = JSON.stringify(log_history);
+	// var cleaned_string = stringfied.replaceAll("&", "").replaceAll("#", "")
+	// var browser_string = JSON.stringify(browser_size)
+	// let url = "https://ad-control-study.si.umich.edu/send_log";
+	// var data_to_send = JSON.stringify({
+	// 									"prolific_id": prolific_ID, 
+	// 									"log": cleaned_string, 
+	// 									"batch_size": log_history.length, 
+	// 									"final_submit": false,
+	// 									"layout_type": layout_type,
+	// 									"browser": browser_string
+									// })
+	
 	var browser_string = JSON.stringify(browser_size)
 	let url = "https://ad-control-study.si.umich.edu/send_log";
 	var data_to_send = JSON.stringify({
 										"prolific_id": prolific_ID, 
-										"log": cleaned_string, 
+										"log": log_history, 
 										"batch_size": log_history.length, 
 										"final_submit": false,
 										"layout_type": layout_type,
 										"browser": browser_string
 									})
+	var data_to_send = data_to_send.replaceAll("&", "").replaceAll("#", "")
 	try {
 		const response = await fetch(url, {method: 'POST', 
 			headers: {'Content-Type': 'application/json'}, 
