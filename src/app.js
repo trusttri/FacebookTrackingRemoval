@@ -90,9 +90,9 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---inner text---")
-            console.log(e.innerText)
-            return e
+            // console.log("---inner text---")
+            // console.log(e.innerText)
+            return e.innerText
         }
     }
 
@@ -104,15 +104,20 @@ app.init().then(async () => {
                 return 'none'
             }
         } else {
-            console.log("---aria label---")
-            console.log(e.ariaLabel)
-            return e
+            // console.log("---aria label---")
+            // console.log(e.ariaLabel)
+            return e.ariaLabel
         }
     }
 
     function findClosestElementWithAriaLabelChild(e) {
-        console.log(e.querySelector('[aria-label]'))
-        return e.querySelector('[aria-label]')
+        // console.log(e.querySelector('[aria-label]'))
+        var res = e.querySelector('[aria-label]')
+        if(res){
+            return res.ariaLabel
+        }else{
+            return 'none'
+        }
     }
 
     function findClosestElementWithName(e) {
@@ -125,7 +130,7 @@ app.init().then(async () => {
         } else {
             // console.log("---name---")
             // console.log(e.name)
-            return e
+            return e.name
         }
     }
 
@@ -264,22 +269,22 @@ app.init().then(async () => {
 
             
             var closest_element_with_inner_text = findClosestElementWithText(e.target)
-            if (typeof(closest_element_with_inner_text) !== "string"){
-                clickEvent['closest_inner_text'] = closest_element_with_inner_text.cloneNode(true).outerHTML
+            if (closest_element_with_inner_text !== "none"){
+                clickEvent['closest_inner_text'] = closest_element_with_inner_text
             }
 
             var closest_element_with_arialabel_parent = findClosestElementWithAriaLabelParent(e.target)
-            if (typeof(closest_element_with_arialabel_parent) !== "string"){
-                clickEvent['closest_arialabel_parent'] = closest_element_with_arialabel_parent.cloneNode(true).outerHTML
+            if (closest_element_with_arialabel_parent !== "none"){
+                clickEvent['closest_arialabel_parent'] = closest_element_with_arialabel_parent
             }
 
             var closest_element_with_arialabel_child = findClosestElementWithAriaLabelChild(e.target)
-            if (closest_element_with_arialabel_child !== null){
-                clickEvent['closest_arialabel_child'] = closest_element_with_arialabel_child.cloneNode(true).outerHTML
+            if (closest_element_with_arialabel_child !== "none"){
+                clickEvent['closest_arialabel_child'] = closest_element_with_arialabel_child
             }
 
             var closest_element_with_name = findClosestElementWithName(e.target)
-            if (typeof(closest_element_with_name) !== "string"){
+            if (closest_element_with_name !== "none"){
                 clickEvent['closest_name'] = closest_element_with_name
             }
 
